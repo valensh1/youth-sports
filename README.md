@@ -1,5 +1,3 @@
-# MERN STACK TEMPLATE
-
 ## WEBSITE LINK -
 
 [add link here]
