@@ -25,8 +25,6 @@ The idea behind this project is to design a youth ESPN sports site where it cont
 - Utilizes MVC framework
 - Full CRUD capability
 
-# DIRECTIONS FOR USING THIS STARTER MERN APPLICATION TEMPLATE
-
 ## Project Status:
 
 This project is under way and will have daily updates
