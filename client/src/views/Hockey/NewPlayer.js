@@ -21,7 +21,7 @@ const NewPlayer = event => {
     try {
       //? POST REQUEST - no need for async with post request
       event.preventDefault();
-      fetch('/api/players', {
+      fetch('/api/hockeyPlayers', {
         //! Change players to accommodate your application
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -41,7 +41,7 @@ const NewPlayer = event => {
         //? REDIRECTION TO ROUTE AFTER FORM SUBMISSION
         .then(
           setTimeout(() => {
-            history.push(`/players`); //! Change players for name that fits your application. ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION
+            history.push(`/hockeyPlayers`); //! Change players for name that fits your application. ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION
           }, 1500) // Timeout of 1.5 seconds needed to allow for adequate time for data to be posted and then upon redirect the players.js useEffect hook has enough time to retrieve all the data including the newly posted data. It seemed to be working fine without setTimeout on local host but when deploying there seemed to be a problem so this is to fix that delay in the get request from players.js file getting the data including the newly posted player.
         );
     } catch (error) {

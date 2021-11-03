@@ -9,7 +9,7 @@ const app = express(); // Creation of variable app which calls the express funct
 app.use(cors()); // Every time file is saved the application runs the cors function
 
 //? MONGOOSE/MongoDB SET-UP - Only changes needed are red commented line of code below
-const Player = require('./models/players.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
+const HockeyPlayer = require('./models/hockeyPlayerModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 const mongoose = require('mongoose'); // Need to require Mongoose in order to access our MongoDB database; Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 const MONGODB_URI = process.env.MONGODB_URI; // Creation of variable which stores our MongoDB connection string containing our password to access our database. This connection string is stored on our .env file
 const db = mongoose.connection; // Creation of variable to shorten our code. Instead of having to type mongoose.connection each time we can just refer to it as db.
@@ -27,7 +27,10 @@ app.use(express.urlencoded({ extended: true })); // Middleware - so we can use r
 app.use(express.json()); // Middleware - for parsing data coming in the body of the POST request as json format
 
 //? API ROUTES - Routes To Controllers Folder --> See red comments section for modification needed for new application
-app.use('/api/players', require('./controllers/playerController.js')); //! Modify file name for your application (change playerController.js). Every time this api/players path is hit we will require the playerController.js file which holds our routes related to players
+app.use(
+  '/api/hockeyPlayers',
+  require('./controllers/hockeyPlayerController.js')
+); //! Modify file name for your application (change playerController.js). Every time this api/players path is hit we will require the playerController.js file which holds our routes related to players
 
 //? DEPLOYMENT CODE FOR HEROKU - No Need to Modify This Code
 if (process.env.NODE_ENV === 'production') {

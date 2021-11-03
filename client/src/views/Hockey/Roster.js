@@ -11,7 +11,7 @@ const Roster = () => {
     (async () => {
       try {
         //? GET REQUEST - INDEX ROUTE SHOWING ALL PLAYERS
-        const response = await fetch('/api/players'); //! Change players to accommodate your application. Leave api the same
+        const response = await fetch('/api/hockeyPlayers'); //! Change players to accommodate your application. Leave api the same
         const data = await response.json();
         await setPlayers(data); //! Change setPlayers to whatever name you use above in useState
         console.log(data);
@@ -41,7 +41,7 @@ const Roster = () => {
                 <td>
                   <Link
                     className="index-container__player-link"
-                    to={`/players/${player?._id}`}
+                    to={`/hockeyPlayers/${player?._id}`}
                   >
                     {`${player?.firstName} ${player?.lastName}`}
                   </Link>
@@ -56,7 +56,7 @@ const Roster = () => {
       </table>
 
       <button className="btn btn-index">
-        <Link className="btn-link" to="/players/new">
+        <Link className="btn-link" to="/hockeyPlayers/new">
           NEW PLAYER
         </Link>
       </button>

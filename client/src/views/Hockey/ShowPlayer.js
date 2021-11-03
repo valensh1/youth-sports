@@ -13,7 +13,7 @@ const ShowPlayer = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch(`/api/players/${id}`); //! Change players to accommodate your application. Leave api and ${id} the same
+        const response = await fetch(`/api/hockeyPlayers/${id}`); //! Change players to accommodate your application. Leave api and ${id} the same
         const data = await response.json();
         console.log(data);
         setSinglePlayer(data); //! Change setSinglePlayer to whatever name you use above in useState
@@ -26,7 +26,7 @@ const ShowPlayer = () => {
   const handleClick = event => {
     console.log('You clicked the DELETE button');
     try {
-      fetch(`/api/players/${id}`, {
+      fetch(`/api/hockeyPlayers/${id}`, {
         //! Change players to accommodate your application. Leave api and ${id} the same
         method: 'DELETE',
         headers: {
@@ -34,7 +34,7 @@ const ShowPlayer = () => {
         },
       }).then(
         setTimeout(() => {
-          history.push(`/players`); //! Change players for name that fits your application. ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION)
+          history.push(`/hockeyPlayers`); //! Change players for name that fits your application. ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION ENTER ROUTE HERE YOU WANT TO GO TO AFTER FORM SUBMISSION)
         }, 1500)
       ); // Timeout of 2 seconds needed to allow for adequate time for data to be posted and then upon redirect the players.js useEffect hook has enough time to retrieve all the data including the newly posted data. It seemed to be working fine without setTimeout on local host but when deploying there seemed to be a problem so this is to fix that delay in the get request from players.js file getting the data including the newly posted player.)
     } catch (error) {
@@ -64,7 +64,7 @@ const ShowPlayer = () => {
         </tbody>
       </table>
       <button className="btn">
-        <Link className="btn-link" to={'/players'}>
+        <Link className="btn-link" to={'/hockeyPlayers'}>
           &larr; BACK
         </Link>
       </button>
@@ -72,7 +72,10 @@ const ShowPlayer = () => {
         DELETE
       </button>
       <button className=" btn ">
-        <Link className="btn-link" to={`/players/edit/${singlePlayer?._id}`}>
+        <Link
+          className="btn-link"
+          to={`/hockeyPlayers/edit/${singlePlayer?._id}`}
+        >
           EDIT
         </Link>
       </button>

@@ -3,11 +3,11 @@
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // MUST IMPORT BrowserRouter (changing name to just Router is optional) and Route and Switch
 import Home from './views/Home.js'; //! Update file names for whatever names you used that relate to your application
-import Roster from './views/Roster.js'; //! Update file names for whatever names you used that relate to your application
-import NewPlayer from './views/NewPlayer.js'; //! Update file names for whatever names you used that relate to your application
+import Roster from './views/Hockey/Roster.js'; //! Update file names for whatever names you used that relate to your application
+import NewPlayer from './views//Hockey/NewPlayer.js'; //! Update file names for whatever names you used that relate to your application
 import Navbar from './components/Navbar.js'; //! Update file names for whatever names you used that relate to your application
-import ShowPlayer from './views/ShowPlayer.js'; //! Update file names for whatever names you used that relate to your application
-import EditPlayer from './views/EditPlayer.js'; //! Update file names for whatever names you used that relate to your application
+import ShowPlayer from './views/Hockey/ShowPlayer.js'; //! Update file names for whatever names you used that relate to your application
+import EditPlayer from './views/Hockey/EditPlayer.js'; //! Update file names for whatever names you used that relate to your application
 import News from './views/News.js'; //! Update file names for whatever names you used that relate to your application
 import Video from './views/Video.js'; //! Update file names for whatever names you used that relate to your application
 import Stats from './views/Stats.js'; //! Update file names for whatever names you used that relate to your application
@@ -22,22 +22,22 @@ function App() {
         <Navbar />
         <Switch>
           {/* //? INDEX ROUTE - SHOW ALL PLAYERS */}
-          <Route exact path="/players">
+          <Route exact path="/hockeyPlayers">
             <Roster />
           </Route>
 
           {/* //? CREATE ROUTE - NEW PLAYER */}
-          <Route exact path="/players/new">
+          <Route exact path="/hockeyPlayers/new">
             <NewPlayer />
           </Route>
 
           {/* //? EDIT ROUTE - EDIT INDIVIDUAL PLAYER */}
-          <Route exact path="/players/edit/:id">
+          <Route exact path="/hockeyPlayers/edit/:id">
             <EditPlayer />
           </Route>
 
           {/* //? SHOW ROUTE - INDIVIDUAL PLAYER */}
-          <Route exact path="/players/:id">
+          <Route exact path="/hockeyPlayers/:id">
             <ShowPlayer />
           </Route>
 
