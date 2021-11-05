@@ -28,27 +28,45 @@ const Roster = () => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Number</th>
-            <th>Team</th>
+            <th>Player</th>
+            <th>#</th>
             <th>Position</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Born</th>
+            <th>Team</th>
+            <th>Division</th>
+            <th>Level</th>
+            <th>Location</th>
           </tr>
         </thead>
         {players?.map(player => {
           return (
             <tbody key={player?._id}>
-              <tr className="index-container__player">
+              <tr className="index__player">
                 <td>
                   <Link
-                    className="index-container__player-link"
+                    className="index__player-link"
                     to={`/hockeyPlayers/${player?._id}`}
                   >
-                    {`${player?.firstName} ${player?.lastName}`}
+                    <img
+                      src={player?.img}
+                      alt="player profile"
+                      className="index__player-pic"
+                    />
+                    <p className="index__player-name">{`${player?.firstName} ${player?.lastName}`}</p>
                   </Link>
                 </td>
+
                 <td>{player?.number}</td>
-                <td>{player?.team}</td>
                 <td>{player?.position}</td>
+                <td>{player?.height}</td>
+                <td>{player?.weight}</td>
+                <td>{player?.born}</td>
+                <td>{player?.team}</td>
+                <td>{player?.division}</td>
+                <td>{player?.level}</td>
+                <td>{player?.location}</td>
               </tr>
             </tbody>
           );

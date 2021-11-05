@@ -128,7 +128,7 @@ const NewPlayer = event => {
         <input className="btn btn-submit" type="submit" value="SUBMIT" />
       </form>
       <button className="btn btn-cancel">
-        <Link className="btn-link" to={'/players'}>
+        <Link className="btn-link" to={'/hockeyPlayers'}>
           CANCEL
         </Link>
       </button>
