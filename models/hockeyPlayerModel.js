@@ -107,6 +107,8 @@ const playerSchema = new mongoose.Schema({
 
 //? TELLING MONGOOSE YOU WANT TO CREATE A MODEL USING OUR SCHEMA
 const HockeyPlayer = mongoose.model('HockeyPlayer', playerSchema); //! Update Player and playerSchema for names that fit your application. Player is our model name and it MUST BE SINGULAR WITH AN UPPERCASE FIRST LETTER! mongoDB will then lowercase this model name and make it plural so it will change the name to ---> players
+
+//? If miss adding fields to your schema for your original mongoose model you must add like this below
 mongoose.model('HockeyPlayer').schema.add({ division: String });
 mongoose.model('HockeyPlayer').schema.add({ level: String });
 mongoose.model('HockeyPlayer').schema.add({ location: String });
