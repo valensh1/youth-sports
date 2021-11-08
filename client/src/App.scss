@@ -1,5 +1,21 @@
 //! ALL RED COMMENTED SECTIONS ARE PLACES WHERE POTENTIAL CHANGES ARE NEEDED BASED UPON YOUR APPLICATION
 //! Make sure to update your CSS styling for wherever you changed players from the className to something that fit your application
+//? Default global settings
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Everything is based upon 10px with this. 10px / 16px = .625. With this 1rem will = 10px. */
+}
+
+//? Global CSS Variables
+$color-primary: orangered;
 
 //? GLOBAL BUTTONS
 .btn {
@@ -159,13 +175,25 @@
 .index-container {
   width: 100vw;
   height: 100vh;
+  font-size: 1.4rem;
+
+  h1 {
+    color: $color-primary;
+    margin-top: 2rem;
+  }
 
   table {
     width: 100%;
+    margin-left: 2rem;
 
     .index__player {
       width: 100%;
       border-bottom: 1px solid #dedede;
+
+      &-pic-td {
+        // Gets rid of big gap between player and # headings and brings columns closer together
+        width: 25rem;
+      }
 
       &-link,
       :link {
@@ -180,17 +208,21 @@
         }
       }
 
+      // Hover over player profile pic and name
+      &-link:hover {
+        transform: scale(1.1);
+
+        .index__player-name {
+          color: $color-primary;
+        }
+      }
+
       &-pic {
         border-radius: 50%;
         border: 3.5px solid #dedede;
 
         height: 5.5rem;
         width: 5.5rem;
-      }
-
-      h1 {
-        color: orangered;
-        margin-top: 2rem;
       }
 
       .btn-index {

@@ -44,7 +44,7 @@ const Roster = () => {
           return (
             <tbody key={player?._id}>
               <tr className="index__player">
-                <td className="index__player-pic-name">
+                <td className="index__player-pic-td">
                   <Link
                     className="index__player-link"
                     to={`/hockeyPlayers/${player?._id}`}
