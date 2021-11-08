@@ -67,11 +67,20 @@ $color-primary: orangered;
 .form {
   position: relative;
   margin: 7rem 0rem;
+  height: 100vw;
+  width: 100vw;
+  // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Jv7IdhKBSmj37FQbeEwPjXXh1D5mKkAU1w&usqp=CAU');
 
   &__wrapper {
     border: 3px solid $color-primary;
     margin: 0 auto;
     width: 80%;
+    z-index: 100;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
   }
 
   h1 {
@@ -82,7 +91,9 @@ $color-primary: orangered;
 
   &__name {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 
     .form__first-input {
       width: 70%;
@@ -109,28 +120,57 @@ $color-primary: orangered;
     }
   }
 
-  &__height {
+  &__height-weight-born {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 15rem;
+
+    .form__born-input {
+      width: 25%;
+    }
   }
 
-  &__weight {
+  &__teamDivision {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem;
+  }
+  &-team {
+    width: 50rem;
   }
 
-  &__born {
-  }
-
-  &__team {
-  }
-
-  &__division {
+  &-division {
   }
 
   &__location {
   }
 
   &__level {
+    display: flex;
+
+    h3 {
+      color: $color-primary;
+      text-align: center;
+    }
+
+    &-checkboxes {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &-checkbox-input {
+      margin-right: 0.5rem;
+    }
   }
 
   &__img {
+    width: 50%;
+  }
+
+  &__email {
+    width: 50%;
+    margin-top: 2rem;
   }
 }
 

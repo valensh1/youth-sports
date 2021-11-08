@@ -82,6 +82,7 @@ const NewPlayer = event => {
     division: '',
     level: '',
     location: '',
+    email: '',
   });
 
   const history = useHistory(); // MUST ACTIVATE USE HISTORY HERE TO REDIRECT TO DIFFERENT PAGE AFTER FORM SUBMISSION. WON'T WORK INSIDE THE handleSubmit FUNCTION SO MUST BE HERE
@@ -112,6 +113,7 @@ const NewPlayer = event => {
             division: '',
             level: '',
             location: '',
+            email: '',
           })
         )
         //? REDIRECTION TO ROUTE AFTER FORM SUBMISSION
@@ -131,8 +133,8 @@ const NewPlayer = event => {
     <div className="form">
       <form className="form__wrapper" onSubmit={handleSubmit}>
         <h1>NEW PLAYER</h1>
-        <div className="form__name">
-          <div className="form__first col-sm-4">
+        <div className="form__name ">
+          <div className="form__first form__input col-sm-4">
             <label className="form__label" htmlFor="firstName">
               First
             </label>
@@ -146,7 +148,7 @@ const NewPlayer = event => {
             />
           </div>
 
-          <div className="form__last col-sm-4 ">
+          <div className="form__last form__input col-sm-4 ">
             <label htmlFor="lastName" className="form__label">
               Last
             </label>
@@ -160,7 +162,7 @@ const NewPlayer = event => {
             />
           </div>
         </div>
-        <div className="form__number col-sm-1 mt-5">
+        <div className="form__number form__input col-sm-1 mt-5">
           <label htmlFor="number" className="form__label">
             Jersey #
           </label>
@@ -253,8 +255,9 @@ const NewPlayer = event => {
             </div>
           </div>
         </div>
-        <div className="form__height-weight">
-          <div className="form__height">
+
+        <div className="form__height-weight-born">
+          <div className="form__height form__input">
             <label htmlFor="height" className="form__label">
               Height (inches)
             </label>
@@ -268,7 +271,7 @@ const NewPlayer = event => {
             />
           </div>
 
-          <div className="form__weight">
+          <div className="form__weight form__input">
             <label htmlFor="weight" className="form__label">
               Weight (lbs.)
             </label>
@@ -282,25 +285,25 @@ const NewPlayer = event => {
               }
             />
           </div>
+
+          <div className="form__born form__input col-5">
+            <label className="form__label" htmlFor="born">
+              DOB
+            </label>
+            <input
+              type="text"
+              placeholder="xx/xx/xxxx"
+              className="form__born-input"
+              name="born"
+              onChange={event =>
+                setFormData({ ...formData, born: event.target.value })
+              }
+            />
+          </div>
         </div>
 
-        <div className="form__born col-5">
-          <label className="form__label" htmlFor="born">
-            DOB
-          </label>
-          <input
-            type="text"
-            placeholder="xx/xx/xxxx"
-            className="form__born-input"
-            name="born"
-            onChange={event =>
-              setFormData({ ...formData, born: event.target.value })
-            }
-          />
-        </div>
-
-        <div className=" form__teamDivision team mt-5">
-          <div className="form__teamDivision-team  col-4">
+        <div className=" form__teamDivision mt-5">
+          <div className="form__teamDivision-team form__input  col-4">
             <label htmlFor="team">Team</label>
             <select
               name="team"
@@ -316,7 +319,7 @@ const NewPlayer = event => {
             </select>
           </div>
 
-          <div className="form__teamDivision-division col-2">
+          <div className="form__teamDivision-division form__input col-2">
             <label htmlFor="division">Division</label>
             <select
               className="form__teamDivision-select"
@@ -332,7 +335,7 @@ const NewPlayer = event => {
             </select>
           </div>
 
-          <div className="form__location col-4">
+          <div className="form__location form__input col-4">
             <label htmlFor="location" className="form__label">
               Location
             </label>
@@ -350,9 +353,10 @@ const NewPlayer = event => {
             </select>
           </div>
         </div>
-        <div className="form__level mt-5">
-          <h5>Level</h5>
-          <div className="levels">
+
+        <div className="form__level form__input mt-5">
+          <h3>Level</h3>
+          <div className="form__level-checkboxes">
             {level.map(lev => {
               return (
                 <div className="form__level-checkbox">
@@ -374,13 +378,18 @@ const NewPlayer = event => {
 
         <input
           type="text"
-          className="form__img col-10 mt-5"
-          placeholder="Image String"
+          className="form__img form__input col-10 mt-5"
+          placeholder="Profile Picture"
           name="img"
           onChange={event =>
             setFormData({ ...formData, img: event.target.value })
           }
         />
+
+        <div className="form__email form__input">
+          <label htmlFor="email">Email</label>
+          <input type="text" name="email" />
+        </div>
 
         <div className="button-div mt-5">
           <button className="button">
