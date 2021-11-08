@@ -8,11 +8,18 @@ const NewPlayer = event => {
   //! Need to modify NewPlayer based upon what you rename the NewPlayer.js file name.
   const [formData, setFormData] = useState({
     //! Need to change this based upon your Model schema from models folder. Should match
+    img: '',
     firstName: '',
     lastName: '',
     number: '',
-    team: '',
     position: '',
+    height: '',
+    weight: '',
+    born: '',
+    team: '',
+    division: '',
+    level: '',
+    location: '',
   });
 
   const history = useHistory(); // MUST ACTIVATE USE HISTORY HERE TO REDIRECT TO DIFFERENT PAGE AFTER FORM SUBMISSION. WON'T WORK INSIDE THE handleSubmit FUNCTION SO MUST BE HERE
@@ -31,11 +38,18 @@ const NewPlayer = event => {
         .then(
           setFormData({
             //! Need to change this based upon your Model schema from models folder. Should match
+            img: '',
             firstName: '',
             lastName: '',
             number: '',
-            team: '',
             position: '',
+            height: '',
+            weight: '',
+            born: '',
+            team: '',
+            division: '',
+            level: '',
+            location: '',
           })
         )
         //? REDIRECTION TO ROUTE AFTER FORM SUBMISSION

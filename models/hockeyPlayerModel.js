@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const playerSchema = new mongoose.Schema({
   img: {
     type: String,
-    required: true,
+    required: false, //? need to change back to true
   },
   firstName: {
     type: String,
@@ -31,7 +31,7 @@ const playerSchema = new mongoose.Schema({
   born: String,
   team: {
     type: String,
-    required: true,
+    required: false, //? need to change back to true
     enum: [
       'Jr. Ducks',
       'Jr. Condors',
@@ -59,7 +59,7 @@ const playerSchema = new mongoose.Schema({
     ],
     division: {
       type: String,
-      required: true,
+      required: false, //? need to change back to true
       enum: [
         'Mites',
         'Squirt',
@@ -73,13 +73,13 @@ const playerSchema = new mongoose.Schema({
     },
     level: {
       type: String,
-      required: true,
+      required: false, //? need to change back to true
       uppercase: true,
       enum: ['B', 'BB', 'A', 'AA', 'AAA'],
     },
     location: {
       type: String,
-      required: true,
+      required: false, //? need to change back to true
       enum: [
         'Anaheim',
         'Great Park',
