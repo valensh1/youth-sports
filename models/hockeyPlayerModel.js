@@ -31,7 +31,7 @@ const playerSchema = new mongoose.Schema({
   born: String,
   team: {
     type: String,
-    required: true, //? need to change back to true
+    required: true,
     enum: [
       'Jr. Ducks',
       'Jr. Condors',
@@ -59,7 +59,7 @@ const playerSchema = new mongoose.Schema({
     ],
     division: {
       type: String,
-      required: true, //? need to change back to true,
+      required: true,
       enum: [
         'Mites',
         'Squirt',
@@ -73,13 +73,13 @@ const playerSchema = new mongoose.Schema({
     },
     level: {
       type: String,
-      required: true, //? need to change back to true
+      required: true,
       uppercase: true,
       enum: ['B', 'BB', 'A', 'AA', 'AAA'],
     },
     location: {
       type: String,
-      required: true, //? need to change back to true
+      required: true,
       enum: [
         'Anaheim',
         'Great Park',
@@ -114,8 +114,8 @@ mongoose.model('HockeyPlayer').schema.add({ level: String });
 mongoose.model('HockeyPlayer').schema.add({ location: String });
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const hockeyPlayer1 = HockeyPlayer.create({
-//   //! Change player1 and Player for names that fit your application. Creation of a player1 and saved to database. Want to comment this out otherwise it will keep saving data to mongoDB each time you save this file and you will have duplicates in your MongoDB
-//   img: 'https://imgur.com/7yK4jS3',
+//   //   //! Change player1 and Player for names that fit your application. Creation of a player1 and saved to database. Want to comment this out otherwise it will keep saving data to mongoDB each time you save this file and you will have duplicates in your MongoDB
+//   img: 'https://imgur.com/7yK4jS3.jpg',
 //   firstName: 'Hunter',
 //   lastName: 'Valentine',
 //   number: 36,
