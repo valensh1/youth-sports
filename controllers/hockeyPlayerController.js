@@ -43,8 +43,8 @@ APIRouter.delete('/:id', async (req, res) => {
 //? POST REQUEST - (CREATE) - COMES FROM NewPlayer.js FILE ON FRONT-END
 APIRouter.post('/', async (req, res) => {
   try {
-    const newPost = await HockeyPlayers.create(req.body); //! Modify Players for your Application's collection name from your MongoDB database and variable name newPost for a variable that makes sense for your application.
     console.log(req.body);
+    const newPost = await HockeyPlayers.create(req.body); //! Modify Players for your Application's collection name from your MongoDB database and variable name newPost for a variable that makes sense for your application.
   } catch (error) {
     res.status(400).json(error);
   }

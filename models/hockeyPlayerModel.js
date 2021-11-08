@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const playerSchema = new mongoose.Schema({
   img: {
     type: String,
-    required: false, //? need to change back to true
+    required: true,
   },
   firstName: {
     type: String,
@@ -31,7 +31,7 @@ const playerSchema = new mongoose.Schema({
   born: String,
   team: {
     type: String,
-    required: false, //? need to change back to true
+    required: true, //? need to change back to true
     enum: [
       'Jr. Ducks',
       'Jr. Condors',
@@ -59,7 +59,7 @@ const playerSchema = new mongoose.Schema({
     ],
     division: {
       type: String,
-      required: false, //? need to change back to true
+      required: true, //? need to change back to true,
       enum: [
         'Mites',
         'Squirt',
@@ -73,13 +73,13 @@ const playerSchema = new mongoose.Schema({
     },
     level: {
       type: String,
-      required: false, //? need to change back to true
+      required: true, //? need to change back to true
       uppercase: true,
       enum: ['B', 'BB', 'A', 'AA', 'AAA'],
     },
     location: {
       type: String,
-      required: false, //? need to change back to true
+      required: true, //? need to change back to true
       enum: [
         'Anaheim',
         'Great Park',
@@ -107,7 +107,9 @@ const playerSchema = new mongoose.Schema({
 
 //? TELLING MONGOOSE YOU WANT TO CREATE A MODEL USING OUR SCHEMA
 const HockeyPlayer = mongoose.model('HockeyPlayer', playerSchema); //! Update Player and playerSchema for names that fit your application. Player is our model name and it MUST BE SINGULAR WITH AN UPPERCASE FIRST LETTER! mongoDB will then lowercase this model name and make it plural so it will change the name to ---> players
-
+mongoose.model('HockeyPlayer').schema.add({ division: String });
+mongoose.model('HockeyPlayer').schema.add({ level: String });
+mongoose.model('HockeyPlayer').schema.add({ location: String });
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const hockeyPlayer1 = HockeyPlayer.create({
 //   //! Change player1 and Player for names that fit your application. Creation of a player1 and saved to database. Want to comment this out otherwise it will keep saving data to mongoDB each time you save this file and you will have duplicates in your MongoDB
