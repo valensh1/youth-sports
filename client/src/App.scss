@@ -63,111 +63,74 @@ $color-primary: orangered;
 }
 
 //? CREATE & EDIT PAGES - NewPlayer.js and EditPlayer.js contain the same formatting
-.player-container {
-  //! Change
-  position: relative;
-  left: 25%;
-  top: 200px;
-  width: 50vw;
-  height: 35vh;
-  border: 5px solid orangered;
 
-  // For Microsoft Surface Pro
-  @media only screen and (max-width: 1900px) {
-    height: fit-content;
-    top: 100px;
+.form {
+  position: relative;
+  margin: 7rem 0rem;
+
+  &__wrapper {
+    border: 3px solid $color-primary;
+    margin: 0 auto;
+    width: 80%;
   }
 
   h1 {
-    color: orangered;
+    color: $color-primary;
     text-align: center;
-    margin: 2rem 0rem;
+    margin: 2rem 0;
   }
 
-  .btn {
-    position: relative;
-    left: 45%;
-    top: 5rem;
+  &__name {
+    display: flex;
+    justify-content: center;
+
+    .form__first-input {
+      width: 70%;
+    }
+
+    .form__last-input {
+      width: 70%;
+    }
   }
-  .player__form {
-    //! Change
-    .player__form-name {
-      //! Change
+
+  &__number {
+    margin: 3rem auto;
+  }
+
+  &__position {
+    &-selections {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
-
-      .player__form-labelContainer {
-        //! Change
-        display: flex;
-        flex-direction: column;
-        margin: 0rem 5rem;
-      }
-
-      input {
-        width: 120%;
-      }
+      justify-content: space-evenly;
     }
-    .player__form-labelContainer-number {
-      //! Change
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
 
-      input {
-        width: 5%;
-      }
-
-      @media only screen and (max-width: 1900px) {
-        width: 200%;
-        position: relative;
-        left: -50%;
-      }
-    }
-    .player__form-labelContainer {
-      //! Change
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      margin-top: 2.5rem;
-      margin-bottom: 2.5rem;
-
-      div {
-        margin: 0rem 3rem;
-        display: flex;
-        flex-direction: column;
-      }
+    &-heading {
+      color: $color-primary;
+      text-align: center;
     }
   }
 
-  .btn-submit {
-    position: absolute;
-    top: 100%;
-    height: fit-content;
-    color: white;
-    font-weight: 600;
-    left: 40%;
-
-    &:hover {
-      color: black;
-    }
-
-    // For Microsoft Surface Pro
-    @media only screen and (max-width: 1900px) {
-      left: 30%;
-      top: 105%;
-    }
+  &__height {
   }
 
-  .btn-cancel {
-    position: absolute;
-    top: 100%;
-    left: 55%;
+  &__weight {
+  }
 
-    @media only screen and (max-width: 1900px) {
-      top: 105%;
-    }
+  &__born {
+  }
+
+  &__team {
+  }
+
+  &__division {
+  }
+
+  &__location {
+  }
+
+  &__level {
+  }
+
+  &__img {
   }
 }
 

@@ -128,17 +128,17 @@ const NewPlayer = event => {
   //! Update all places in HTML below where it says player to names that fit your application. Also, update all inputs below such as type to match the type in your Model schema, change the name attribute to match your Model schema name (this must match - in model if you have a field called team your name attribute for that input must be team. That is how req.body knows what object fields to populate), value and onChange attributes will also need to be modified for your applications data.
   //? Name attribute on form items below critical for MongoDB to know what schema key/value pair it is being posted to
   return (
-    <div className="form__wrapper">
-      <form className="form" onSubmit={handleSubmit}>
-        <h1 className="form__heading">NEW PLAYER</h1>
+    <div className="form">
+      <form className="form__wrapper" onSubmit={handleSubmit}>
+        <h1>NEW PLAYER</h1>
         <div className="form__name">
-          <div className="form__first form__container col-sm-4">
+          <div className="form__first col-sm-4">
             <label className="form__label" htmlFor="firstName">
               First
             </label>
             <input
               type="text"
-              className="form__input"
+              className="form__first-input"
               name="firstName"
               onChange={event =>
                 setFormData({ ...formData, firstName: event.target.value })
@@ -146,13 +146,13 @@ const NewPlayer = event => {
             />
           </div>
 
-          <div className="form__last form__container col-sm-4 ">
+          <div className="form__last col-sm-4 ">
             <label htmlFor="lastName" className="form__label">
               Last
             </label>
             <input
               type="text"
-              className="form__input"
+              className="form__last-input"
               name="lastName"
               onChange={event =>
                 setFormData({ ...formData, lastName: event.target.value })
@@ -160,32 +160,26 @@ const NewPlayer = event => {
             />
           </div>
         </div>
-        <div className="form__number form__container col-sm-1 mt-5">
+        <div className="form__number col-sm-1 mt-5">
           <label htmlFor="number" className="form__label">
             Jersey #
           </label>
           <input
             type="number"
-            className="form__input"
+            className="form__number-input"
             name="number"
             onChange={event =>
               setFormData({ ...formData, number: event.target.value })
             }
           />
         </div>
-        <div className="position__check form__container mt-5 mb-2">
-          <h3 className="position__heading">Position</h3>
+        <div className=" form__position mt-5 mb-2">
+          <h3 className="form__position-heading">Position</h3>
 
-          <div className="position__check-selections">
-            <div className="form-check ">
-              <label
-                className="form-check-label form__label"
-                htmlFor="position"
-              >
-                Forward
-              </label>
+          <div className="form__position-selections">
+            <div className="form__position-forward ">
               <input
-                className="form-check-input form__input"
+                className="form__position-input"
                 type="checkbox"
                 value="Forward"
                 name="position"
@@ -193,17 +187,14 @@ const NewPlayer = event => {
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
+              <label className="form__label" htmlFor="position">
+                Forward
+              </label>
             </div>
 
-            <div className="form-check ">
-              <label
-                className="form-check-label form__label"
-                htmlFor="position"
-              >
-                Defenseman
-              </label>
+            <div className="form__position-defenseman ">
               <input
-                className="form-check-input form__input"
+                className="form__position-input"
                 type="checkbox"
                 value="Defenseman"
                 name="position"
@@ -211,17 +202,14 @@ const NewPlayer = event => {
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
+              <label className="form__label" htmlFor="position">
+                Defenseman
+              </label>
             </div>
 
-            <div className="form-check ">
-              <label
-                className="form-check-label form__label"
-                htmlFor="position"
-              >
-                Goalie
-              </label>
+            <div className="form__position-goalie">
               <input
-                className="form-check-input form__input"
+                className="form__position-input"
                 type="checkbox"
                 value="Goalie"
                 name="position"
@@ -229,17 +217,14 @@ const NewPlayer = event => {
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
+              <label className="form__label" htmlFor="position">
+                Goalie
+              </label>
             </div>
 
-            <div className="form-check ">
-              <label
-                className="form-check-label form__label"
-                htmlFor="position"
-              >
-                Coach
-              </label>
+            <div className="form__position-coach">
               <input
-                className="form-check-input form__input"
+                className="form__position-input"
                 type="checkbox"
                 value="Coach"
                 name="position"
@@ -247,17 +232,14 @@ const NewPlayer = event => {
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
+              <label className="form__label" htmlFor="position">
+                Coach
+              </label>
             </div>
 
-            <div className="form-check  mb-5">
-              <label
-                className="form-check-label form__label"
-                htmlFor="position"
-              >
-                Assistant Coach
-              </label>
+            <div className="form__position-assistantCoach  mb-5">
               <input
-                className="form-check-input form__input"
+                className="form__position-input"
                 type="checkbox"
                 value="Assistant Coach"
                 name="position"
@@ -265,17 +247,20 @@ const NewPlayer = event => {
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
+              <label className="form__label" htmlFor="position">
+                Assistant Coach
+              </label>
             </div>
           </div>
         </div>
         <div className="form__height-weight">
-          <div className="form__container">
+          <div className="form__height">
             <label htmlFor="height" className="form__label">
               Height (inches)
             </label>
             <input
               type="number"
-              className="form__height form__input col-8"
+              className="form__height-input col-8"
               name="height"
               onChange={event =>
                 setFormData({ ...formData, height: event.target.value })
@@ -283,13 +268,13 @@ const NewPlayer = event => {
             />
           </div>
 
-          <div className="form__container">
+          <div className="form__weight">
             <label htmlFor="weight" className="form__label">
               Weight (lbs.)
             </label>
             <input
               type="number"
-              className="form__weight form__input col-8"
+              className="form__weight-input col-8"
               id="form-weight"
               name="weight"
               onChange={event =>
@@ -298,87 +283,82 @@ const NewPlayer = event => {
             />
           </div>
         </div>
-        <div className="form__born-birthplace mt-5">
-          <div className="form__container form__born col-5">
-            <label className="form__label" htmlFor="born">
-              DOB
-            </label>
-            <input
-              type="text"
-              placeholder="xx/xx/xxxx"
-              className="form__input form__born-input"
-              name="born"
-              onChange={event =>
-                setFormData({ ...formData, born: event.target.value })
-              }
-            />
-          </div>
+
+        <div className="form__born col-5">
+          <label className="form__label" htmlFor="born">
+            DOB
+          </label>
+          <input
+            type="text"
+            placeholder="xx/xx/xxxx"
+            className="form__born-input"
+            name="born"
+            onChange={event =>
+              setFormData({ ...formData, born: event.target.value })
+            }
+          />
         </div>
-        <div className="form__container-team mt-5">
-          <div className="form__container team-container  col-4">
+
+        <div className=" form__teamDivision team mt-5">
+          <div className="form__teamDivision-team  col-4">
             <label htmlFor="team">Team</label>
             <select
               name="team"
-              id="team"
-              className="form__input form__input-team"
+              className="form__teamDivision-select"
               onChange={event =>
                 setFormData({ ...formData, team: event.target.value })
               }
             >
-              <option value="select-team"></option>
+              <option value="select team"></option>
               {teams.map(team => {
                 return <option key={team}>{team}</option>;
               })}
             </select>
           </div>
 
-          <div
-            className="form__container team-container col-2"
-            id="division-container"
-          >
+          <div className="form__teamDivision-division col-2">
             <label htmlFor="division">Division</label>
             <select
-              className="form__input form__input-division"
+              className="form__teamDivision-select"
               name="division"
               onChange={event =>
                 setFormData({ ...formData, division: event.target.value })
               }
             >
-              <option value="select-division"></option>
+              <option value="select division"></option>
               {division.map(div => {
                 return <option key={div}>{div}</option>;
               })}
             </select>
           </div>
 
-          <div
-            className="form__container team-container col-4"
-            id="location-container"
-          >
-            <label htmlFor="location">Location</label>
+          <div className="form__location col-4">
+            <label htmlFor="location" className="form__label">
+              Location
+            </label>
             <select
-              className="form__input form__input-location"
+              className="form__location-select"
               name="location"
               onChange={event =>
                 setFormData({ ...formData, location: event.target.value })
               }
             >
-              <option value="select-location"></option>
+              <option value="select location"></option>
               {cities.map(city => {
                 return <option key={city}>{city}</option>;
               })}
             </select>
           </div>
         </div>
-        <div className="form__container form__container-levels mt-5">
+        <div className="form__level mt-5">
           <h5>Level</h5>
           <div className="levels">
             {level.map(lev => {
               return (
-                <div className="levels__checkbox">
+                <div className="form__level-checkbox">
                   <input
                     type="checkbox"
-                    className="form__input levels-checkbox"
+                    className="form__level-checkbox-input"
                     value={lev}
                     name="level"
                     onChange={event =>
@@ -394,7 +374,7 @@ const NewPlayer = event => {
 
         <input
           type="text"
-          className="form__input form__image col-10 mt-5"
+          className="form__img col-10 mt-5"
           placeholder="Image String"
           name="img"
           onChange={event =>
