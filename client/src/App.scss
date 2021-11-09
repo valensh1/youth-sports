@@ -69,13 +69,25 @@ $color-primary: orangered;
   margin: 7rem 0rem;
   height: 100vw;
   width: 100vw;
-  // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Jv7IdhKBSmj37FQbeEwPjXXh1D5mKkAU1w&usqp=CAU');
+
+  // Image with colored background and last argument in rgba is the opacity
+  background-image: linear-gradient(
+      to bottom,
+      rgba(241, 90, 34, 0.4),
+      rgba(241, 90, 34, 0.4)
+    ),
+    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Jv7IdhKBSmj37FQbeEwPjXXh1D5mKkAU1w&usqp=CAU');
 
   &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 3px solid $color-primary;
-    margin: 0 auto;
     width: 80%;
-    z-index: 100;
+    z-index: 100; // In order to use z-index you must have a positioned element
+    background-color: white;
+    opacity: 1;
   }
 
   &__input {
@@ -117,6 +129,10 @@ $color-primary: orangered;
     &-heading {
       color: $color-primary;
       text-align: center;
+    }
+
+    &-input {
+      margin: 0 0.5rem;
     }
   }
 
@@ -166,11 +182,34 @@ $color-primary: orangered;
 
   &__img {
     width: 50%;
+    margin: 2rem 0;
   }
 
   &__email {
     width: 50%;
     margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  &__btn-back {
+    position: absolute;
+    left: 25%;
+    width: 25%;
+    bottom: 0;
+    margin-top: 5rem;
+
+    .form__btn-link {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  &__btn-submit {
+    position: absolute;
+    left: 50%;
+    width: 25%;
+    bottom: 0;
+    margin-left: 5rem;
   }
 }
 
@@ -227,14 +266,10 @@ $color-primary: orangered;
         height: 5.5rem;
         width: 5.5rem;
       }
-
-      .btn-index {
-        position: relative;
-        left: 40%;
-        width: 10%;
-        margin-top: 2rem;
-      }
     }
+  }
+  .btn-index {
+    margin-top: 2rem;
   }
 }
 

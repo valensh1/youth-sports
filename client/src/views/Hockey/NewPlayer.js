@@ -2,7 +2,7 @@
 
 //? POST REQUEST - FORM TO INPUT NEW PLAYER
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom'; // Must import useHistory in order to have React redirect to different pages outside the Router Link found on App.js
+import { useHistory, Link } from 'react-router-dom'; // Must import useHistory in order to have React redirect to different pages outside the Router Link found on App.js
 
 const NewPlayer = event => {
   //! Need to modify NewPlayer based upon what you rename the NewPlayer.js file name.
@@ -376,26 +376,37 @@ const NewPlayer = event => {
           </div>
         </div>
 
-        <input
-          type="text"
-          className="form__img form__input col-10 mt-5"
-          placeholder="Profile Picture"
-          name="img"
-          onChange={event =>
-            setFormData({ ...formData, img: event.target.value })
-          }
-        />
+        <div className="form__img form__input">
+          <label htmlFor="img">Profile Picture</label>
+          <input
+            type="text"
+            name="img"
+            onChange={event =>
+              setFormData({ ...formData, img: event.target.value })
+            }
+          />
+        </div>
 
         <div className="form__email form__input">
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" />
+          <input
+            type="text"
+            name="email"
+            onChange={event =>
+              setFormData({ ...formData, email: event.target.value })
+            }
+          />
         </div>
 
-        <div className="button-div mt-5">
-          <button className="button">
-            SUBMIT<span>&rarr;</span>
-          </button>
-        </div>
+        <button className="btn btn-link form__btn-back">
+          <Link className="form__btn-link" to="/hockeyPlayers">
+            BACK<span>&larr;</span>
+          </Link>
+        </button>
+
+        <button className="btn btn-link form__btn-submit">
+          SUBMIT<span>&rarr;</span>
+        </button>
       </form>
     </div>
   );

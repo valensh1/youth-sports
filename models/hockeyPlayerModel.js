@@ -112,6 +112,7 @@ const HockeyPlayer = mongoose.model('HockeyPlayer', playerSchema); //! Update Pl
 mongoose.model('HockeyPlayer').schema.add({ division: String });
 mongoose.model('HockeyPlayer').schema.add({ level: String });
 mongoose.model('HockeyPlayer').schema.add({ location: String });
+mongoose.model('HockeyPlayer').schema.add({ email: String });
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const hockeyPlayer1 = HockeyPlayer.create({
 //   //   //! Change player1 and Player for names that fit your application. Creation of a player1 and saved to database. Want to comment this out otherwise it will keep saving data to mongoDB each time you save this file and you will have duplicates in your MongoDB
