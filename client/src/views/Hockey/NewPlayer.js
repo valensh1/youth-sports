@@ -400,7 +400,7 @@ const NewPlayer = event => {
 
         <button className="btn btn-link form__btn-back">
           <Link className="form__btn-link" to="/hockeyPlayers">
-            BACK<span>&larr;</span>
+            <span>&larr;</span>BACK
           </Link>
         </button>
 

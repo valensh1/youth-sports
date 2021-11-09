@@ -58,9 +58,9 @@ const Roster = () => {
                   </Link>
                 </td>
 
-                <td>{player?.number}</td>
+                <td> {player?.number}</td>
                 <td>{player?.position}</td>
-                <td>{player?.height}</td>
+                <td> {player?.height}</td>
                 <td>{player?.weight}</td>
                 <td>{player?.born}</td>
                 <td>{player?.team}</td>
