@@ -209,7 +209,7 @@ $color-primary: orangered;
     }
 
     .form__born-input {
-      width: 25%;
+      width: 55%;
     }
   }
 
@@ -218,14 +218,9 @@ $color-primary: orangered;
     justify-content: space-between;
     margin: 0 2rem;
   }
+
   &-team {
     width: 50rem;
-  }
-
-  &-division {
-  }
-
-  &__location {
   }
 
   &__level {
