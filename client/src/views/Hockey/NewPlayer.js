@@ -263,7 +263,7 @@ const NewPlayer = event => {
             </label>
             <input
               type="number"
-              className="form__height-input col-8"
+              className="form__height-input"
               name="height"
               onChange={event =>
                 setFormData({ ...formData, height: event.target.value })
@@ -277,7 +277,7 @@ const NewPlayer = event => {
             </label>
             <input
               type="number"
-              className="form__weight-input col-8"
+              className="form__weight-input"
               id="form-weight"
               name="weight"
               onChange={event =>
@@ -286,7 +286,7 @@ const NewPlayer = event => {
             />
           </div>
 
-          <div className="form__born form__input col-5">
+          <div className="form__born form__input">
             <label className="form__label" htmlFor="born">
               DOB
             </label>
