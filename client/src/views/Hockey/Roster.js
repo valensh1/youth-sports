@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SortBtn from '../../components/SortBtn.js';
 
 const Roster = () => {
   //! Need to modify Roster based upon what you rename the Roster.js file name.
@@ -40,7 +41,7 @@ const Roster = () => {
             <th>Location</th>
           </tr>
         </thead>
-        {players?.map(player => {
+        {players?.map((player) => {
           return (
             <tbody key={player?._id}>
               <tr className="index__player">
@@ -78,6 +79,7 @@ const Roster = () => {
           NEW PLAYER
         </Link>
       </button>
+      <SortBtn players={players} />
     </div>
   );
 };

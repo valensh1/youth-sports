@@ -45,6 +45,7 @@ $color-primary: orangered;
   background-color: black;
 
   .ul-container {
+    position: relative;
     width: 100%;
   }
   .navbar--ul {
@@ -58,6 +59,14 @@ $color-primary: orangered;
       font-size: 1.1rem;
       font-weight: 700;
       color: white;
+    }
+
+    // Logo/Home icon
+    .icon-home3 {
+      position: absolute;
+      left: -10rem;
+      height: 2rem;
+      fill: white; // Changes color of svg icon
     }
   }
 }
@@ -88,6 +97,7 @@ $color-primary: orangered;
     background-color: white;
     opacity: 1;
 
+    // Mobile Phones
     @media (min-width: 320px) and (max-width: 488px) {
       top: 89%;
       left: 50%;
@@ -95,6 +105,7 @@ $color-primary: orangered;
       font-size: 0.8rem;
     }
 
+    // Ipads and Tablets
     @media (min-width: 489px) and (max-width: 768px) {
       top: 47%;
       left: 50%;
@@ -102,6 +113,7 @@ $color-primary: orangered;
       font-size: 1rem;
     }
 
+    // Laptops
     @media (min-width: 769px) and (max-width: 1024px) {
       top: 39%;
       left: 50%;
@@ -109,18 +121,21 @@ $color-primary: orangered;
       font-size: 1rem;
     }
 
+    // Desktops
     @media (min-width: 1025px) and (max-width: 1200) {
       top: 15%;
       width: 75%;
       font-size: 1.4rem;
     }
 
+    // Large Screens
     @media (min-width: 1201px) and (max-width: 1280) {
       top: 40%;
       width: 70%;
       font-size: 1.6rem;
     }
 
+    // Extra Large Screens
     @media (min-width: 1281px) {
       top: 20%;
       width: 65%;

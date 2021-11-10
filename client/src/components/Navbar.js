@@ -9,6 +9,14 @@ function Navbar() {
       <div className="ul-container">
         <ul className="navbar--ul">
           <li>
+            {/* Place Logo here */}
+            <Link to="/" className="navbar--ul-link">
+              <svg class="icon icon-home3">
+                <use xlinkHref="./sprite.svg#icon-home3"></use>
+              </svg>
+            </Link>
+          </li>
+          <li>
             <Link to="/hockeyPlayers" className="navbar--ul-link">
               Players
             </Link>
