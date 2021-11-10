@@ -4,9 +4,9 @@ function SortBtn({ players }) {
   const sortAZ = () => {
     console.log(players);
     const sortedList = players.sort((a, b) => {
-      return a.firstName - b.firstName;
+      return a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase());
     });
-    console.log(players[0].firstName);
+    console.log(sortedList);
   };
 
   return (
