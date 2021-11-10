@@ -1,17 +1,22 @@
 import React from 'react';
+let sorted = false;
 
-function SortBtn({ players }) {
+function SortBtn({ players, handleSort, originalData }) {
   const sortAZ = () => {
-    console.log(players);
-    const sortedList = players.sort((a, b) => {
+    const listingPriorToSort = [...players];
+    sorted = !sorted;
+    console.log(sorted);
+    const sortedList = listingPriorToSort.sort((a, b) => {
       return a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase());
     });
-    console.log(sortedList);
+
+    let result = sorted ? handleSort(sortedList) : handleSort(originalData);
+    console.log(result);
   };
 
   return (
     <div onClick={sortAZ}>
-      <svg class="icon icon-home3">
+      <svg class="icon icon-sortAZ">
         <use xlinkHref="./sprite.svg#icon-sort-alpha-asc"></use>
       </svg>
     </div>

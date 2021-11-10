@@ -66,7 +66,7 @@ $color-primary: orangered;
       position: absolute;
       left: -10rem;
       height: 2rem;
-      fill: white; // Changes color of svg icon
+      fill: white; // Changes color of icon
     }
   }
 }
@@ -310,6 +310,7 @@ $color-primary: orangered;
 
 //? INDEX PAGE - Roster.js
 .index-container {
+  position: relative;
   width: 100vw;
   height: 100vh;
   font-size: 1.4rem;
@@ -322,6 +323,7 @@ $color-primary: orangered;
   table {
     width: 100%;
     margin-left: 2rem;
+    margin-top: 3rem;
 
     .index__player {
       width: 100%;
@@ -365,6 +367,14 @@ $color-primary: orangered;
   }
   .btn-index {
     margin-top: 2rem;
+  }
+
+  .icon-sortAZ {
+    position: absolute;
+    top: 4rem;
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid orangered;
   }
 }
 

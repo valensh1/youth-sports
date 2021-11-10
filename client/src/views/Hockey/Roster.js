@@ -6,6 +6,7 @@ import SortBtn from '../../components/SortBtn.js';
 
 const Roster = () => {
   //! Need to modify Roster based upon what you rename the Roster.js file name.
+  const [originalData, setOriginalData] = useState([]); // Original data in order it was pulled from Mongo which is earliest to latest in order of input from form (latest input at bottom of roster)
   const [players, setPlayers] = useState([]); //! Change players and setPlayers to names that relate to your application
 
   useEffect(() => {
@@ -16,11 +17,18 @@ const Roster = () => {
         const data = await response.json();
         await setPlayers(data); //! Change setPlayers to whatever name you use above in useState
         console.log(data);
+        await setOriginalData(data);
       } catch (err) {
         console.error(err);
       }
     })();
   }, []);
+
+  // sortedList argument was passed back up from child to parent
+  const handleSort = list => {
+    console.log(list);
+    setPlayers([...list]);
+  };
 
   //! Change where it says players to accommodate your application and change the fields shown in index page to show whatever fields you want to show from your MongoDB database.
   return (
@@ -29,7 +37,14 @@ const Roster = () => {
       <table>
         <thead>
           <tr>
-            <th>Player</th>
+            <th>
+              <SortBtn
+                players={players}
+                handleSort={handleSort}
+                originalData={originalData}
+              />
+              Player
+            </th>
             <th>#</th>
             <th>Position</th>
             <th>Height</th>
@@ -41,7 +56,7 @@ const Roster = () => {
             <th>Location</th>
           </tr>
         </thead>
-        {players?.map((player) => {
+        {players?.map(player => {
           return (
             <tbody key={player?._id}>
               <tr className="index__player">
@@ -79,7 +94,11 @@ const Roster = () => {
           NEW PLAYER
         </Link>
       </button>
-      <SortBtn players={players} />
+      {/* <SortBtn
+        players={players}
+        handleSort={handleSort}
+        originalData={originalData}
+      /> */}
     </div>
   );
 };
