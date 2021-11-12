@@ -23,7 +23,7 @@ const ShowPlayer = () => {
     })();
   }, []);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     console.log('You clicked the DELETE button');
     try {
       fetch(`/api/hockeyPlayers/${id}`, {
@@ -44,14 +44,25 @@ const ShowPlayer = () => {
 
   //! Change where it says singlePlayer to accommodate your application and change the fields shown in show page to show whatever fields you want to show from your MongoDB database.
   return (
-    <div className="player">
-      <div className="player__background-image">
-        <img
-          className="player__profilePic pic__profile"
-          src={singlePlayer.img}
-          alt="Player profile"
-        />
-      </div>
+    <div className="container__single-player">
+      <table className="table__single-player">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Team</th>
+            <th>Position</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{`${singlePlayer?.firstName} ${singlePlayer?.lastName}`}</td>
+            <td>{singlePlayer?.number}</td>
+            <td>{singlePlayer?.team}</td>
+            <td className="player-position">{singlePlayer?.position}</td>
+          </tr>
+        </tbody>
+      </table>
       <button className="btn">
         <Link className="btn-link" to={'/hockeyPlayers'}>
           &larr; BACK

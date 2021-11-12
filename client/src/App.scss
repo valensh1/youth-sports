@@ -17,7 +17,7 @@ html {
 //? Global CSS Variables
 $color-primary: orangered;
 
-//? GLOBAL BUTTONS
+//? GLOBAL STYLING
 .btn {
   background-color: orangered;
 
@@ -30,6 +30,10 @@ $color-primary: orangered;
       color: black;
     }
   }
+}
+
+.icon:hover {
+  cursor: pointer;
 }
 
 //? HOME PAGE STYLING
@@ -75,8 +79,13 @@ $color-primary: orangered;
 
 .form {
   position: relative;
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
+
+  // Desktops
+  @media (min-width: 1000px) {
+    height: 110vh;
+  }
 
   // Image with colored background and last argument in rgba is the opacity
   background-image: linear-gradient(
@@ -88,7 +97,7 @@ $color-primary: orangered;
 
   &__wrapper {
     position: absolute;
-    top: 35%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid $color-primary;
@@ -137,7 +146,7 @@ $color-primary: orangered;
 
     // Extra Large Screens
     @media (min-width: 1281px) {
-      top: 20%;
+      top: 45%;
       width: 65%;
       font-size: 1.6rem;
     }
@@ -285,6 +294,10 @@ $color-primary: orangered;
     .form__btn-link {
       text-decoration: none;
       color: white;
+
+      @media (min-width: 1281px) {
+        font-size: 1.6rem;
+      }
     }
 
     .form__btn-link:hover {
@@ -304,6 +317,10 @@ $color-primary: orangered;
     @media (min-width: 320px) {
       font-size: 1rem;
       height: 4%;
+    }
+
+    @media (min-width: 1281px) {
+      font-size: 1.6rem;
     }
   }
 }
@@ -379,27 +396,25 @@ $color-primary: orangered;
 }
 
 //? SHOW PAGE - ShowPlayer.js
-.container__single-player {
-  //! Change
-  .table__single-player {
-    //! Change
-    margin-left: 40%;
-    margin-top: 10%;
-    th {
-      padding: 0rem 1rem;
-      background-color: black;
-      color: white;
-    }
-    td {
-      padding: 0rem 1rem;
-    }
+
+.player {
+  position: relative;
+  height: 100vh;
+
+  &__background-image {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+    background-image: url('https://cms.nhl.bamgrid.com/images/actionshots/8476434@2x.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vw 50vh;
   }
 
   .btn {
     position: relative;
     left: 41%;
     background-color: orangered;
-    margin-top: 2rem;
+    margin-top: 12rem;
     margin-left: 2rem;
     text-decoration: none;
     color: white;
@@ -410,5 +425,15 @@ $color-primary: orangered;
       font-weight: 600;
       text-decoration: none;
     }
+  }
+
+  &__profilePic {
+    position: absolute;
+    bottom: -5rem;
+    left: 50%;
+    border-radius: 50%;
+    border: 3.5px solid #dedede;
+    height: 12rem;
+    width: 12rem;
   }
 }
