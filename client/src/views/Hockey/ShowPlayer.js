@@ -23,7 +23,7 @@ const ShowPlayer = () => {
     })();
   }, []);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     console.log('You clicked the DELETE button');
     try {
       fetch(`/api/hockeyPlayers/${id}`, {
@@ -40,6 +40,14 @@ const ShowPlayer = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Height from DB in inches and need to convert to string such as 6' 2"
+  const heightConversion = () => {
+    const heightFromDB = singlePlayer.height;
+    const heightInFeet = Number(heightFromDB / 12).toFixed(0);
+    const heightInInches = singlePlayer.height % 12;
+    return `${heightInFeet}' ${heightInInches}"`;
   };
 
   //! Change where it says singlePlayer to accommodate your application and change the fields shown in show page to show whatever fields you want to show from your MongoDB database.
@@ -59,6 +67,13 @@ const ShowPlayer = () => {
           />
         </div>
         <h3 className="player__name-number">{`${singlePlayer.firstName} ${singlePlayer.lastName} | #${singlePlayer.number}`}</h3>
+      </div>
+      <div>
+        <h4 className="player__attributes">{`${
+          singlePlayer.position
+        } | ${heightConversion()} | ${singlePlayer.weight} | ${
+          singlePlayer.born
+        }`}</h4>
       </div>
       <button className="btn">
         <Link className="btn-link" to={'/hockeyPlayers'}>
