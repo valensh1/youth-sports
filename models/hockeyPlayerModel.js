@@ -9,6 +9,10 @@ const playerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imgAction: {
+    type: String,
+    required: true,
+  },
   firstName: {
     type: String,
     required: true,
@@ -113,10 +117,12 @@ mongoose.model('HockeyPlayer').schema.add({ division: String });
 mongoose.model('HockeyPlayer').schema.add({ level: String });
 mongoose.model('HockeyPlayer').schema.add({ location: String });
 mongoose.model('HockeyPlayer').schema.add({ email: String });
+mongoose.model('HockeyPlayer').schema.add({ imgAction: String });
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const hockeyPlayer1 = HockeyPlayer.create({
 //   //   //! Change player1 and Player for names that fit your application. Creation of a player1 and saved to database. Want to comment this out otherwise it will keep saving data to mongoDB each time you save this file and you will have duplicates in your MongoDB
 //   img: 'https://imgur.com/7yK4jS3.jpg',
+//   imgAction: 'https://cms.nhl.bamgrid.com/images/actionshots/8476434.jpg',
 //   firstName: 'Hunter',
 //   lastName: 'Valentine',
 //   number: 36,
@@ -129,6 +135,13 @@ mongoose.model('HockeyPlayer').schema.add({ email: String });
 //   level: 'A',
 //   location: 'Great Park',
 // });
+
+HockeyPlayer.findOneAndUpdate(
+  { lastName: 'Valentine' },
+  {
+    imgAction: 'https://i.imgur.com/wnpNQxl.jpg?2',
+  }
+).then(data => console.log(data));
 
 //? DELETION OF THE 1ST RECORD MONGOOSE FINDS IN MongoDB WITH THE SPECIFIED CRITERIA - Uncomment this out if you want to delete sample data above
 // Player.findOneAndDelete({ firstName: 'Magic' }).then(data => console.log(data)); //! Change Player for a name that fits your application

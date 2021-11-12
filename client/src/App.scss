@@ -1,5 +1,7 @@
 //! ALL RED COMMENTED SECTIONS ARE PLACES WHERE POTENTIAL CHANGES ARE NEEDED BASED UPON YOUR APPLICATION
 //! Make sure to update your CSS styling for wherever you changed players from the className to something that fit your application
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
 //? Default global settings
 *,
 *::before,
@@ -342,6 +344,10 @@ $color-primary: orangered;
     margin-left: 2rem;
     margin-top: 3rem;
 
+    tr {
+      line-height: 5.4rem; // Adjusts spacing between table rows
+    }
+
     .index__player {
       width: 100%;
       border-bottom: 1px solid #dedede;
@@ -403,18 +409,53 @@ $color-primary: orangered;
 
   &__background-image {
     position: relative;
-    height: 50vh;
-    width: 100vw;
-    background-image: url('https://cms.nhl.bamgrid.com/images/actionshots/8476434@2x.jpg');
+    margin: auto;
+    height: 35vh;
+    width: 70vw;
     background-repeat: no-repeat;
-    background-size: 100vw 50vh;
+    background-size: cover;
+    background-position: 5px -20px;
+  }
+
+  &__profilePic {
+    display: flex;
+    justify-content: center;
+  }
+  &__profilePic-img {
+    position: absolute;
+    display: block;
+    text-align: center;
+    bottom: -5rem;
+    border-radius: 50%;
+    border: 3.5px solid #dedede;
+    height: 12rem;
+    width: 12rem;
+
+    // Extra Large Screens
+    @media (min-width: 1281px) {
+      height: 20rem;
+      width: 20rem;
+      bottom: -10rem;
+    }
+  }
+
+  &__name-number {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 70vw;
+    left: 0%;
+    top: 125%;
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .btn {
     position: relative;
     left: 41%;
     background-color: orangered;
-    margin-top: 12rem;
+    margin-top: 52rem;
     margin-left: 2rem;
     text-decoration: none;
     color: white;
@@ -425,15 +466,5 @@ $color-primary: orangered;
       font-weight: 600;
       text-decoration: none;
     }
-  }
-
-  &__profilePic {
-    position: absolute;
-    bottom: -5rem;
-    left: 50%;
-    border-radius: 50%;
-    border: 3.5px solid #dedede;
-    height: 12rem;
-    width: 12rem;
   }
 }

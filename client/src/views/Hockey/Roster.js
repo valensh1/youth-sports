@@ -94,11 +94,6 @@ const Roster = () => {
           NEW PLAYER
         </Link>
       </button>
-      {/* <SortBtn
-        players={players}
-        handleSort={handleSort}
-        originalData={originalData}
-      /> */}
     </div>
   );
 };
