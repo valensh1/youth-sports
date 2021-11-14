@@ -23,7 +23,7 @@ const ShowPlayer = () => {
     })();
   }, []);
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     console.log('You clicked the DELETE button');
     try {
       fetch(`/api/hockeyPlayers/${id}`, {
@@ -50,6 +50,19 @@ const ShowPlayer = () => {
     return `${heightInFeet}' ${heightInInches}"`;
   };
 
+  const ageConversion = () => {
+    const today = new Date();
+    const birthDate = new Date(singlePlayer.born);
+    const daysDifference = Math.round(
+      Math.abs((today - birthDate) / (1000 * 60 * 60 * 24))
+    );
+
+    console.log(today);
+    console.log(birthDate);
+    console.log(daysDifference);
+    return `Age: ${Number((daysDifference / 365).toFixed(0))}`;
+  };
+
   //! Change where it says singlePlayer to accommodate your application and change the fields shown in show page to show whatever fields you want to show from your MongoDB database.
   return (
     <div className="player">
@@ -68,12 +81,12 @@ const ShowPlayer = () => {
         </div>
         <h3 className="player__name-number">{`${singlePlayer.firstName} ${singlePlayer.lastName} | #${singlePlayer.number}`}</h3>
       </div>
-      <div>
-        <h4 className="player__attributes">{`${
+      <div className="player__attributes">
+        <h4 className="player__attributes-heading">{`${
           singlePlayer.position
-        } | ${heightConversion()} | ${singlePlayer.weight} | ${
-          singlePlayer.born
-        }`}</h4>
+        } \u00A0 | \u00A0 ${heightConversion()} \u00A0 | \u00A0 ${
+          singlePlayer.weight
+        } lbs. \u00A0 | \u00A0 ${ageConversion()}`}</h4>
       </div>
       <button className="btn">
         <Link className="btn-link" to={'/hockeyPlayers'}>

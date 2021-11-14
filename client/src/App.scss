@@ -415,6 +415,36 @@ $color-primary: orangered;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 5px -20px;
+
+    // Mobile Phones
+    @media (min-width: 320px) and (max-width: 488px) {
+      width: 100vw;
+      background-size: contain;
+    }
+
+    // Ipads and Tablets
+    @media (min-width: 489px) and (max-width: 768px) {
+      width: 100vw;
+      background-size: contain;
+    }
+
+    // Laptops
+    @media (min-width: 769px) and (max-width: 1024px) {
+      width: 100vw;
+      background-size: contain;
+    }
+
+    // Desktops
+    @media (min-width: 1025px) and (max-width: 1200) {
+    }
+
+    // Large Screens
+    @media (min-width: 1201px) and (max-width: 1280) {
+    }
+
+    // Extra Large Screens
+    @media (min-width: 1281px) {
+    }
   }
 
   &__profilePic {
@@ -430,6 +460,31 @@ $color-primary: orangered;
     border: 3.5px solid #dedede;
     height: 12rem;
     width: 12rem;
+
+    // Mobile Phones
+    @media (min-width: 320px) and (max-width: 488px) {
+      bottom: 15rem;
+      height: 7rem;
+      width: 7rem;
+    }
+
+    // Ipads and Tablets
+    @media (min-width: 489px) and (max-width: 768px) {
+      bottom: 7rem;
+    }
+
+    // Laptops
+    @media (min-width: 769px) and (max-width: 1024px) {
+      bottom: 10rem;
+    }
+
+    // Desktops
+    @media (min-width: 1025px) and (max-width: 1200) {
+    }
+
+    // Large Screens
+    @media (min-width: 1201px) and (max-width: 1280) {
+    }
 
     // Extra Large Screens
     @media (min-width: 1281px) {
@@ -449,6 +504,79 @@ $color-primary: orangered;
     font-size: 2.8rem;
     font-weight: 900;
     font-family: 'Orbitron', sans-serif;
+
+    // Mobile Phones
+    @media (min-width: 320px) and (max-width: 488px) {
+      font-size: 1.6rem;
+      top: 50%;
+      width: 100vw;
+    }
+
+    // Ipads and Tablets
+    @media (min-width: 489px) and (max-width: 768px) {
+      top: 84%;
+      width: 100vw;
+    }
+
+    // Laptops
+    @media (min-width: 769px) and (max-width: 1024px) {
+      top: 82%;
+      width: 100vw;
+    }
+
+    // Desktops
+    @media (min-width: 1025px) and (max-width: 1200) {
+    }
+
+    // Large Screens
+    @media (min-width: 1201px) and (max-width: 1280) {
+    }
+
+    // Extra Large Screens
+    @media (min-width: 1281px) {
+      top: 127%;
+    }
+  }
+
+  &__attributes {
+    display: block;
+    text-align: center;
+    margin-top: 17rem;
+
+    &-heading {
+      font-size: 2rem;
+
+      @media (max-width: 488px) {
+        font-size: 0.8rem;
+      }
+    }
+
+    // Mobile Phones
+    @media (min-width: 320px) and (max-width: 488px) {
+      margin-top: -12rem;
+    }
+
+    // Ipads and Tablets
+    @media (min-width: 489px) and (max-width: 768px) {
+      margin-top: 0rem;
+    }
+
+    // Laptops
+    @media (min-width: 769px) and (max-width: 1024px) {
+      margin-top: -3rem;
+    }
+
+    // Desktops
+    @media (min-width: 1025px) and (max-width: 1200) {
+    }
+
+    // Large Screens
+    @media (min-width: 1201px) and (max-width: 1280) {
+    }
+
+    // Extra Large Screens
+    @media (min-width: 1281px) {
+    }
   }
 
   .btn {
