@@ -404,178 +404,179 @@ $color-primary: orangered;
 //? SHOW PAGE - ShowPlayer.js
 
 .player {
-  position: relative;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-  &__background-image {
-    position: relative;
-    margin: auto;
-    height: 35vh;
-    width: 70vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 5px -20px;
-
-    // Mobile Phones
-    @media (min-width: 320px) and (max-width: 488px) {
+  &__backgroundPic {
+    &-img {
+      display: block;
+      height: 33.5vh;
       width: 100vw;
-      background-size: contain;
-    }
 
-    // Ipads and Tablets
-    @media (min-width: 489px) and (max-width: 768px) {
-      width: 100vw;
-      background-size: contain;
-    }
+      // Mobile Phones
+      @media (min-width: 320px) and (max-width: 488px) {
+        height: 20vh;
+      }
 
-    // Laptops
-    @media (min-width: 769px) and (max-width: 1024px) {
-      width: 100vw;
-      background-size: contain;
-    }
+      // Ipads and Tablets
+      @media (min-width: 489px) and (max-width: 768px) {
+      }
 
-    // Desktops
-    @media (min-width: 1025px) and (max-width: 1200) {
-    }
+      // Laptops
+      @media (min-width: 769px) and (max-width: 1024px) {
+        height: 30vh;
+      }
 
-    // Large Screens
-    @media (min-width: 1201px) and (max-width: 1280) {
-    }
+      // Desktops
+      @media (min-width: 1025px) and (max-width: 1200) {
+      }
 
-    // Extra Large Screens
-    @media (min-width: 1281px) {
+      // Large Screens
+      @media (min-width: 1201px) and (max-width: 1280) {
+      }
+
+      // Extra Large Screens
+      @media (min-width: 1281px) {
+        height: 40vh;
+        width: 70vw;
+        margin: 0 auto;
+      }
     }
   }
 
   &__profilePic {
     display: flex;
     justify-content: center;
-  }
-  &__profilePic-img {
-    position: absolute;
-    display: block;
-    text-align: center;
-    bottom: -5rem;
-    border-radius: 50%;
-    border: 3.5px solid #dedede;
-    height: 12rem;
-    width: 12rem;
+    margin-top: -7rem;
 
-    // Mobile Phones
-    @media (min-width: 320px) and (max-width: 488px) {
-      bottom: 15rem;
-      height: 7rem;
-      width: 7rem;
-    }
+    &-img {
+      height: 12rem;
+      width: 12rem;
+      border-radius: 50%;
 
-    // Ipads and Tablets
-    @media (min-width: 489px) and (max-width: 768px) {
-      bottom: 7rem;
-    }
+      // Mobile Phones
+      @media (min-width: 320px) and (max-width: 488px) {
+        height: 6rem;
+        width: 6rem;
+        margin-top: 3.5rem;
+      }
 
-    // Laptops
-    @media (min-width: 769px) and (max-width: 1024px) {
-      bottom: 10rem;
-    }
+      // Ipads and Tablets
+      @media (min-width: 489px) and (max-width: 768px) {
+      }
 
-    // Desktops
-    @media (min-width: 1025px) and (max-width: 1200) {
-    }
+      // Laptops
+      @media (min-width: 769px) and (max-width: 1024px) {
+      }
 
-    // Large Screens
-    @media (min-width: 1201px) and (max-width: 1280) {
-    }
+      // Desktops
+      @media (min-width: 1025px) and (max-width: 1200) {
+      }
 
-    // Extra Large Screens
-    @media (min-width: 1281px) {
-      height: 20rem;
-      width: 20rem;
-      bottom: -10rem;
-    }
-  }
+      // Large Screens
+      @media (min-width: 1201px) and (max-width: 1280) {
+      }
 
-  &__name-number {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 70vw;
-    left: 0%;
-    top: 132%;
-    font-size: 2.8rem;
-    font-weight: 900;
-    font-family: 'Orbitron', sans-serif;
-
-    // Mobile Phones
-    @media (min-width: 320px) and (max-width: 488px) {
-      font-size: 1.6rem;
-      top: 50%;
-      width: 100vw;
-    }
-
-    // Ipads and Tablets
-    @media (min-width: 489px) and (max-width: 768px) {
-      top: 84%;
-      width: 100vw;
-    }
-
-    // Laptops
-    @media (min-width: 769px) and (max-width: 1024px) {
-      top: 82%;
-      width: 100vw;
-    }
-
-    // Desktops
-    @media (min-width: 1025px) and (max-width: 1200) {
-    }
-
-    // Large Screens
-    @media (min-width: 1201px) and (max-width: 1280) {
-    }
-
-    // Extra Large Screens
-    @media (min-width: 1281px) {
-      top: 127%;
+      // Extra Large Screens
+      @media (min-width: 1281px) {
+      }
     }
   }
 
   &__attributes {
-    display: block;
-    text-align: center;
-    margin-top: 17rem;
+    &-headings {
+      text-align: center;
+    }
 
-    &-heading {
-      font-size: 2rem;
+    &-name-number {
+      font-size: 2.8rem;
+      margin-top: 1rem;
 
-      @media (max-width: 488px) {
-        font-size: 0.8rem;
+      // Mobile Phones
+      @media (min-width: 320px) and (max-width: 488px) {
+        font-size: 1.8rem;
+      }
+
+      // Ipads and Tablets
+      @media (min-width: 489px) and (max-width: 768px) {
+      }
+
+      // Laptops
+      @media (min-width: 769px) and (max-width: 1024px) {
+      }
+
+      // Desktops
+      @media (min-width: 1025px) and (max-width: 1200) {
+      }
+
+      // Large Screens
+      @media (min-width: 1201px) and (max-width: 1280) {
+      }
+
+      // Extra Large Screens
+      @media (min-width: 1281px) {
       }
     }
 
-    // Mobile Phones
-    @media (min-width: 320px) and (max-width: 488px) {
-      margin-top: -12rem;
-    }
+    &-position-height-weight-age {
+      font-size: 2rem;
+      margin-top: 1rem;
 
-    // Ipads and Tablets
-    @media (min-width: 489px) and (max-width: 768px) {
-      margin-top: 0rem;
-    }
+      // Mobile Phones
+      @media (min-width: 320px) and (max-width: 488px) {
+        font-size: 1.2rem;
+      }
 
-    // Laptops
-    @media (min-width: 769px) and (max-width: 1024px) {
-      margin-top: -3rem;
-    }
+      // Ipads and Tablets
+      @media (min-width: 489px) and (max-width: 768px) {
+      }
 
-    // Desktops
-    @media (min-width: 1025px) and (max-width: 1200) {
-    }
+      // Laptops
+      @media (min-width: 769px) and (max-width: 1024px) {
+      }
 
-    // Large Screens
-    @media (min-width: 1201px) and (max-width: 1280) {
-    }
+      // Desktops
+      @media (min-width: 1025px) and (max-width: 1200) {
+      }
 
-    // Extra Large Screens
-    @media (min-width: 1281px) {
+      // Large Screens
+      @media (min-width: 1201px) and (max-width: 1280) {
+      }
+
+      // Extra Large Screens
+      @media (min-width: 1281px) {
+      }
+    }
+  }
+
+  &__stats {
+    &-table {
+      display: relative;
+      width: 90vw;
+      height: fit-content;
+      margin: 5rem 5rem;
+      color: black;
+      // border-top: 40px solid #dedede;
+      // border-bottom: 40px solid #dedede;
+      // border-left: 30px solid #dedede;
+      // border-right: 30px solid #dedede;
+      box-shadow: 20px 20px 50px orangered;
+
+      caption {
+        position: absolute;
+        top: 63rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: black;
+        width: 90vw;
+        text-align: left;
+      }
+
+      th {
+        background-color: black;
+        color: white;
+        height: 3rem;
+      }
     }
   }
 

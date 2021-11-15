@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom'; // Must import useHistory in order to have React redirect to different pages outside the Router Link found on App.js. In this case we are redirecting back to the /players index route upon deleting a player from this show page
+import PlayerStats from '../../components/PlayerStats.js';
 
 const ShowPlayer = () => {
   //! Need to modify ShowPlayer based upon what you rename the ShowPlayer.js file name.
@@ -66,44 +67,56 @@ const ShowPlayer = () => {
   //! Change where it says singlePlayer to accommodate your application and change the fields shown in show page to show whatever fields you want to show from your MongoDB database.
   return (
     <div className="player">
-      <div
-        className="player__background-image"
-        style={{
-          backgroundImage: `url(${singlePlayer.imgAction}`,
-        }}
-      >
-        <div className="player__profilePic">
-          <img
-            className="player__profilePic-img "
-            src={singlePlayer.img}
-            alt="Player profile"
-          />
-        </div>
-        <h3 className="player__name-number">{`${singlePlayer.firstName} ${singlePlayer.lastName} | #${singlePlayer.number}`}</h3>
+      <div className="player__backgroundPic">
+        <img
+          src={singlePlayer.imgAction}
+          alt="Player Action Pic"
+          className="player__backgroundPic-img"
+        />
+      </div>
+      <div className="player__profilePic">
+        <img
+          className="player__profilePic-img "
+          src={singlePlayer.img}
+          alt="Player profile"
+        />
       </div>
       <div className="player__attributes">
-        <h4 className="player__attributes-heading">{`${
+        <h3 className="player__attributes-name-number player__attributes-headings">{`${singlePlayer.firstName} ${singlePlayer.lastName} | #${singlePlayer.number}`}</h3>
+
+        <h4 className="player__attributes-position-height-weight-age player__attributes-headings">{`${
           singlePlayer.position
         } \u00A0 | \u00A0 ${heightConversion()} \u00A0 | \u00A0 ${
           singlePlayer.weight
         } lbs. \u00A0 | \u00A0 ${ageConversion()}`}</h4>
       </div>
-      <button className="btn">
-        <Link className="btn-link" to={'/hockeyPlayers'}>
-          &larr; BACK
-        </Link>
-      </button>
-      <button className=" btn button__delete" onClick={handleClick}>
-        DELETE
-      </button>
-      <button className=" btn ">
-        <Link
-          className="btn-link"
-          to={`/hockeyPlayers/edit/${singlePlayer?._id}`}
-        >
-          EDIT
-        </Link>
-      </button>
+      <ul>
+        <a href="">
+          <li>News</li>
+        </a>
+      </ul>
+      <div className="player__stats">
+        <PlayerStats singlePlayer={singlePlayer} />
+      </div>
+
+      <div>
+        <button className="btn">
+          <Link className="btn-link" to={'/hockeyPlayers'}>
+            &larr; BACK
+          </Link>
+        </button>
+        <button className=" btn button__delete" onClick={handleClick}>
+          DELETE
+        </button>
+        <button className=" btn ">
+          <Link
+            className="btn-link"
+            to={`/hockeyPlayers/edit/${singlePlayer?._id}`}
+          >
+            EDIT
+          </Link>
+        </button>
+      </div>
     </div>
   );
 };
