@@ -6,19 +6,16 @@ function Scores() {
       <h1 className="scores-date">Sunday, December 12</h1>
       <div className="scores-section">
         <div className="scores-g1-visitor scores">
-          <img
-            src="http://scaha.com/scaha/javax.faces.resource/dynamiccontent.properties.xhtml?ln=primefaces&pfdrid=uPYKfcsnjWLnvqXOqYWUEz6FZfqwuSI4ajuF5VGy4VgdPlQNHSmSDg%3D%3D&target=7&pfdrid_c=true"
-            alt=""
-          />
-          <h4>SDIA</h4>
+          <img src="./img/Team-Logos/Hockey/SDIA-Oilers.jpeg" alt="" />
+          <h3>SDIA</h3>
+          <h5>(0-8-0)</h5>
           <h1>0</h1>
         </div>
         <div className="scores-g1-home scores">
-          <img
-            src="http://scaha.com/scaha/javax.faces.resource/dynamiccontent.properties.xhtml?ln=primefaces&pfdrid=uPYKfcsnjWLnvqXOqYWUEz6FZfqwuSI4T%2Bk559qB3Jydv%2F9ufTytlw5SK8TWdxFgRbrdthlyVHY%3D&targethome=3&pfdrid_c=true"
-            alt=""
-          />
-          <h4>Jr Ducks(2)</h4>
+          <img src="./img/Team-Logos/Hockey/JrDucks.png" alt="" />
+          <h3>Jr Ducks(2)</h3>
+          <h5>(7-1-1)</h5>
+
           <h1>7</h1>
         </div>
         <div className="scores-status scores">
