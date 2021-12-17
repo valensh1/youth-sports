@@ -3,6 +3,8 @@
 // The purpose of this file is to keep our routes organized. This playerController.js file deals with all player routes. Another controller file could be used for all routes related to teams, etc.
 const express = require('express');
 const APIRouter = express.Router();
+const multer = require('multer'); //ADDED --> multer will be used to handle the form data.
+const Aws = require('aws-sdk'); // ADDED --> aws-sdk library will used to upload image to s3 bucket.
 const HockeyPlayers = require('../models/hockeyPlayerModel.js'); //! Modify players.js file for your applications file name. Require players model file so we can use it in this file
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL PLAYERS FROM A SPECIFIC TEAM. REQUEST COMES FROM Roster.js FILE ON FRONT-END

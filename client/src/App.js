@@ -11,7 +11,7 @@ import EditPlayer from './views/Hockey/EditPlayer.js'; //! Update file names for
 import News from './views/News.js'; //! Update file names for whatever names you used that relate to your application
 import Video from './views/Video.js'; //! Update file names for whatever names you used that relate to your application
 import Stats from './views/Stats.js'; //! Update file names for whatever names you used that relate to your application
-import Fantasy from './views/Fantasy.js'; //! Update file names for whatever names you used that relate to your application
+import Scores from './views/Scores'; //! Update file names for whatever names you used that relate to your application
 import Shop from './views/Shop.js'; //! Update file names for whatever names you used that relate to your application
 
 //! Update where it says players for whatever fits your application
@@ -58,7 +58,7 @@ function App() {
 
           {/* //? FANTASY PAGE */}
           <Route exact path="/fantasy">
-            <Fantasy />
+            <Scores />
           </Route>
 
           {/* //? SHOP PAGE */}

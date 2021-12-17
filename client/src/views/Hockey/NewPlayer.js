@@ -1,10 +1,15 @@
 //! ALL RED COMMENTED SECTIONS ARE PLACES WHERE POTENTIAL CHANGES ARE NEEDED BASED UPON YOUR APPLICATION
 
 //? POST REQUEST - FORM TO INPUT NEW PLAYER
+
+//? DEPENDENCIES NEEDED TO BE IMPORTED
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom'; // Must import useHistory in order to have React redirect to different pages outside the Router Link found on App.js
 
-const NewPlayer = event => {
+//? FILES NEEDED TO BE IMPORTED
+import PicUpload from '../../components/PicUpload.js';
+
+const NewPlayer = (event) => {
   //! Need to modify NewPlayer based upon what you rename the NewPlayer.js file name.
 
   const teams = [
@@ -87,12 +92,11 @@ const NewPlayer = event => {
 
   const history = useHistory(); // MUST ACTIVATE USE HISTORY HERE TO REDIRECT TO DIFFERENT PAGE AFTER FORM SUBMISSION. WON'T WORK INSIDE THE handleSubmit FUNCTION SO MUST BE HERE
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     try {
       //? POST REQUEST - no need for async with post request
       event.preventDefault();
       fetch('/api/hockeyPlayers', {
-        //! Change players to accommodate your application
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -142,7 +146,7 @@ const NewPlayer = event => {
               type="text"
               className="form__first-input"
               name="firstName"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, firstName: event.target.value })
               }
             />
@@ -156,7 +160,7 @@ const NewPlayer = event => {
               type="text"
               className="form__last-input"
               name="lastName"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, lastName: event.target.value })
               }
             />
@@ -170,7 +174,7 @@ const NewPlayer = event => {
             type="number"
             className="form__number-input"
             name="number"
-            onChange={event =>
+            onChange={(event) =>
               setFormData({ ...formData, number: event.target.value })
             }
           />
@@ -185,7 +189,7 @@ const NewPlayer = event => {
                 type="checkbox"
                 value="Forward"
                 name="position"
-                onChange={event =>
+                onChange={(event) =>
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
@@ -200,7 +204,7 @@ const NewPlayer = event => {
                 type="checkbox"
                 value="Defenseman"
                 name="position"
-                onChange={event =>
+                onChange={(event) =>
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
@@ -215,7 +219,7 @@ const NewPlayer = event => {
                 type="checkbox"
                 value="Goalie"
                 name="position"
-                onChange={event =>
+                onChange={(event) =>
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
@@ -230,7 +234,7 @@ const NewPlayer = event => {
                 type="checkbox"
                 value="Coach"
                 name="position"
-                onChange={event =>
+                onChange={(event) =>
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
@@ -245,7 +249,7 @@ const NewPlayer = event => {
                 type="checkbox"
                 value="Assistant Coach"
                 name="position"
-                onChange={event =>
+                onChange={(event) =>
                   setFormData({ ...formData, position: event.target.value })
                 }
               />
@@ -265,7 +269,7 @@ const NewPlayer = event => {
               type="number"
               className="form__height-input"
               name="height"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, height: event.target.value })
               }
             />
@@ -280,7 +284,7 @@ const NewPlayer = event => {
               className="form__weight-input"
               id="form-weight"
               name="weight"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, weight: event.target.value })
               }
             />
@@ -295,7 +299,7 @@ const NewPlayer = event => {
               placeholder="xx/xx/xxxx"
               className="form__born-input"
               name="born"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, born: event.target.value })
               }
             />
@@ -308,12 +312,12 @@ const NewPlayer = event => {
             <select
               name="team"
               className="form__teamDivision-select"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, team: event.target.value })
               }
             >
               <option value="select team"></option>
-              {teams.map(team => {
+              {teams.map((team) => {
                 return <option key={team}>{team}</option>;
               })}
             </select>
@@ -324,12 +328,12 @@ const NewPlayer = event => {
             <select
               className="form__teamDivision-select"
               name="division"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, division: event.target.value })
               }
             >
               <option value="select division"></option>
-              {division.map(div => {
+              {division.map((div) => {
                 return <option key={div}>{div}</option>;
               })}
             </select>
@@ -342,12 +346,12 @@ const NewPlayer = event => {
             <select
               className="form__location-select"
               name="location"
-              onChange={event =>
+              onChange={(event) =>
                 setFormData({ ...formData, location: event.target.value })
               }
             >
               <option value="select location"></option>
-              {cities.map(city => {
+              {cities.map((city) => {
                 return <option key={city}>{city}</option>;
               })}
             </select>
@@ -357,7 +361,7 @@ const NewPlayer = event => {
         <div className="form__level form__input mt-5">
           <h3>Level</h3>
           <div className="form__level-checkboxes">
-            {level.map(lev => {
+            {level.map((lev) => {
               return (
                 <div className="form__level-checkbox">
                   <input
@@ -365,7 +369,7 @@ const NewPlayer = event => {
                     className="form__level-checkbox-input"
                     value={lev}
                     name="level"
-                    onChange={event =>
+                    onChange={(event) =>
                       setFormData({ ...formData, level: event.target.value })
                     }
                   />
@@ -381,10 +385,11 @@ const NewPlayer = event => {
           <input
             type="text"
             name="img"
-            onChange={event =>
+            onChange={(event) =>
               setFormData({ ...formData, img: event.target.value })
             }
           />
+          <PicUpload />
         </div>
 
         <div className="form__email form__input">
@@ -392,7 +397,7 @@ const NewPlayer = event => {
           <input
             type="text"
             name="email"
-            onChange={event =>
+            onChange={(event) =>
               setFormData({ ...formData, email: event.target.value })
             }
           />
