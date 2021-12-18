@@ -50,7 +50,7 @@ const hockeyGameScores1 = HockeyGameScore.create({
   season: '2021-2022',
   games: [
     {
-      date: 10 / 10 / 2021,
+      date: new Date('2021/10/10'),
       scores: [
         {
           visitorTeam: 'Gold Rush',
@@ -91,7 +91,7 @@ const hockeyGameScores1 = HockeyGameScore.create({
       ],
     },
     {
-      date: 10 / 17 / 2021,
+      date: new Date('2021/10/17'),
       scores: [
         {
           visitorTeam: 'Saints',
@@ -132,7 +132,7 @@ const hockeyGameScores1 = HockeyGameScore.create({
       ],
     },
     {
-      date: 10 / 24 / 2021,
+      date: new Date('2021/10/24'),
       scores: [
         {
           visitorTeam: 'Jr. Kings (2)',

@@ -57,7 +57,7 @@ function App() {
           </Route>
 
           {/* //? FANTASY PAGE */}
-          <Route exact path="/fantasy">
+          <Route exact path="/scores">
             <Scores />
           </Route>
 

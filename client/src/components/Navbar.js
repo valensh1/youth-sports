@@ -37,7 +37,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/fantasy" className="navbar--ul-link">
+            <Link to="/scores" className="navbar--ul-link">
               Scores
             </Link>
           </li>
