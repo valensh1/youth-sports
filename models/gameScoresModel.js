@@ -11,7 +11,7 @@ const gameScoresSchema = new mongoose.Schema({
   games: [
     {
       date: {
-        type: Date,
+        type: String,
         required: true,
       },
       scores: [
@@ -49,7 +49,7 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 //   season: '2021-2022',
 //   games: [
 //     {
-//       date: new Date('2021/10/10'),
+//       date: '2021-10-10',
 //       scores: [
 //         {
 //           visitorTeam: 'Gold Rush',
@@ -90,7 +90,7 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 //       ],
 //     },
 //     {
-//       date: new Date('2021/10/17'),
+//       date: '2021-10-17',
 //       scores: [
 //         {
 //           visitorTeam: 'Saints',
@@ -131,7 +131,7 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 //       ],
 //     },
 //     {
-//       date: new Date('2021/10/24'),
+//       date: '2021-10-24',
 //       scores: [
 //         {
 //           visitorTeam: 'Jr. Kings (2)',

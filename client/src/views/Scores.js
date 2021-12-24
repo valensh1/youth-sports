@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import SeasonFilter from '../components/SeasonFilter.js';
 import DatePicker from '../components/DatePicker.js';
 
 function Scores() {
   const [allData, setAllData] = useState([]);
   const [scores, setScores] = useState([]);
+  const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -20,9 +22,26 @@ function Scores() {
     })();
   }, []);
 
+  const showScoresForDateChosen = (date) => {
+    const scoresForDate = scores.find((games) => {
+      return games.date === date;
+    });
+    setScoresForDateChosen(scoresForDate);
+  };
+
   return (
     <div className="scores-wrapper">
-      <DatePicker />
+      <SeasonFilter seasons={allData} />
+      <DatePicker showScoresForDateChosen={showScoresForDateChosen} />
+
+      {scoresForDateChosen?.scores?.map((score) => {
+        return (
+          <div>
+            <h5>{score?.homeTeam}</h5>
+            <h1>{score?.homeScore}</h1>
+          </div>
+        );
+      })}
       <h1 className="scores-date">Sunday, December 12</h1>
       <div className="scores-section">
         <div className="scores-g1-visitor scores">
