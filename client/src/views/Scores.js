@@ -6,6 +6,7 @@ function Scores() {
   const [allData, setAllData] = useState([]);
   const [scores, setScores] = useState([]);
   const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
+  const [dateChosen, setDateChosen] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -27,13 +28,19 @@ function Scores() {
       return games.date === date;
     });
     setScoresForDateChosen(scoresForDate);
+    const dateToModify = new Date(date);
+    const dayOfWeek = dateToModify.getDay();
+
+    const month = dateToModify.getMonth();
+    const dateOfMonth = dateToModify.getDate();
+    const year = dateToModify.getFullYear();
+    setDateChosen(`${dayOfWeek}, ${month + 1} ${dateOfMonth + 1} ${year}`);
   };
 
   return (
     <div className="scores-wrapper">
       <SeasonFilter seasons={allData} />
       <DatePicker showScoresForDateChosen={showScoresForDateChosen} />
-
       {scoresForDateChosen?.scores?.map((score) => {
         return (
           <div>
@@ -42,6 +49,7 @@ function Scores() {
           </div>
         );
       })}
+      <h1 className="scores-date">{dateChosen}</h1>
       <h1 className="scores-date">Sunday, December 12</h1>
       <div className="scores-section">
         <div className="scores-g1-visitor scores">

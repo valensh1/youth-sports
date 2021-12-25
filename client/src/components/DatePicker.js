@@ -16,7 +16,7 @@ function DatePicker({ showScoresForDateChosen }) {
 
   return (
     <div>
-      <input type="date" placeholder="yyyy/mm/dd" onChange={handleDate} />
+      <input type="date" placeholder="2021/12/31" onChange={handleDate} />
     </div>
   );
 }
