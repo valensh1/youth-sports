@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SeasonFilter from '../components/SeasonFilter.js';
 import DatePicker from '../components/DatePicker.js';
+import Delete from '../components/Delete.js';
 
 function Scores() {
   const [allData, setAllData] = useState([]);
@@ -41,6 +42,7 @@ function Scores() {
     <div className="scores-wrapper">
       <SeasonFilter seasons={allData} />
       <DatePicker showScoresForDateChosen={showScoresForDateChosen} />
+      <Delete />
       {scoresForDateChosen?.scores?.map((score) => {
         return (
           <div>
