@@ -19,18 +19,6 @@ APIRouter.get('/', async (req, res) => {
   }
 });
 
-//? TO DELETE!!!!!!!!!!
-APIRouter.get('/test/:datepicker', async (req, res) => {
-  try {
-    const { datepicker } = req.params;
-    console.log(datepicker);
-    // const scores = { games: 'These are the scores yo' }; //! Modify Players for your Application's collection name from your MongoDB database.
-    res.status(200).json({ datepicker });
-  } catch (error) {
-    res.status(400).json(error);
-  }
-});
-
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL GAME SCORES FOR ALL TEAMS. REQUEST COMES FROM gameScores.js FILE ON FRONT-END
 // '/' is the same as api/players since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/scores', async (req, res) => {
