@@ -224,16 +224,16 @@ const Teams = mongoose.model('Teams', teamSchema); //! Update Player and playerS
 //   }
 // ).then((data) => console.log(data));
 
-Teams.updateMany(
-  {
-    city: 'Winner City',
-  },
-  {
-    $set: {
-      city: 'Anaheim',
-    },
-  }
-).then((data) => console.log(data));
+// Teams.updateMany(
+//   {
+//     city: 'Winner City',
+//   },
+//   {
+//     $set: {
+//       city: 'Anaheim',
+//     },
+//   }
+// ).then((data) => console.log(data));
 
 //? DELETION OF THE 1ST RECORD MONGOOSE FINDS IN MongoDB WITH THE SPECIFIED CRITERIA - Uncomment this out if you want to delete sample data above
 // Player.findOneAndDelete({ firstName: 'Magic' }).then(data => console.log(data)); //! Change Player for a name that fits your application. Must do callback or it won't work.
