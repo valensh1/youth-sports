@@ -45,6 +45,17 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 // mongoose.model('HockeyPlayer').schema.add({ division: String });
 
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
+HockeyGameScore.updateMany(
+  {
+    'games.scores.0.visitorTeam': 'Gold Rush',
+  },
+  {
+    $set: {
+      'games.scores.0.visitorTeam': 'Goldrush Hockey Club',
+    },
+  }
+).then((data) => console.log(data));
+
 // const hockeyGameScores1 = HockeyGameScore.create({
 //   season: '2021-2022',
 //   games: [
@@ -193,4 +204,5 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 // HockeyGameScore.findOneAndDelete({ season: '2021-2022' }).then((data) =>
 //   console.log(data)
 // );
+
 module.exports = HockeyGameScore; //! Change Player for name that fits your Application. This should be consistent with name given in line 31 of code above

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import SeasonFilter from '../components/SeasonFilter.js';
 import DatePicker from '../components/DatePicker.js';
+import TeamLogos from '../components/TeamLogos.js';
 import { DAYS_OF_WEEK } from '../Global_Variables/globalVariables.js';
 import { MONTHS } from '../Global_Variables/globalVariables.js';
 
@@ -51,7 +52,8 @@ function Scores() {
         return (
           <div className="scores-section">
             <div className="scores-g1-visitor scores">
-              <img src="./img/Team-Logos/Hockey/SDIA-Oilers.jpeg" alt="" />
+              <TeamLogos score={score} team={'visitor'} />
+              {/* <img src="./img/Team-Logos/Hockey/SDIA-Oilers.jpeg" alt="" /> */}
               <h3>{score?.visitorTeam}</h3>
               <h5>(0-8-0)</h5>
               <h1>{score?.visitorScore}</h1>
