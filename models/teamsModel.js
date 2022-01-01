@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 //? SETTING UP MongoDB SCHEMA
 //! Update playerSchema below for a name that fits your application. Also update any fields below for the type of schema such as changing team points with a type of number instead of string, etc. Also, you can add as many schema fields as needed.
 const teamSchema = new mongoose.Schema({
-  team: {
+  teamNameLong: {
     type: String,
     enum: [
-      'Jr. Ducks',
+      'Jr. Ducks (1)',
+      'Jr. Ducks (2)',
+      'Jr. Ducks (3)',
       'Jr. Condors',
       'Bay Harbor Red Wings',
       'California Golden Bears',
@@ -18,7 +20,8 @@ const teamSchema = new mongoose.Schema({
       'Goldrush Hockey Club',
       'Jr. Ice Dogs',
       'Jr. Reign',
-      'Jr. Kings',
+      'Jr. Kings (1)',
+      'Jr. Kings (2)',
       'OC Hockey Club',
       'Moose',
       'Maple Leafs',
@@ -33,10 +36,44 @@ const teamSchema = new mongoose.Schema({
     ],
     required: true,
   },
+  teamNameShort: {
+    type: String,
+    enum: [
+      'Ducks',
+      'Condors',
+      'Red Wings',
+      'Bears',
+      'Heat',
+      'Wave',
+      'Blaze',
+      'Empire',
+      'Goldrush',
+      'Ice Dogs',
+      'Reign',
+      'Kings',
+      'OC Hockey',
+      'Moose',
+      'Maple Leafs',
+      'Pats',
+      'Gulls',
+      'Saints',
+      'Ice Hawks',
+      'Flyers',
+      'Oilers',
+      'Mariners',
+      'Lady Ducks',
+    ],
+    required: true,
+  },
+  headCoach: {
+    type: String,
+    required: false,
+  },
   city: {
     type: String,
     enum: [
       'Anaheim',
+      'Irvine',
       'Great Park',
       'Lakewood',
       'Lake Forest',
@@ -57,6 +94,7 @@ const teamSchema = new mongoose.Schema({
       'Valencia',
       'Ventura',
       'Simi Valley',
+      'Rose City',
       'Artesia',
     ],
     required: true,
@@ -70,153 +108,236 @@ const teamSchema = new mongoose.Schema({
 //? TELLING MONGOOSE YOU WANT TO CREATE A MODEL USING OUR SCHEMA
 const Teams = mongoose.model('Teams', teamSchema); //! Update Player and playerSchema for names that fit your application. Player is our model name and it MUST BE SINGULAR WITH AN UPPERCASE FIRST LETTER! mongoDB will then lowercase this model name and make it plural so it will change the name to ---> players
 
-//? If miss adding fields to your schema for your original mongoose model you must add like this below
-// mongoose.model('HockeyPlayer').schema.add({ division: String });
+// ? If miss adding fields to your schema for your original mongoose model you must add like this below
+mongoose.model('Teams').schema.add({ teamNameAlias: String });
+mongoose.model('Teams').schema.add({ headCoach: String });
 
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const teams1 = Teams.create(
-// {
-//   team: 'Jr. Ducks',
-//   city: 'Anaheim',
-//   logo: 'JrDucks.jpeg',
-// },
-// {
-//   team: 'Jr. Condors',
-//   city: 'Bakersfield',
-//   logo: 'JrCondors.png',
-// },
-// {
-//   team: 'Bay Harbor Red Wings',
-//   city: 'Torrance',
-//   logo: 'RedWings.png',
-// },
-// {
-//   team: 'California Golden Bears',
-//   city: 'Burbank',
-//   logo: 'GoldenBears.png',
-// },
-// {
-//   team: 'California Heat',
-//   city: 'Panorama City',
-//   logo: 'Heat.png',
-// },
-// {
-//   team: 'California Wave',
-//   city: 'Artesia',
-//   logo: 'Wave.jpeg',
-// },
-// {
-//   team: 'Desert Blaze',
-//   city: 'Palm Springs',
-//   logo: 'Blaze.jpeg',
-// },
-// {
-//   team: 'Empire Hockey Club',
-//   city: 'Ontario',
-//   logo: 'Empire.png',
-// },
-// {
-//   team: 'Goldrush Hockey Club',
-//   city: 'Lake Forest',
-//   logo: 'GoldRush.png',
-// },
-// {
-//   team: 'Jr. Ice Dogs',
-//   city: 'Anaheim',
-//   logo: 'IceDogs.gif',
-// },
-// {
-//   team: 'Jr. Reign',
-//   city: 'Riverside',
-//   logo: 'JrReign.png',
-// },
-// {
-//   team: 'Jr. Kings',
-//   city: 'Los Angeles',
-//   logo: 'JrKings.png',
-// },
-// {
-//   team: 'OC Hockey Club',
-//   city: 'Yorba Linda',
-//   logo: 'OCHockeyClub.png',
-// },
-// {
-//   team: 'Moose',
-//   city: 'Ontario',
-//   logo: 'Moose.webp',
-// },
-// {
-//   team: 'Maple Leafs',
-//   city: 'Pasadena',
-//   logo: 'MapleLeafs.png',
-// },
-// {
-//   team: 'Rose City Pats',
-//   city: 'Rose City',
-//   logo: 'Pats.png',
-// },
-// {
-//   team: 'Jr. Gulls',
-//   city: 'San Diego',
-//   logo: 'JrGulls.png',
-// },
-// {
-//   team: 'Saints',
-//   city: 'San Diego',
-//   logo: 'Saints.webp',
-// },
-// {
-//   team: 'Ice Hawks',
-//   city: 'Santa Barbara',
-//   logo: 'IceHawks.jpeg',
-// },
-// {
-//   team: 'Jr. Flyers',
-//   city: 'Ventura',
-//   logo: 'Flyers.png',
-// },
-// {
-//   team: 'SDIA Hockey Club',
-//   city: 'San Diego',
-//   logo: 'SDIA-Oilers.png',
-// },
-// {
-//   team: 'Mariners',
-//   city: 'Ventura',
-//   logo: 'Mariners.png',
-// },
-// {
-//   team: 'Lady Ducks',
-//   city: 'Westminster',
-//   logo: 'LadyDucks.png',
-// }
-// );
-
-// const teams2 = Teams.create(
 //   {
-//     team: 'Goldrush Hockey Club',
-//     city: 'Lake Forest',
-//     logo: 'GoldRush.png',
+//     teamNameLong: 'Jr. Ducks (1)',
+//     teamNameShort: 'Ducks',
+//     headCoach: 'Jean Labbe',
+//     city: 'Irvine',
+//     logo: 'Ducks.png',
+//   },
+//   {
+//     teamNameLong: 'Jr. Ducks (2)',
+//     teamNameShort: 'Ducks',
+//     headCoach: 'John Siemer',
+//     city: 'Irvine',
+//     logo: 'Ducks.png',
+//   },
+//   {
+//     teamNameLong: 'Jr. Ducks (3)',
+//     teamNameShort: 'Ducks',
+//     headCoach: 'Tyler Wilkerson',
+//     city: 'Westminster',
+//     logo: 'Ducks.png',
 //   },
 
 //   {
-//     team: 'Rose City Pats',
+//     teamNameLong: 'Jr. Condors',
+//     teamNameShort: 'Condors',
+//     headCoach: '',
+//     city: 'Bakersfield',
+//     logo: 'Condors.png',
+//   },
+
+//   {
+//     teamNameLong: 'Bay Harbor Red Wings',
+//     teamNameShort: 'Red Wings',
+//     headCoach: '',
+//     city: 'Torrance',
+//     logo: 'RedWings.png',
+//   },
+
+//   {
+//     teamNameLong: 'California Golden Bears',
+//     teamNameShort: 'Bears',
+//     headCoach: '',
+//     city: 'Burbank',
+//     logo: 'Bears.png',
+//   },
+
+//   {
+//     teamNameLong: 'California Heat',
+//     teamNameShort: 'Heat',
+//     headCoach: '',
+//     city: 'Panorama City',
+//     logo: 'Heat.png',
+//   },
+
+//   {
+//     teamNameLong: 'California Wave',
+//     teamNameShort: 'Wave',
+//     headCoach: '',
+//     city: 'Artesia',
+//     logo: 'Wave.jpeg',
+//   },
+
+//   {
+//     teamNameLong: 'Desert Blaze',
+//     teamNameShort: 'Blaze',
+//     headCoach: '',
+//     city: 'Palm Springs',
+//     logo: 'Blaze.jpeg',
+//   },
+
+//   {
+//     teamNameLong: 'Empire Hockey Club',
+//     teamNameShort: 'Empire',
+//     headCoach: '',
+//     city: 'Ontario',
+//     logo: 'Empire.png',
+//   },
+
+//   {
+//     teamNameLong: 'Goldrush Hockey Club',
+//     teamNameShort: 'Goldrush',
+//     headCoach: '',
+//     city: 'Lake Forest',
+//     logo: 'Goldrush.png',
+//   },
+
+//   {
+//     teamNameLong: 'Jr. Ice Dogs',
+//     teamNameShort: 'Ice Dogs',
+//     headCoach: 'Chris Ochoa',
+//     city: 'Anaheim',
+//     logo: 'IceDogs.gif',
+//   },
+
+//   {
+//     teamNameLong: 'Jr. Reign',
+//     teamNameShort: 'Reign',
+//     headCoach: '',
+//     city: 'Riverside',
+//     logo: 'Reign.png',
+//   },
+
+//   {
+//     teamNameLong: 'Jr. Kings (1)',
+//     teamNameShort: 'Kings',
+//     headCoach: '',
+//     city: 'Los Angeles',
+//     logo: 'Kings.png',
+//   },
+
+//   {
+//     teamNameLong: 'OC Hockey Club',
+//     teamNameShort: 'OC Hockey',
+//     headCoach: '',
+//     city: 'Yorba Linda',
+//     logo: 'OCHockey.png',
+//   },
+
+//   {
+//     teamNameLong: 'Moose',
+//     teamNameShort: 'Moose',
+//     headCoach: '',
+//     city: 'Ontario',
+//     logo: 'Moose.webp',
+//   },
+
+//   {
+//     teamNameLong: 'Maple Leafs',
+//     teamNameShort: 'Maple Leafs',
+//     headCoach: '',
 //     city: 'Pasadena',
+//     logo: 'MapleLeafs.png',
+//   },
+
+//   {
+//     teamNameLong: 'Rose City Pats',
+//     teamNameShort: 'Pats',
+//     headCoach: '',
+//     city: 'Rose City',
 //     logo: 'Pats.png',
 //   },
+
 //   {
-//     team: 'Jr. Flyers',
+//     teamNameLong: 'Jr. Gulls',
+//     teamNameShort: 'Gulls',
+//     headCoach: '',
+//     city: 'San Diego',
+//     logo: 'Gulls.png',
+//   },
+
+//   {
+//     teamNameLong: 'Saints',
+//     teamNameShort: 'Saints',
+//     headCoach: '',
+//     city: 'San Diego',
+//     logo: 'Saints.webp',
+//   },
+
+//   {
+//     teamNameLong: 'Ice Hawks',
+//     teamNameShort: 'Ice Hawks',
+//     headCoach: '',
+//     city: 'Santa Barbara',
+//     logo: 'IceHawks.jpeg',
+//   },
+
+//   {
+//     teamNameLong: 'Jr. Flyers',
+//     teamNameShort: 'Flyers',
+//     headCoach: '',
 //     city: 'Ventura',
 //     logo: 'Flyers.png',
 //   },
+
 //   {
-//     team: 'Mariners',
+//     teamNameLong: 'SDIA Hockey Club',
+//     teamNameShort: 'Oilers',
+//     headCoach: '',
+//     city: 'San Diego',
+//     logo: 'Oilers.jpeg',
+//   },
+
+//   {
+//     teamNameLong: 'Mariners',
+//     teamNameShort: 'Mariners',
+//     headCoach: '',
 //     city: 'Ventura',
 //     logo: 'Mariners.png',
-//   }
+//   },
+
+//   {
+//     teamNameLong: 'Lady Ducks',
+//     teamNameShort: 'Lady Ducks',
+//     headCoach: '',
+//     city: 'Westminster',
+//     logo: 'LadyDucks.png',
+//   },
+
+// {
+// teamNameLong: 'Jr. Kings (2)',
+// teamNameShort: 'Kings',
+// headCoach: '',
+// city: 'Los Angeles',
+// logo: 'Kings.png',
+// }
+
+// );
+
+// Teams.updateMany({ teamNameShort: 'Ducks' }, { logo: 'Ducks.png' }).then(
+//   (data) => console.log(data)
 // );
 
 //? UPDATE RECORD
+// Teams.updateMany(
+//   {
+//     team: 'Jr. Flyers',
+// },
+//   {
+//     $set: {
+//       teamNameAlias: 'Flyers',
+//     },
+//   }
+// ).then((data) => console.log(data));
+
 // HockeyPlayer.findOneAndUpdate(
 //   { lastName: 'Gibson' },
 //   {

@@ -10,6 +10,7 @@ function Scores() {
   const [scores, setScores] = useState([]);
   const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
   const [dateChosen, setDateChosen] = useState('');
+  const [teamsData, setTeamsData] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -20,6 +21,9 @@ function Scores() {
         setAllData(data);
         console.log(data[0].games);
         setScores(data[0].games);
+        const response2 = await fetch('/api/hockeyPlayers/teams');
+        const teamsDataPull = await response2.json();
+        setTeamsData(teamsDataPull);
       } catch (error) {
         console.error(error);
       }
@@ -50,16 +54,16 @@ function Scores() {
 
       {scoresForDateChosen?.scores?.map((score) => {
         return (
-          <div className="scores-section">
+          <div key={score._id} className="scores-section">
             <div className="scores-g1-visitor scores">
-              <TeamLogos score={score} team={'visitor'} />
-              {/* <img src="./img/Team-Logos/Hockey/SDIA-Oilers.jpeg" alt="" /> */}
+              <TeamLogos team={score?.visitorTeam} logo={teamsData} />
               <h3>{score?.visitorTeam}</h3>
               <h5>(0-8-0)</h5>
               <h1>{score?.visitorScore}</h1>
             </div>
+
             <div className="scores-g1-home scores">
-              <img src="./img/Team-Logos/Hockey/JrDucks.png" alt="" />
+              <TeamLogos team={score?.homeTeam} logo={teamsData} />
               <h3>{score?.homeTeam}</h3>
               <h5>(7-1-1)</h5>
               <h1>{score?.homeScore}</h1>

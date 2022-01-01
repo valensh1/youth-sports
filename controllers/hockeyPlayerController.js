@@ -7,9 +7,10 @@ const multer = require('multer'); //ADDED --> multer will be used to handle the 
 const Aws = require('aws-sdk'); // ADDED --> aws-sdk library will used to upload image to s3 bucket.
 const HockeyPlayers = require('../models/hockeyPlayerModel.js'); //! Modify players.js file for your applications file name. Require players model file so we can use it in this file
 const HockeyGameScores = require('../models/gameScoresModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
+const Teams = require('../models/teamsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL PLAYERS FROM A SPECIFIC TEAM. REQUEST COMES FROM Roster.js FILE ON FRONT-END
-// '/' is the same as api/players since we specify api/players in the sever.js file and so a / by itself represents that
+// '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/', async (req, res) => {
   try {
     const roster = await HockeyPlayers.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
@@ -20,11 +21,22 @@ APIRouter.get('/', async (req, res) => {
 });
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL GAME SCORES FOR ALL TEAMS. REQUEST COMES FROM gameScores.js FILE ON FRONT-END
-// '/' is the same as api/players since we specify api/players in the sever.js file and so a / by itself represents that
+// '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/scores', async (req, res) => {
   try {
     const scores = await HockeyGameScores.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
     res.status(200).json(scores);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
+//? INDEX ROUTE - (READ) ROUTE SHOWING ALL TEAMS INFORMATION SUCH AS TEAM NAME, HEAD COACH, CITY, LOGO, ETC. REQUEST COMES FROM TeamLogos.js FILE ON FRONT-END
+// '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
+APIRouter.get('/teams', async (req, res) => {
+  try {
+    const teamsInfo = await Teams.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
+    res.status(200).json(teamsInfo);
   } catch (error) {
     res.status(400).json(error);
   }

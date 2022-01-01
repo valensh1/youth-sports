@@ -7,7 +7,11 @@ function SeasonFilter({ seasons }) {
       <select>
         <option>Select Season</option>
         {seasons?.map((el) => {
-          return <option value={el?.season}>{el?.season}</option>;
+          return (
+            <option key={el?.season?._id} value={el?.season}>
+              {el?.season}
+            </option>
+          );
         })}
       </select>
     </>
