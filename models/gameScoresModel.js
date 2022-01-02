@@ -46,140 +46,563 @@ const HockeyGameScore = mongoose.model('HockeyGameScore', gameScoresSchema); //!
 
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 
-const hockeyGameScores1 = HockeyGameScore.create({
-  season: '2021-2022',
-  games: [
-    {
-      date: '2021-10-10',
-      scores: [
-        {
-          visitorTeam: 'Goldrush',
-          visitorScore: 4,
-          homeTeam: 'Jr. Ducks (2)',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Empire',
-          visitorScore: 5,
-          homeTeam: 'Ice Dogs',
-          homeScore: 6,
-        },
-        {
-          visitorTeam: 'Junior Kings (2)',
-          visitorScore: 3,
-          homeTeam: 'Bears',
-          homeScore: 0,
-        },
-        {
-          visitorTeam: 'Oilers',
-          visitorScore: 3,
-          homeTeam: 'Jr. Ducks (3)',
-          homeScore: 4,
-        },
-        {
-          visitorTeam: 'Heat',
-          visitorScore: 8,
-          homeTeam: 'Saints',
-          homeScore: 4,
-        },
-        {
-          visitorTeam: 'Jr. Ducks (1)',
-          visitorScore: 5,
-          homeTeam: 'Jr. Kings (1)',
-          homeScore: 5,
-        },
-      ],
-    },
-    {
-      date: '2021-10-17',
-      scores: [
-        {
-          visitorTeam: 'Saints',
-          visitorScore: 3,
-          homeTeam: 'Oilers',
-          homeScore: 2,
-        },
-        {
-          visitorTeam: 'Jr. Kings (1)',
-          visitorScore: 1,
-          homeTeam: 'Jr. Ducks (2)',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Empire',
-          visitorScore: 5,
-          homeTeam: 'Bears',
-          homeScore: 6,
-        },
-        {
-          visitorTeam: 'Ice Dogs',
-          visitorScore: 5,
-          homeTeam: 'Lady Ducks',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Jr. Ducks (3)',
-          visitorScore: 1,
-          homeTeam: 'Heat',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Jr. Ducks (1)',
-          visitorScore: 3,
-          homeTeam: 'Jr. Kings (2)',
-          homeScore: 5,
-        },
-      ],
-    },
-    {
-      date: '2021-10-24',
-      scores: [
-        {
-          visitorTeam: 'Jr. Kings (2)',
-          visitorScore: 8,
-          homeTeam: 'Oilers',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Heat',
-          visitorScore: 3,
-          homeTeam: 'Jr. Ducks (1)',
-          homeScore: 3,
-        },
-        {
-          visitorTeam: 'Saints',
-          visitorScore: 2,
-          homeTeam: 'Bears',
-          homeScore: 5,
-        },
-        {
-          visitorTeam: 'Jr. Ducks (2)',
-          visitorScore: 8,
-          homeTeam: 'Ice Dogs',
-          homeScore: 1,
-        },
-        {
-          visitorTeam: 'Empire',
-          visitorScore: 3,
-          homeTeam: 'Jr. Kings (1)',
-          homeScore: 8,
-        },
-        {
-          visitorTeam: 'Jr. Ducks (3)',
-          visitorScore: 0,
-          homeTeam: 'Goldrush',
-          homeScore: 6,
-        },
-        {
-          visitorTeam: 'Lady Ducks',
-          visitorScore: 5,
-          homeTeam: 'Jr. Kings (2)',
-          homeScore: 3,
-        },
-      ],
-    },
-  ],
-});
+// const hockeyGameScores1 = HockeyGameScore.create({
+//   season: '2021-2022',
+//   games: [
+//     {
+//       date: '2021-10-10',
+//       scores: [
+//         {
+//           visitorTeam: 'Goldrush',
+//           visitorScore: 4,
+//           homeTeam: 'Jr. Ducks (2)',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Empire',
+//           visitorScore: 5,
+//           homeTeam: 'Ice Dogs',
+//           homeScore: 6,
+//         },
+//         {
+//           visitorTeam: 'Junior Kings (2)',
+//           visitorScore: 3,
+//           homeTeam: 'Bears',
+//           homeScore: 0,
+//         },
+//         {
+//           visitorTeam: 'Oilers',
+//           visitorScore: 3,
+//           homeTeam: 'Jr. Ducks (3)',
+//           homeScore: 4,
+//         },
+//         {
+//           visitorTeam: 'Heat',
+//           visitorScore: 8,
+//           homeTeam: 'Saints',
+//           homeScore: 4,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (1)',
+//           visitorScore: 5,
+//           homeTeam: 'Jr. Kings (1)',
+//           homeScore: 5,
+//         },
+//       ],
+//     },
+//     {
+//       date: '2021-10-17',
+//       scores: [
+//         {
+//           visitorTeam: 'Saints',
+//           visitorScore: 3,
+//           homeTeam: 'Oilers',
+//           homeScore: 2,
+//         },
+//         {
+//           visitorTeam: 'Jr. Kings (1)',
+//           visitorScore: 1,
+//           homeTeam: 'Jr. Ducks (2)',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Empire',
+//           visitorScore: 5,
+//           homeTeam: 'Bears',
+//           homeScore: 6,
+//         },
+//         {
+//           visitorTeam: 'Ice Dogs',
+//           visitorScore: 5,
+//           homeTeam: 'Lady Ducks',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (3)',
+//           visitorScore: 1,
+//           homeTeam: 'Heat',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (1)',
+//           visitorScore: 3,
+//           homeTeam: 'Jr. Kings (2)',
+//           homeScore: 5,
+//         },
+//       ],
+//     },
+//     {
+//       date: '2021-10-24',
+//       scores: [
+//         {
+//           visitorTeam: 'Jr. Kings (2)',
+//           visitorScore: 8,
+//           homeTeam: 'Oilers',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Heat',
+//           visitorScore: 3,
+//           homeTeam: 'Jr. Ducks (1)',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Saints',
+//           visitorScore: 2,
+//           homeTeam: 'Bears',
+//           homeScore: 5,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (2)',
+//           visitorScore: 8,
+//           homeTeam: 'Ice Dogs',
+//           homeScore: 1,
+//         },
+//         {
+//           visitorTeam: 'Empire',
+//           visitorScore: 3,
+//           homeTeam: 'Jr. Kings (1)',
+//           homeScore: 8,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (3)',
+//           visitorScore: 0,
+//           homeTeam: 'Goldrush',
+//           homeScore: 6,
+//         },
+//         {
+//           visitorTeam: 'Lady Ducks',
+//           visitorScore: 5,
+//           homeTeam: 'Jr. Kings (2)',
+//           homeScore: 3,
+//         },
+//       ],
+//     },
+//     {
+//       date: '2021-10-31',
+//       scores: [
+//         {
+//           visitorTeam: 'Ice Dogs',
+//           visitorScore: 6,
+//           homeTeam: 'Jr. Ducks (3)',
+//           homeScore: 4,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (1)',
+//           visitorScore: 7,
+//           homeTeam: 'Empire',
+//           homeScore: 2,
+//         },
+//         {
+//           visitorTeam: 'Jr. Kings (1)',
+//           visitorScore: 8,
+//           homeTeam: 'Saints',
+//           homeScore: 1,
+//         },
+//         {
+//           visitorTeam: 'Bears',
+//           visitorScore: 0,
+//           homeTeam: 'Goldrush',
+//           homeScore: 7,
+//         },
+//         {
+//           visitorTeam: 'Oilers',
+//           visitorScore: 2,
+//           homeTeam: 'Jr. Ducks (2)',
+//           homeScore: 8,
+//         },
+//       ],
+//     },
+//     {
+//       date: '2021-11-07',
+//       scores: [
+//         {
+//           visitorTeam: 'Jr. Ducks (1)',
+//           visitorScore: 2,
+//           homeTeam: 'Jr. Ducks (2)',
+//           homeScore: 8,
+//         },
+//         {
+//           visitorTeam: 'Jr. Kings (2)',
+//           visitorScore: 2,
+//           homeTeam: 'Heat',
+//           homeScore: 1,
+//         },
+//         {
+//           visitorTeam: 'Goldrush',
+//           visitorScore: 11,
+//           homeTeam: 'Saints',
+//           homeScore: 2,
+//         },
+//         {
+//           visitorTeam: 'Bears',
+//           visitorScore: 8,
+//           homeTeam: 'Jr. Ducks (3)',
+//           homeScore: 0,
+//         },
+//         {
+//           visitorTeam: 'Oilers',
+//           visitorScore: 2,
+//           homeTeam: 'Empire',
+//           homeScore: 9,
+//         },
+//       ],
+//     },
+//     {
+//       date: '2021-11-14',
+//       scores: [
+//         {
+//           visitorTeam: 'Jr. Ducks (3)',
+//           visitorScore: 1,
+//           homeTeam: 'Jr. Ducks (1)',
+//           homeScore: 4,
+//         },
+//         {
+//           visitorTeam: 'Jr. Kings (1)',
+//           visitorScore: 8,
+//           homeTeam: 'Bears',
+//           homeScore: 6,
+//         },
+//         {
+//           visitorTeam: 'Saints',
+//           visitorScore: 1,
+//           homeTeam: 'Empire',
+//           homeScore: 5,
+//         },
+//         {
+//           visitorTeam: 'Ice Dogs',
+//           visitorScore: 2,
+//           homeTeam: 'Jr. Kings (2)',
+//           homeScore: 9,
+//         },
+//         {
+//           visitorTeam: 'Jr. Ducks (2)',
+//           visitorScore: 3,
+//           homeTeam: 'Goldrush',
+//           homeScore: 3,
+//         },
+//         {
+//           visitorTeam: 'Lady Ducks',
+//           visitorScore: 0,
+//           homeTeam: 'Jr. Kings (1)',
+//           homeScore: 2,
+//         },
+//         {
+//           visitorTeam: 'Heat',
+//           visitorScore: 8,
+//           homeTeam: 'Oilers',
+//           homeScore: 3,
+//         },
+//       ],
+//     },
+// {
+//   date: '2021-11-21',
+//   scores: [
+//     {
+//       visitorTeam: 'Jr. Kings (2)',
+//       visitorScore: 14,
+//       homeTeam: 'Bears',
+//       homeScore: 3,
+//     },
+//     {
+//       visitorTeam: 'Heat',
+//       visitorScore: 2,
+//       homeTeam: 'Jr. Ducks (2)',
+//       homeScore: 7,
+//     },
+//     {
+//       visitorTeam: 'Ice Dogs',
+//       visitorScore: 2,
+//       homeTeam: 'Jr. Kings (1)',
+//       homeScore: 11,
+//     },
+//     {
+//       visitorTeam: 'Jr. Ducks (1)',
+//       visitorScore: 6,
+//       homeTeam: 'Saints',
+//       homeScore: 1,
+//     },
+//     {
+//       visitorTeam: 'Empire',
+//       visitorScore: 0,
+//       homeTeam: 'Goldrush',
+//       homeScore: 7,
+//     },
+//   ],
+// },
+// {
+//   date: '2021-12-05',
+//   scores: [
+//     {
+//       visitorTeam: 'Empire',
+//       visitorScore: 0,
+//       homeTeam: 'Jr. Ducks (2)',
+//       homeScore: 1,
+//     },
+//     {
+//       visitorTeam: 'Ice Dogs',
+//       visitorScore: 7,
+//       homeTeam: 'Saints',
+//       homeScore: 2,
+//     },
+//     {
+//       visitorTeam: 'Bears',
+//       visitorScore: 7,
+//       homeTeam: 'Jr. Ducks (1)',
+//       homeScore: 5,
+//     },
+//     {
+//       visitorTeam: 'Jr. Ducks (3)',
+//       visitorScore: 3,
+//       homeTeam: 'Jr. Kings (2)',
+//       homeScore: 8,
+//     },
+//     {
+//       visitorTeam: 'Jr. Kings (1)',
+//       visitorScore: 5,
+//       homeTeam: 'Oilers',
+//       homeScore: 1,
+//     },
+//   ],
+// },
+// {
+//   date: '2021-12-12',
+//   scores: [
+//     {
+//       visitorTeam: 'Oilers',
+//       visitorScore: 0,
+//       homeTeam: 'Jr. Ducks (2)',
+//       homeScore: 7,
+//     },
+//     {
+//       visitorTeam: 'Goldrush',
+//       visitorScore: 2,
+//       homeTeam: 'Heat',
+//       homeScore: 2,
+//     },
+//     {
+//       visitorTeam: 'Bears',
+//       visitorScore: 5,
+//       homeTeam: 'Ice Dogs',
+//       homeScore: 6,
+//     },
+//     {
+//       visitorTeam: 'Saints',
+//       visitorScore: 0,
+//       homeTeam: 'Jr. Ducks (1)',
+//       homeScore: 14,
+//     },
+//     {
+//       visitorTeam: 'Lady Ducks',
+//       visitorScore: 1,
+//       homeTeam: 'Jr. Ducks (2)',
+//       homeScore: 2,
+//     },
+//     {
+//       visitorTeam: 'Empire',
+//       visitorScore: 3,
+//       homeTeam: 'Jr. Kings (2)',
+//       homeScore: 5,
+//     },
+//   ],
+// },
+// {
+//   date: '2021-12-19',
+//   scores: [
+//     {
+//       visitorTeam: 'Heat',
+//       visitorScore: 6,
+//       homeTeam: 'Bears',
+//       homeScore: 0,
+//     },
+//     {
+//       visitorTeam: 'Lady Ducks',
+//       visitorScore: 3,
+//       homeTeam: 'Jr. Ducks (1)',
+//       homeScore: 4,
+//     },
+//     {
+//       visitorTeam: 'Goldrush',
+//       visitorScore: 9,
+//       homeTeam: 'Empire',
+//       homeScore: 1,
+//     },
+//     {
+//       visitorTeam: 'Jr. Kings (2)',
+//       visitorScore: 4,
+//       homeTeam: 'Jr. Kings (1)',
+//       homeScore: 4,
+//     },
+//   ],
+// },
+//   ],
+// });
+
+//? TO ADD NEW WEEKS GAME TO DATABASE - MUST PUSH TO END OF ARRAY
+// const hockeyGameScores2 = HockeyGameScore.findOneAndUpdate(
+//   { _id: '61d166f46cef5855a3581279' },
+//   {
+//     $push: {
+//       games: {
+//         $each: [
+//           {
+//             date: '2021-11-21',
+//             scores: [
+//               {
+//                 visitorTeam: 'Jr. Kings (2)',
+//                 visitorScore: 14,
+//                 homeTeam: 'Bears',
+//                 homeScore: 3,
+//               },
+//               {
+//                 visitorTeam: 'Heat',
+//                 visitorScore: 2,
+//                 homeTeam: 'Jr. Ducks (2)',
+//                 homeScore: 7,
+//               },
+//               {
+//                 visitorTeam: 'Ice Dogs',
+//                 visitorScore: 2,
+//                 homeTeam: 'Jr. Kings (1)',
+//                 homeScore: 11,
+//               },
+//               {
+//                 visitorTeam: 'Jr. Ducks (1)',
+//                 visitorScore: 6,
+//                 homeTeam: 'Saints',
+//                 homeScore: 1,
+//               },
+//               {
+//                 visitorTeam: 'Empire',
+//                 visitorScore: 0,
+//                 homeTeam: 'Goldrush',
+//                 homeScore: 7,
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     },
+//   }
+// ).then((data) => console.log(data));
+
+//? TO ADD MULTIPLE WEEKS OF GAMES TO DATABASE - MUST PUSH TO END OF ARRAY
+// const hockeyGameScores3 = HockeyGameScore.findOneAndUpdate(
+//   { _id: '61d166f46cef5855a3581279' },
+//   {
+//     $push: {
+//       games: {
+//         $each: [
+//           {
+//             date: '2021-12-05',
+//             scores: [
+//               {
+//                 visitorTeam: 'Empire',
+//                 visitorScore: 0,
+//                 homeTeam: 'Jr. Ducks (2)',
+//                 homeScore: 1,
+//               },
+//               {
+//                 visitorTeam: 'Ice Dogs',
+//                 visitorScore: 7,
+//                 homeTeam: 'Saints',
+//                 homeScore: 2,
+//               },
+//               {
+//                 visitorTeam: 'Bears',
+//                 visitorScore: 7,
+//                 homeTeam: 'Jr. Ducks (1)',
+//                 homeScore: 5,
+//               },
+//               {
+//                 visitorTeam: 'Jr. Ducks (3)',
+//                 visitorScore: 3,
+//                 homeTeam: 'Jr. Kings (2)',
+//                 homeScore: 8,
+//               },
+//               {
+//                 visitorTeam: 'Jr. Kings (1)',
+//                 visitorScore: 5,
+//                 homeTeam: 'Oilers',
+//                 homeScore: 1,
+//               },
+//             ],
+//           },
+//           {
+//             date: '2021-12-12',
+//             scores: [
+//               {
+//                 visitorTeam: 'Oilers',
+//                 visitorScore: 0,
+//                 homeTeam: 'Jr. Ducks (2)',
+//                 homeScore: 7,
+//               },
+//               {
+//                 visitorTeam: 'Goldrush',
+//                 visitorScore: 2,
+//                 homeTeam: 'Heat',
+//                 homeScore: 2,
+//               },
+//               {
+//                 visitorTeam: 'Bears',
+//                 visitorScore: 5,
+//                 homeTeam: 'Ice Dogs',
+//                 homeScore: 6,
+//               },
+//               {
+//                 visitorTeam: 'Saints',
+//                 visitorScore: 0,
+//                 homeTeam: 'Jr. Ducks (1)',
+//                 homeScore: 14,
+//               },
+//               {
+//                 visitorTeam: 'Lady Ducks',
+//                 visitorScore: 1,
+//                 homeTeam: 'Jr. Ducks (2)',
+//                 homeScore: 2,
+//               },
+//               {
+//                 visitorTeam: 'Empire',
+//                 visitorScore: 3,
+//                 homeTeam: 'Jr. Kings (2)',
+//                 homeScore: 5,
+//               },
+//             ],
+//           },
+//           {
+//             date: '2021-12-19',
+//             scores: [
+//               {
+//                 visitorTeam: 'Heat',
+//                 visitorScore: 6,
+//                 homeTeam: 'Bears',
+//                 homeScore: 0,
+//               },
+//               {
+//                 visitorTeam: 'Lady Ducks',
+//                 visitorScore: 3,
+//                 homeTeam: 'Jr. Ducks (1)',
+//                 homeScore: 4,
+//               },
+//               {
+//                 visitorTeam: 'Goldrush',
+//                 visitorScore: 9,
+//                 homeTeam: 'Empire',
+//                 homeScore: 1,
+//               },
+//               {
+//                 visitorTeam: 'Jr. Kings (2)',
+//                 visitorScore: 4,
+//                 homeTeam: 'Jr. Kings (1)',
+//                 homeScore: 4,
+//               },
+//             ],
+//           },
+//         ],
+//       },
+//     },
+//   }
+// ).then((data) => console.log(data));
 
 //? UPDATE RECORD
 // HockeyPlayer.findOneAndUpdate(

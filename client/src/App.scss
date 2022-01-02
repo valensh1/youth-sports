@@ -628,7 +628,7 @@ $color-primary: orangered;
 .scores-wrapper {
   position: relative;
   width: 100vw;
-  height: 110vh;
+  height: fit-content;
   background-color: lightgray;
 
   .filters {
@@ -636,10 +636,6 @@ $color-primary: orangered;
     background-color: lightgray;
     font-size: 0.6vw;
     text-align: center;
-
-    .filters-date {
-      // font-size: 3vw;
-    }
   }
 
   .scores-section {
