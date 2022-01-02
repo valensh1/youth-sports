@@ -657,7 +657,8 @@ $color-primary: orangered;
             rgba(black, 0.4)
         ),
         /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
-          url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRl5KDnqbuFPFk32p8VDqxIFKe8yz2-GeFCg&usqp=CAU');
+          // url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRl5KDnqbuFPFk32p8VDqxIFKe8yz2-GeFCg&usqp=CAU');
+        url('https://media.jlgarchitects.com/jlgice-blobstorage/2020/02/CC-Robson-Arena_bowl_200218.jpg');
       background-size: cover;
       background-position: 25%;
       color: white;
