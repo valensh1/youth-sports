@@ -625,33 +625,55 @@ $color-primary: orangered;
 
 //? SCORES PAGE - Scores.js
 
-.scores-section {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  border-top: 1px solid darkgray;
-  border-bottom: 1px solid darkgray;
+.scores-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 110vh;
+  background-color: lightgray;
 
-  &:hover {
-    background-image: linear-gradient(
-        to right bottom,
-        /* gradient runs from right to bottom */ rgba(black, 0.8),
-        /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
-          rgba(black, 0.4)
-      ),
-      /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
-        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRl5KDnqbuFPFk32p8VDqxIFKe8yz2-GeFCg&usqp=CAU');
-    background-size: cover;
-    background-position: 25%;
-    color: white;
+  .filters {
+    padding: 3vh 0;
+    background-color: lightgray;
+    font-size: 0.6vw;
+    text-align: center;
+
+    .filters-date {
+      // font-size: 3vw;
+    }
   }
-}
-.scores-status {
-  position: absolute;
-  top: 15%;
-  width: 100%;
-  text-align: center;
+
+  .scores-section {
+    background-color: white;
+    width: 50%;
+    height: 16vh;
+    margin-left: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+
+    &:hover {
+      background-image: linear-gradient(
+          to right bottom,
+          /* gradient runs from right to bottom */ rgba(black, 0.8),
+          /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+            rgba(black, 0.4)
+        ),
+        /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+          url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRl5KDnqbuFPFk32p8VDqxIFKe8yz2-GeFCg&usqp=CAU');
+      background-size: cover;
+      background-position: 25%;
+      color: white;
+    }
+
+    .scores {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+    }
+  }
 }
 
 h1,

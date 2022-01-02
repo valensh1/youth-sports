@@ -48,29 +48,35 @@ function Scores() {
 
   return (
     <div className="scores-wrapper">
-      <SeasonFilter seasons={allData} />
-      <DatePicker showScoresForDateChosen={showScoresForDateChosen} />
+      <div className="filters">
+        <SeasonFilter className="filters-season filter" seasons={allData} />
+        <DatePicker
+          className="filter"
+          showScoresForDateChosen={showScoresForDateChosen}
+        />
+      </div>
       <h1 className="scores-date">{dateChosen}</h1>
+      <div className="scores-section-container">
+        {scoresForDateChosen?.scores?.map((score) => {
+          return (
+            <div key={score._id} className="scores-section">
+              <div className="scores-g1-visitor scores">
+                <TeamLogos team={score?.visitorTeam} logo={teamsData} />
+                <h3>{score?.visitorTeam}</h3>
+                <h5>(0-8-0)</h5>
+                <h1>{score?.visitorScore}</h1>
+              </div>
 
-      {scoresForDateChosen?.scores?.map((score) => {
-        return (
-          <div key={score._id} className="scores-section">
-            <div className="scores-g1-visitor scores">
-              <TeamLogos team={score?.visitorTeam} logo={teamsData} />
-              <h3>{score?.visitorTeam}</h3>
-              <h5>(0-8-0)</h5>
-              <h1>{score?.visitorScore}</h1>
+              <div className="scores-g1-home scores">
+                <TeamLogos team={score?.homeTeam} logo={teamsData} />
+                <h3>{score?.homeTeam}</h3>
+                <h5>(7-1-1)</h5>
+                <h1>{score?.homeScore}</h1>
+              </div>
             </div>
-
-            <div className="scores-g1-home scores">
-              <TeamLogos team={score?.homeTeam} logo={teamsData} />
-              <h3>{score?.homeTeam}</h3>
-              <h5>(7-1-1)</h5>
-              <h1>{score?.homeScore}</h1>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

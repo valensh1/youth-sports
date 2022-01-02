@@ -21,7 +21,7 @@ function DatePicker({ showScoresForDateChosen }) {
 
   return (
     <div>
-      <input type="date" onChange={handleDate} />
+      <input className="filters-date" type="date" onChange={handleDate} />
     </div>
   );
 }
