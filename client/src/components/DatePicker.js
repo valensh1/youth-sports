@@ -11,9 +11,14 @@ function DatePicker({ showScoresForDateChosen }) {
     const finalNormalFormattedDate = new Date(modifiedDate); // Creation of modifiedDate string above into an actual date using the javaScript Date API so that we can extract accurate date information
     const year = finalNormalFormattedDate.getFullYear(); // Creation of a variable for calendar year (e.g. year = 2021)
     const month = finalNormalFormattedDate.getMonth(); // Gets month of year by returning an index number with January being index 0
-    const day = finalNormalFormattedDate.getDate(); // Gets day of month
+    let day = finalNormalFormattedDate.getDate(); // Gets day of month
+    const dayToStringConversion = `${day}`;
+
+    // If there is no 2 digits in day variable above (meaning its only like the 5th of the month so it returns only 5) we want to put a 0 in front to match the format in our mongoDB database which always has 2 digits for day of month such as 05.
+    if (!dayToStringConversion?.[1]) {
+      day = `0${day}`;
+    }
     const mongoDBFormattedDate = `${year}-${month + 1}-${day}`; // Format date in same format as our date in MongoDB so we can pull necessary data we need when dates match
-    console.log(mongoDBFormattedDate);
 
     //! Delete or modify this function call below if using this DatePicker component anywhere else in application!
     showScoresForDateChosen(finalNormalFormattedDate, mongoDBFormattedDate); // Call function located on parent file (Scores.js) and pass in formattedDate as the argument which ultimately gets scores for the specific date selected.
