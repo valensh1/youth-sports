@@ -23,13 +23,10 @@ function TeamLogos({ team, logo }) {
     })();
   }, []);
 
-  console.log(teamLogo);
-
   return (
     <div>
       {/* <img src={`./img/Team-Logos/Hockey/${teamLogo}`} alt="" /> */}
       <img src={teamLogo} alt={team} />
-      {/* <img src="https://i.imgur.com/DgIwxpm.png" alt="" /> */}
     </div>
   );
 }
