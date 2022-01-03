@@ -628,7 +628,7 @@ $color-primary: orangered;
 .scores-wrapper {
   position: relative;
   width: 100vw;
-  height: fit-content;
+  height: 100%;
   background-color: lightgray;
 
   .filters {
