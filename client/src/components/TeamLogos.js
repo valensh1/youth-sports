@@ -14,7 +14,7 @@ function TeamLogos({ team, logo }) {
         // Loops through each of the teams data from the teams data collection (logo props passed down) and if that matches the teamToSearchForLogo variable we computed above then set useState to that teams logo to be used in JSX below.
         logo.forEach((el) => {
           if (el.teamNameShort === teamToSearchForLogo) {
-            setTeamLogo(el.logo);
+            setTeamLogo(el.logo.toLowerCase());
           }
         });
       } catch (error) {
