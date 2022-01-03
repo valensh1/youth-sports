@@ -23,8 +23,6 @@ function TeamLogos({ team, logo }) {
     })();
   }, []);
 
-  console.log(teamLogo);
-
   return (
     <div>
       {/* <img src={`./img/Team-Logos/Hockey/${logoToDisplay()}`} alt="" /> */}
