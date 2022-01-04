@@ -631,6 +631,10 @@ $color-primary: orangered;
   height: 100%;
   background-color: lightgray;
 
+  input {
+    border-radius: 0;
+  }
+
   .filters {
     padding: 3vh 0;
     background-color: lightgray;

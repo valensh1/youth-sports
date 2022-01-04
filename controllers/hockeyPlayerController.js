@@ -31,6 +31,18 @@ APIRouter.get('/scores', async (req, res) => {
   }
 });
 
+//? DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+APIRouter.get('/scores/:season', async (req, res) => {
+  try {
+    const { season } = req.params;
+    console.log(season);
+    const scores = await HockeyGameScores.find({ season }); //! Modify Players for your Application's collection name from your MongoDB database.
+    res.status(200).json(scores);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL TEAMS INFORMATION SUCH AS TEAM NAME, HEAD COACH, CITY, LOGO, ETC. REQUEST COMES FROM TeamLogos.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/teams', async (req, res) => {

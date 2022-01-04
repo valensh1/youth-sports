@@ -4,9 +4,10 @@ import DatePicker from '../components/DatePicker.js';
 import TeamLogos from '../components/TeamLogos.js';
 import { DAYS_OF_WEEK } from '../Global_Variables/globalVariables.js';
 import { MONTHS } from '../Global_Variables/globalVariables.js';
+import { SEASONS } from '../Global_Variables/globalVariables.js';
 
 function Scores() {
-  const [allData, setAllData] = useState([]);
+  // const [seasonData, setSeasonData] = useState('');
   const [scores, setScores] = useState([]);
   const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
   const [dateChosen, setDateChosen] = useState('');
@@ -15,20 +16,33 @@ function Scores() {
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch('/api/hockeyPlayers/scores');
-        const data = await response.json();
-        console.log(data);
-        setAllData(data);
-        console.log(data[0].games);
-        setScores(data[0].games);
-        const response2 = await fetch('/api/hockeyPlayers/teams');
-        const teamsDataPull = await response2.json();
-        setTeamsData(teamsDataPull);
+        const response = await fetch('/api/hockeyPlayers/teams');
+        const teamsDataPull = await response.json();
+        console.log(teamsDataPull);
+        await setTeamsData(teamsDataPull);
       } catch (error) {
         console.error(error);
       }
     })();
   }, []);
+
+  useEffect(() => {
+    const pullDataFunction = async () => {
+      try {
+        const response = await fetch('/api/hockeyPlayers/scores');
+        const data = await response.json();
+        console.log(data);
+        console.log(data[0].games);
+        setScores(data[0].games);
+        const response2 = await fetch('/api/hockeyPlayers/teams');
+        const teamsDataPull = await response2.json();
+        console.log(teamsDataPull);
+        await setTeamsData(teamsDataPull);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  }, [scores]);
 
   const showScoresForDateChosen = (
     normalFormattedDate,
@@ -37,6 +51,7 @@ function Scores() {
     const scoresForDate = scores.find((games) => {
       return games.date === mongoDBFormattedDate;
     });
+    console.log(scoresForDate);
     setScoresForDateChosen(scoresForDate);
 
     const dayOfWeek = DAYS_OF_WEEK[normalFormattedDate.getDay()];
@@ -46,10 +61,25 @@ function Scores() {
     setDateChosen(`${dayOfWeek}, ${month} ${dateOfMonth}, ${year}`);
   };
 
+  const seasonFilter = async (season) => {
+    try {
+      const response = await fetch(`/api/hockeyPlayers/scores/${season}`);
+      const data = await response.json();
+      console.log(data);
+      await setScores(data[0].games);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="scores-wrapper">
       <div className="filters">
-        <SeasonFilter className="filters-season filter" seasons={allData} />
+        <SeasonFilter
+          className="filters-season filter"
+          seasons={SEASONS}
+          seasonFilter={seasonFilter}
+        />
         <DatePicker
           className="filter"
           showScoresForDateChosen={showScoresForDateChosen}
