@@ -641,7 +641,7 @@ $color-primary: orangered;
   .scores-section {
     background-color: white;
     width: 50%;
-    height: 16vh;
+    height: 17vh;
     margin-left: 25%;
     display: flex;
     flex-direction: row;
@@ -676,16 +676,21 @@ h1,
 h3,
 h4,
 h5 {
+  font-size: 0.9vw;
   text-align: center;
   margin-top: 1rem;
 }
 
-img {
-  height: 75px;
-  width: 75px;
-  animation-name: logoRotation; /* Reference the animation name below */
-  animation-duration: 15s; /* Duration of your animation */
-  animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+.logos-team {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 2.6vw;
+    animation-name: logoRotation; /* Reference the animation name below */
+    animation-duration: 15s; /* Duration of your animation */
+    animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+  }
 }
 
 @keyframes logoRotation {
