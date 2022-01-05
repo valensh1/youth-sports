@@ -632,7 +632,13 @@ $color-primary: orangered;
   background-color: lightgray;
 
   input {
-    -webkit-appearance: none;
+    border-radius: 0;
+    font-size: 1vw;
+  }
+
+  select {
+    font-size: 1vw;
+    margin-bottom: 0.7vh;
   }
 
   .filters {
@@ -645,7 +651,7 @@ $color-primary: orangered;
   .scores-section {
     background-color: white;
     width: 50%;
-    height: 16vh;
+    height: 25vh;
     margin-left: 25%;
     display: flex;
     flex-direction: row;
@@ -672,6 +678,31 @@ $color-primary: orangered;
       flex-direction: column;
       align-content: center;
       justify-content: center;
+      width: 50%;
+
+      &-name {
+        font-size: 1.3vw;
+        font-weight: 500;
+      }
+
+      &-record {
+        font-size: 1vw;
+        font-weight: 400;
+      }
+
+      &-score {
+        font-size: 1.5vw;
+        font-weight: 900;
+      }
+
+      img {
+        margin: auto;
+        display: block;
+        width: 5vw;
+        animation-name: logoRotation; /* Reference the animation name below */
+        animation-duration: 15s; /* Duration of your animation */
+        animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+      }
     }
   }
 }
@@ -681,15 +712,7 @@ h3,
 h4,
 h5 {
   text-align: center;
-  margin-top: 1rem;
-}
-
-img {
-  height: 75px;
-  width: 75px;
-  animation-name: logoRotation; /* Reference the animation name below */
-  animation-duration: 15s; /* Duration of your animation */
-  animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+  margin-top: 0.5vh;
 }
 
 @keyframes logoRotation {

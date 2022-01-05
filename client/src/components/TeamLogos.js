@@ -24,10 +24,10 @@ function TeamLogos({ team, logo }) {
   }, []);
 
   return (
-    <div>
+    <>
       {/* <img src={`./img/Team-Logos/Hockey/${teamLogo}`} alt="" /> */}
       <img src={teamLogo} alt={team} />
-    </div>
+    </>
   );
 }
 

@@ -31,7 +31,7 @@ APIRouter.get('/scores', async (req, res) => {
   }
 });
 
-//? DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//? ROUTE TO GET SPECIFIC SEASON SCORES INFORMATION WHEN USER SELECTS SEASON FROM SeasonFilter.js file
 APIRouter.get('/scores/:season', async (req, res) => {
   try {
     const { season } = req.params;

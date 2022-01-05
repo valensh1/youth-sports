@@ -86,18 +86,18 @@ function Scores() {
         {scoresForDateChosen?.scores?.map((score) => {
           return (
             <div key={score._id} className="scores-section">
-              <div className="scores-g1-visitor scores">
+              <div className="scores-visitor scores">
                 <TeamLogos team={score?.visitorTeam} logo={teamsData} />
-                <h3>{score?.visitorTeam}</h3>
-                <h5>(0-8-0)</h5>
-                <h1>{score?.visitorScore}</h1>
+                <h3 className="scores-name">{score?.visitorTeam}</h3>
+                <h5 className="scores-record">(0-8-0)</h5>
+                <h1 className="scores-score">{score?.visitorScore}</h1>
               </div>
 
-              <div className="scores-g1-home scores">
+              <div className="scores-home scores">
                 <TeamLogos team={score?.homeTeam} logo={teamsData} />
-                <h3>{score?.homeTeam}</h3>
-                <h5>(7-1-1)</h5>
-                <h1>{score?.homeScore}</h1>
+                <h3 className="scores-name">{score?.homeTeam}</h3>
+                <h5 className="scores-record">(7-1-1)</h5>
+                <h1 className="scores-score">{score?.homeScore}</h1>
               </div>
             </div>
           );
