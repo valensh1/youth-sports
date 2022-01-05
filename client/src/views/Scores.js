@@ -34,10 +34,6 @@ function Scores() {
         console.log(data);
         console.log(data[0].games);
         setScores(data[0].games);
-        const response2 = await fetch('/api/hockeyPlayers/teams');
-        const teamsDataPull = await response2.json();
-        console.log(teamsDataPull);
-        await setTeamsData(teamsDataPull);
       } catch (error) {
         console.error(error);
       }
