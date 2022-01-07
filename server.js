@@ -9,10 +9,11 @@ const app = express(); // Creation of variable app which calls the express funct
 app.use(cors()); // Every time file is saved the application runs the cors function
 
 //? MONGOOSE/MongoDB SET-UP - Only changes needed are red commented line of code below
-const HockeyPlayer = require('./models/hockeyPlayerModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
-const HockeyStats = require('./models/hockeyStatsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
-const HockeyGameScores = require('./models/gameScoresModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
-const Teams = require('./models/teamsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
+// const HockeyPlayer = require('./models/hockeyPlayerModel.js'); //! Don't think these need to be here if require it on hockeyPlayerController file
+// const HockeyStats = require('./models/hockeyStatsModel.js'); //! Don't think these need to be here if require it on hockeyPlayerController file
+// const HockeyGameScores = require('./models/gameScoresModel.js'); //! Don't think these need to be here if require it on hockeyPlayerController file
+// const Teams = require('./models/teamsModel.js'); //! Don't think these need to be here if require it on hockeyPlayerController file
+// const Standings = require('./models/standingsModel.js'); //! Don't think these need to be here if require it on hockeyPlayerController file
 const mongoose = require('mongoose'); // Need to require Mongoose in order to access our MongoDB database; Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 const MONGODB_URI = process.env.MONGODB_URI; // Creation of variable which stores our MongoDB connection string containing our password to access our database. This connection string is stored on our .env file
 const db = mongoose.connection; // Creation of variable to shorten our code. Instead of having to type mongoose.connection each time we can just refer to it as db.

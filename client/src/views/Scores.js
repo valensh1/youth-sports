@@ -7,7 +7,6 @@ import { MONTHS } from '../Global_Variables/globalVariables.js';
 import { SEASONS } from '../Global_Variables/globalVariables.js';
 
 function Scores() {
-  // const [seasonData, setSeasonData] = useState('');
   const [scores, setScores] = useState([]);
   const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
   const [dateChosen, setDateChosen] = useState('');
@@ -83,6 +82,11 @@ function Scores() {
       </div>
       <h1 className="scores-date">{dateChosen}</h1>
       <div className="scores-section-container">
+        <h1 id="no-games-message">
+          {scoresForDateChosen === undefined
+            ? `No games were played on this date`
+            : ''}
+        </h1>
         {scoresForDateChosen?.scores?.map((score) => {
           return (
             <div key={score._id} className="scores-section">

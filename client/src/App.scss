@@ -648,71 +648,88 @@ $color-primary: orangered;
     text-align: center;
   }
 
-  .scores-section {
-    background-color: white;
-    width: 50%;
-    height: 25vh;
-    margin-left: 25%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-top: 1px solid darkgray;
-    border-bottom: 1px solid darkgray;
+  .scores-section-container {
+    display: relative;
+    width: 100%;
+    height: fit-content;
+    background-color: lightgray;
 
-    &:hover {
-      background-image: linear-gradient(
-          to right bottom,
-          /* gradient runs from right to bottom */ rgba(black, 0.8),
-          /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
-            rgba(black, 0.4)
-        ),
-        /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
-          url('https://media.jlgarchitects.com/jlgice-blobstorage/2020/02/CC-Robson-Arena_bowl_200218.jpg');
-      background-size: cover;
-      background-position: 25%;
-      color: white;
+    #no-games-message {
+      color: red;
+      font-size: 1.5vw;
+      font-style: italic;
+      display: block;
+      width: 100%;
+      position: fixed;
+      top: 50%;
+      text-align: center;
     }
-
-    .scores {
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
+    .scores-section {
+      background-color: white;
       width: 50%;
+      height: 25vh;
+      margin-left: 25%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      border-top: 1px solid darkgray;
+      border-bottom: 1px solid darkgray;
 
-      &-name {
-        font-size: 1.3vw;
-        font-weight: 500;
+      &:hover {
+        background-image: linear-gradient(
+            to right bottom,
+            /* gradient runs from right to bottom */ rgba(black, 0.8),
+            /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+              rgba(black, 0.4)
+          ),
+          /* opacity number on end (0.8) allows you to see less of image the closer it is to 1. The closer to 0 the less gradient color you see and you see more of the original image */
+            url('https://media.jlgarchitects.com/jlgice-blobstorage/2020/02/CC-Robson-Arena_bowl_200218.jpg');
+        background-size: cover;
+        background-position: 25%;
+        color: white;
       }
 
-      &-record {
-        font-size: 1vw;
-        font-weight: 400;
-      }
+      .scores {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        width: 50%;
 
-      &-score {
-        font-size: 1.5vw;
-        font-weight: 900;
-      }
+        &-name {
+          font-size: 1.3vw;
+          font-weight: 500;
+        }
 
-      img {
-        margin: auto;
-        display: block;
-        width: 5vw;
-        animation-name: logoRotation; /* Reference the animation name below */
-        animation-duration: 15s; /* Duration of your animation */
-        animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+        &-record {
+          font-size: 1vw;
+          font-weight: 400;
+        }
+
+        &-score {
+          font-size: 1.5vw;
+          font-weight: 900;
+        }
+
+        img {
+          margin: auto;
+          display: block;
+          width: 5vw;
+          animation-name: logoRotation; /* Reference the animation name below */
+          animation-duration: 15s; /* Duration of your animation */
+          animation-iteration-count: infinite; /* Can put a # of times you want animation to run such as 5; Also can put infinite here for animation to continuously run */
+        }
       }
     }
   }
-}
 
-h1,
-h3,
-h4,
-h5 {
-  text-align: center;
-  margin-top: 0.5vh;
+  h1,
+  h3,
+  h4,
+  h5 {
+    text-align: center;
+    margin-top: 0.5vh;
+  }
 }
 
 @keyframes logoRotation {
