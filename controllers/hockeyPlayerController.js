@@ -55,6 +55,19 @@ APIRouter.get('/teams', async (req, res) => {
   }
 });
 
+//? INDEX ROUTE - (READ) ROUTE SHOWING ALL TEAMS INFORMATION SUCH AS TEAM NAME, HEAD COACH, CITY, LOGO, ETC. REQUEST COMES FROM TeamLogos.js FILE ON FRONT-END
+// '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
+APIRouter.get('/standings/:season', async (req, res) => {
+  try {
+    const { season } = req.params;
+    console.log(season);
+    const standingsInfo = await Standings.find({ season });
+    res.status(200).json(standingsInfo);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
 //? SHOW ROUTE - (READ) SHOW PAGE DISPLAYING ONE INDIVIDUAL PLAYER
 APIRouter.get('/:id', async (req, res) => {
   try {
