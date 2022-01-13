@@ -34,8 +34,6 @@ APIRouter.get('/scores', async (req, res) => {
       division: division,
     });
     res.status(200).json(scores);
-    // const scores = await HockeyGameScores.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
-    // res.status(200).json(scores);
   } catch (error) {
     res.status(400).json(error);
   }

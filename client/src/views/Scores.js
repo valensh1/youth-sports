@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import $ from 'jquery';
 import SeasonFilter from '../components/SeasonFilter.js';
 import DatePicker from '../components/DatePicker.js';
 import DivisionPicker from '../components/Hockey/DivisionPicker.js';
@@ -9,10 +10,10 @@ import { SEASONS } from '../Global_Variables/globalVariables.js';
 
 function Scores() {
   const [teamsData, setTeamsData] = useState([]);
+  const [division, setDivision] = useState('');
   const [season, setSeason] = useState('');
   const [dateOfGames, setDateOfGames] = useState('');
   const [dateHeading, setDateHeading] = useState('');
-  const [division, setDivision] = useState('');
   const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
   const [start, setStart] = useState(false);
 
@@ -64,7 +65,8 @@ function Scores() {
       const data = await response.json();
       console.log(data);
       setScoresForDateChosen(data);
-      setStart(true);
+      setStart(true); // Set start state to true so IF there is no games for the date selected we can display the message of no games for dates selected. We want start state to be false to begin with because we don't want this message to be displayed before user has even selected a game date.
+      $('.scores-date').html(dateHeading); // Use of jquery to insert date of games (e.g. Sunday, November 07, 2021) information into scores-date class (h1 tag in jsx below)
     } catch (error) {
       console.error(error);
     }
@@ -73,16 +75,16 @@ function Scores() {
   return (
     <div className="scores-wrapper">
       <div className="filters">
+        <DivisionPicker divisionFilter={divisionFilter} />
         <SeasonFilter
-          className="filters-season filters"
+          className="filters-season filter-single"
           seasons={SEASONS}
           seasonFilter={seasonFilter}
         />
-        <DatePicker className="filters" dateFilter={dateFilter} />
-        <DivisionPicker divisionFilter={divisionFilter} />
-        <button onClick={fetchData}>Retrieve</button>
+        <DatePicker dateFilter={dateFilter} />
+        <button onClick={fetchData}>See Scores</button>
       </div>
-      <h1 className="scores-date">{dateHeading}</h1>
+      <h1 className="scores-date"></h1>
       <div className="scores-section-container">
         <h1 id="no-games-message">
           {!scoresForDateChosen.length && start

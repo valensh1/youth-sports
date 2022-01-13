@@ -26,7 +26,11 @@ function DatePicker({ dateFilter }) {
 
   return (
     <div>
-      <input className="filters-date" type="date" onChange={handleDate} />
+      <input
+        className="filters-date filters-single"
+        type="date"
+        onChange={handleDate}
+      />
     </div>
   );
 }

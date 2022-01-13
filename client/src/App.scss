@@ -633,12 +633,7 @@ $color-primary: orangered;
 
   input {
     border-radius: 0;
-    font-size: 1vw;
-  }
-
-  select {
-    font-size: 1vw;
-    margin-bottom: 0.7vh;
+    font-size: 0.6vw;
   }
 
   .filters {
@@ -646,6 +641,32 @@ $color-primary: orangered;
     background-color: lightgray;
     font-size: 0.6vw;
     text-align: center;
+
+    &-single {
+      margin: 0.5vh 0;
+    }
+
+    button {
+      color: black;
+      font-weight: 500;
+      background-color: darkgray;
+      border: 3px solid black;
+      box-shadow: 0px 10px 8px 0 rgba(0, 0, 0, 0.2);
+      margin-top: 0.4vh;
+    }
+
+    button:hover {
+      filter: contrast(120%);
+      font-weight: 700;
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+  }
+
+  .scores-date {
+    margin-top: 1vh;
   }
 
   .scores-section-container {

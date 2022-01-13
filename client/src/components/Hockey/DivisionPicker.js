@@ -15,7 +15,7 @@ function DivisionPicker({ divisionFilter }) {
   };
 
   return (
-    <div className="filters">
+    <div className="filters-single">
       <label htmlFor="division-filter">Division:</label>
       <select name="division-filter" onChange={setDivisionFilter} id="">
         <option>Select Division</option>
