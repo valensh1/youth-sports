@@ -23,7 +23,7 @@ const ShowPlayer = () => {
     })();
   }, []);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     console.log('You clicked the DELETE button');
     try {
       fetch(`/api/hockeyPlayers/${id}`, {

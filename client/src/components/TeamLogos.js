@@ -25,7 +25,6 @@ function TeamLogos({ team, logo }) {
 
   return (
     <>
-      {/* <img src={`./img/Team-Logos/Hockey/${teamLogo}`} alt="" /> */}
       <img src={teamLogo} alt={team} />
     </>
   );

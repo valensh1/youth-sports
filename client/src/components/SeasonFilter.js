@@ -3,13 +3,13 @@
 
 function SeasonFilter({ seasons, seasonFilter }) {
   const seasonChange = (event) => {
-    console.log(event.target.value);
     seasonFilter(event.target.value);
   };
 
   return (
     <>
-      <select onChange={seasonChange}>
+      <label htmlFor="season-filter">Season:</label>
+      <select name="season-filter" onChange={seasonChange}>
         <option>Select Season</option>
         {seasons?.map((season) => {
           return <option key={season}>{season}</option>;

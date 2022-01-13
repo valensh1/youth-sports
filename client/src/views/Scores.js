@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import SeasonFilter from '../components/SeasonFilter.js';
 import DatePicker from '../components/DatePicker.js';
+import DivisionPicker from '../components/Hockey/DivisionPicker.js';
 import TeamLogos from '../components/TeamLogos.js';
-import TeamRecords from '../components/TeamRecords.js';
 import { DAYS_OF_WEEK } from '../Global_Variables/globalVariables.js';
 import { MONTHS } from '../Global_Variables/globalVariables.js';
 import { SEASONS } from '../Global_Variables/globalVariables.js';
 
 function Scores() {
-  const [season, setSeason] = useState('');
-  const [scores, setScores] = useState([]);
-  const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
-  const [dateChosen, setDateChosen] = useState('');
-  const [previousWeek, setPreviousWeek] = useState('');
   const [teamsData, setTeamsData] = useState([]);
-  const [standings, setStandings] = useState([]);
-  const [records, setRecords] = useState([]);
+  const [season, setSeason] = useState('');
+  const [dateOfGames, setDateOfGames] = useState('');
+  const [dateHeading, setDateHeading] = useState('');
+  const [division, setDivision] = useState('');
+  const [scoresForDateChosen, setScoresForDateChosen] = useState([]);
+  const [start, setStart] = useState(false);
 
+  //? FETCHING OF TEAMS DATA IMMEDIATELY UPON PAGE LOAD
   useEffect(() => {
     (async () => {
       try {
@@ -30,106 +30,80 @@ function Scores() {
     })();
   }, []);
 
-  useEffect(() => {
-    const pullDataFunction = async () => {
-      try {
-        const response = await fetch(`/api/hockeyPlayers/standings/${season}`);
-        const data = await response.json();
-        console.log(data);
-        setStandings(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    pullDataFunction();
-  }, [season]);
+  //? SEASON FILTER
+  const seasonFilter = (season) => {
+    console.log(season);
+    setSeason(season);
+  };
 
-  const seasonFilter = async (season) => {
+  //? DATE FILTER
+  const dateFilter = (date) => {
+    console.log(date);
+    const dayOfWeek = DAYS_OF_WEEK[date.getDay()];
+    const monthSpelledOut = MONTHS[date.getMonth()];
+    const month = `${date.getMonth() + 1}`.padStart(2, '0');
+    const dateOfMonth = `${date.getDate()}`.padStart(2, '0');
+    const year = date.getFullYear();
+    setDateOfGames(`${month}-${dateOfMonth}-${year}`);
+    setDateHeading(`${dayOfWeek}, ${monthSpelledOut} ${dateOfMonth}, ${year}`); // Date heading for stats in format such as Sunday, January 09, 2022.
+  };
+
+  //? DIVISION FILTER
+  const divisionFilter = (division) => {
+    console.log(division);
+    setDivision(division);
+  };
+
+  //? FETCHING OF DATA FROM MONGODB BASED UPON FILTERS
+  const fetchData = async () => {
     try {
-      const response = await fetch(`/api/hockeyPlayers/scores/${season}`);
+      console.log('All three have been selected');
+      const response = await fetch(
+        `api/hockeyPlayers/scores?season=${season}&date=${dateOfGames}&division=${division}`
+      );
       const data = await response.json();
       console.log(data);
-      await setScores(data[0].games);
-      await setSeason(season);
+      setScoresForDateChosen(data);
+      setStart(true);
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const showScoresForDateChosen = (
-    normalFormattedDate,
-    mongoDBFormattedDate
-  ) => {
-    const scoresForDate = scores.find((games) => {
-      return games.date === mongoDBFormattedDate;
-    });
-    console.log(scoresForDate);
-    setScoresForDateChosen(scoresForDate);
-
-    const dayOfWeek = DAYS_OF_WEEK[normalFormattedDate.getDay()];
-    const month = MONTHS[normalFormattedDate.getMonth()];
-    const dateOfMonth = normalFormattedDate.getDate();
-    const year = normalFormattedDate.getFullYear();
-    setDateChosen(`${dayOfWeek}, ${month} ${dateOfMonth}, ${year}`);
-
-    const standingsDate = normalFormattedDate;
-    // const standingsMonth = standingsDate.getMonth() + 1;
-    // const standingsDay = standingsDate.getDate() - 7;
-    // const standingsYear = standingsDate.getFullYear();
-    const standingsMonth = 12;
-    const standingsDay = 12;
-    const standingsYear = 2021;
-    console.log(
-      `Converted Date is ${standingsMonth}-${standingsDay}-${standingsYear}`
-    );
-    setPreviousWeek(`${standingsMonth}-${standingsDay}-${standingsYear}`);
-    const standingsSearch = standings.filter((game) => {
-      console.log(game.date);
-      console.log(previousWeek);
-      return game.date === previousWeek;
-    });
-    setRecords([...standingsSearch]);
   };
 
   return (
     <div className="scores-wrapper">
       <div className="filters">
         <SeasonFilter
-          className="filters-season filter"
+          className="filters-season filters"
           seasons={SEASONS}
           seasonFilter={seasonFilter}
         />
-        <DatePicker
-          className="filter"
-          showScoresForDateChosen={showScoresForDateChosen}
-        />
+        <DatePicker className="filters" dateFilter={dateFilter} />
+        <DivisionPicker divisionFilter={divisionFilter} />
+        <button onClick={fetchData}>Retrieve</button>
       </div>
-      <h1 className="scores-date">{dateChosen}</h1>
+      <h1 className="scores-date">{dateHeading}</h1>
       <div className="scores-section-container">
         <h1 id="no-games-message">
-          {scoresForDateChosen === undefined
+          {!scoresForDateChosen.length && start
             ? `No games were played on this date`
             : ''}
         </h1>
-        {scoresForDateChosen?.scores?.map((score, index) => {
+        {scoresForDateChosen.map((score) => {
           return (
             <div key={score._id} className="scores-section">
               <div className="scores-visitor scores">
-                <TeamLogos team={score?.visitorTeam} logo={teamsData} />
-                <h3 className="scores-name">{score?.visitorTeam}</h3>
-                <TeamRecords
-                  team={score?.visitorTeam}
-                  date={previousWeek}
-                  records={records}
-                />
-                <h1 className="scores-score">{score?.visitorScore}</h1>
+                <TeamLogos team={score?.visitorTeamShort} logo={teamsData} />
+                <h3 className="scores-name">{score?.visitorTeamLong}</h3>
+                <h2 className="scores-record">{`(${score?.visitorTeamPreviousWins}-${score?.visitorTeamPreviousLosses}-${score?.visitorTeamPreviousTies}) ${score?.visitorTeamPreviousPoints}pts`}</h2>
+                <h1 className="scores-score">{score?.visitorTeamScore}</h1>
               </div>
 
               <div className="scores-home scores">
-                <TeamLogos team={score?.homeTeam} logo={teamsData} />
-                <h3 className="scores-name">{score?.homeTeam}</h3>
-                <h5 className="scores-record">(7-1-1)</h5>
-                <h1 className="scores-score">{score?.homeScore}</h1>
+                <TeamLogos team={score?.homeTeamShort} logo={teamsData} />
+                <h3 className="scores-name">{score?.homeTeamLong}</h3>
+                <h2 className="scores-record">{`(${score?.homeTeamPreviousWins}-${score?.homeTeamPreviousLosses}-${score?.homeTeamPreviousTies}) ${score?.homeTeamPreviousPoints}pts`}</h2>
+                <h1 className="scores-score">{score?.homeTeamScore}</h1>
               </div>
             </div>
           );

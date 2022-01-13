@@ -9,6 +9,7 @@ const HockeyPlayers = require('../models/hockeyPlayerModel.js'); //! Modify play
 const HockeyGameScores = require('../models/gameScoresModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 const Teams = require('../models/teamsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 const Standings = require('../models/standingsModel.js');
+const Scores = require('../models/scoresModel.js');
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL PLAYERS FROM A SPECIFIC TEAM. REQUEST COMES FROM Roster.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
@@ -25,8 +26,16 @@ APIRouter.get('/', async (req, res) => {
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/scores', async (req, res) => {
   try {
-    const scores = await HockeyGameScores.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
+    console.log(req.query);
+    const { season, date, division } = req.query; // Destructuring req.query items
+    const scores = await Scores.find({
+      season: season,
+      gameDate: date,
+      division: division,
+    });
     res.status(200).json(scores);
+    // const scores = await HockeyGameScores.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
+    // res.status(200).json(scores);
   } catch (error) {
     res.status(400).json(error);
   }
