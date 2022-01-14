@@ -62,9 +62,11 @@ $color-primary: orangered;
 
     .navbar--ul-link {
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: white;
+      display: block;
+      height: 100%;
     }
 
     // Logo/Home icon
@@ -773,4 +775,54 @@ $color-primary: orangered;
     transform: rotatey(360deg);
     transform: scale(1);
   } /* rotatey flips the text horizontally */
+}
+
+//? Standings.js PAGE
+.standings-container {
+  h1 {
+    margin: 4vh 0 0 0;
+    text-align: center;
+    font-size: 1vw;
+  }
+
+  table {
+    margin: 1.5vh auto;
+    table-layout: auto;
+    width: 50%;
+    text-align: center;
+    font-size: 0.6vw;
+
+    img {
+      width: 2vw;
+    }
+
+    tr th:first-child {
+      text-align: left;
+      width: 25%;
+      background-color: lightgray;
+
+      &:hover {
+        color: orangered;
+      }
+    }
+
+    td:nth-child(6) {
+      background-color: rgba(1, 131, 218, 0.1);
+    }
+
+    #header-team {
+      text-align: center;
+    }
+  }
+
+  th:not(:first-child) {
+    background-color: black;
+    color: white;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
 }

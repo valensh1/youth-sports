@@ -2,18 +2,18 @@
 
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // MUST IMPORT BrowserRouter (changing name to just Router is optional) and Route and Switch
-import Home from './views/Home.js'; //! Update file names for whatever names you used that relate to your application
-import Roster from './views/Hockey/Roster.js'; //! Update file names for whatever names you used that relate to your application
-import NewPlayer from './views//Hockey/NewPlayer.js'; //! Update file names for whatever names you used that relate to your application
-import Navbar from './components/Navbar.js'; //! Update file names for whatever names you used that relate to your application
-import ShowPlayer from './views/Hockey/ShowPlayer.js'; //! Update file names for whatever names you used that relate to your application
-import EditPlayer from './views/Hockey/EditPlayer.js'; //! Update file names for whatever names you used that relate to your application
-import News from './views/News.js'; //! Update file names for whatever names you used that relate to your application
-import Video from './views/Video.js'; //! Update file names for whatever names you used that relate to your application
-import Stats from './views/Stats.js'; //! Update file names for whatever names you used that relate to your application
-import Scores from './views/Scores'; //! Update file names for whatever names you used that relate to your application
-import Shop from './views/Shop.js'; //! Update file names for whatever names you used that relate to your application
-
+import Home from './views/Home.js';
+import Roster from './views/Hockey/Roster.js';
+import NewPlayer from './views//Hockey/NewPlayer.js';
+import Navbar from './components/Navbar.js';
+import ShowPlayer from './views/Hockey/ShowPlayer.js';
+import EditPlayer from './views/Hockey/EditPlayer.js';
+import News from './views/News.js';
+import Video from './views/Video.js';
+import Stats from './views/Stats.js';
+import Scores from './views/Scores.js';
+import Standings from './views/Hockey/Standings.js';
+import Shop from './views/Shop.js';
 //! Update where it says players for whatever fits your application
 function App() {
   return (
@@ -56,9 +56,14 @@ function App() {
             <Stats />
           </Route>
 
-          {/* //? FANTASY PAGE */}
+          {/* //? SCORES PAGE */}
           <Route exact path="/scores">
             <Scores />
+          </Route>
+
+          {/* //? STANDINGS PAGE */}
+          <Route exact path="/standings">
+            <Standings />
           </Route>
 
           {/* //? SHOP PAGE */}
