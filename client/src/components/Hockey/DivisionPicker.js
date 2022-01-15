@@ -17,7 +17,7 @@ function DivisionPicker({ divisionFilter }) {
   return (
     <div className="filters-single">
       <label htmlFor="division-filter">Division:</label>
-      <select name="division-filter" onChange={setDivisionFilter} id="">
+      <select name="division-filter" onChange={setDivisionFilter}>
         <option>Select Division</option>
         {hockeyDivisions.map((division) => {
           return (

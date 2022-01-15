@@ -635,13 +635,13 @@ $color-primary: orangered;
 
   input {
     border-radius: 0;
-    font-size: 0.6vw;
+    font-size: 1vw;
   }
 
   .filters {
     padding: 1vh 0;
     background-color: lightgray;
-    font-size: 0.6vw;
+    font-size: 1vw;
     text-align: center;
 
     &-single {
@@ -652,7 +652,7 @@ $color-primary: orangered;
       color: black;
       font-weight: 500;
       background-color: darkgray;
-      border: 3px solid black;
+      border: 2px solid black;
       box-shadow: 0px 10px 8px 0 rgba(0, 0, 0, 0.2);
       margin-top: 0.4vh;
     }
@@ -668,7 +668,8 @@ $color-primary: orangered;
   }
 
   .scores-date {
-    margin-top: 1vh;
+    margin-top: 1.5vh;
+    font-size: 1.5vw;
   }
 
   .scores-section-container {
@@ -779,8 +780,18 @@ $color-primary: orangered;
 
 //? Standings.js PAGE
 .standings-container {
+  .filters-single:first-child {
+    margin-top: 3vh;
+  }
+
+  .filters-single {
+    margin-top: 2vh;
+    margin-left: 42.5%;
+    font-size: 1.2vw;
+  }
+
   h1 {
-    margin: 4vh 0 0 0;
+    margin: 3vh 0 0 0;
     text-align: center;
     font-size: 1vw;
   }
@@ -790,10 +801,14 @@ $color-primary: orangered;
     table-layout: auto;
     width: 50%;
     text-align: center;
-    font-size: 0.6vw;
+    font-size: 1.2vw;
 
     img {
       width: 2vw;
+    }
+
+    tr {
+      height: 5vh;
     }
 
     tr th:first-child {
@@ -812,17 +827,23 @@ $color-primary: orangered;
 
     #header-team {
       text-align: center;
+      background-color: black;
+      color: white;
     }
-  }
 
-  th:not(:first-child) {
-    background-color: black;
-    color: white;
-  }
+    .ranking {
+      margin: 0 1vw 0 0.5vw;
+    }
 
-  table,
-  th,
-  td {
-    border: 1px solid black;
+    th:not(:first-child) {
+      background-color: black;
+      color: white;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
   }
 }

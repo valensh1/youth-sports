@@ -1,8 +1,31 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import SeasonFilter from '../../components/SeasonFilter.js';
+import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
 
 function Standings() {
+  const [division, setDivision] = useState('');
+  const [season, setSeason] = useState('');
+
+  //? DIVISION FILTER
+  const divisionFilter = (division) => {
+    console.log(division);
+    division === 'Select Division' ? setDivision('') : setDivision(division);
+  };
+
+  //? SEASON FILTER
+  const seasonFilter = (season) => {
+    console.log(season);
+    setSeason(season);
+  };
+
   return (
     <div className="standings-container">
+      <HockeyDivisions divisionFilter={divisionFilter} />
+      {division || division === 'Select Division' ? (
+        <SeasonFilter seasonFilter={seasonFilter} />
+      ) : (
+        ''
+      )}
       <h1>Standings</h1>
       <table>
         <thead>
@@ -21,6 +44,7 @@ function Standings() {
         <tbody>
           <tr>
             <th>
+              <span className="ranking">1</span>
               <img src="https://i.imgur.com/x4pIvDM.png" alt="" />
               <span>Jr. Ducks (2)</span>
             </th>
@@ -35,6 +59,8 @@ function Standings() {
           </tr>
           <tr>
             <th>
+              <span className="ranking">2</span>
+
               <img src="https://i.imgur.com/x4pIvDM.png" alt="" />
               <span>Jr. Ducks (2)</span>
             </th>

@@ -78,7 +78,6 @@ function Scores() {
         <DivisionPicker divisionFilter={divisionFilter} />
         <SeasonFilter
           className="filters-season filter-single"
-          seasons={SEASONS}
           seasonFilter={seasonFilter}
         />
         <DatePicker dateFilter={dateFilter} />

@@ -22,6 +22,16 @@ APIRouter.get('/', async (req, res) => {
   }
 });
 
+//? POST REQUEST - (CREATE) - COMES FROM NewPlayer.js FILE ON FRONT-END
+APIRouter.post('/', async (req, res) => {
+  try {
+    console.log(req.body);
+    const newPost = await HockeyPlayers.create(req.body); //! Modify Players for your Application's collection name from your MongoDB database and variable name newPost for a variable that makes sense for your application.
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL GAME SCORES FOR ALL TEAMS. REQUEST COMES FROM gameScores.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/scores', async (req, res) => {
@@ -51,12 +61,23 @@ APIRouter.get('/scores/:season', async (req, res) => {
   }
 });
 
-//? INDEX ROUTE - (READ) ROUTE SHOWING ALL TEAMS INFORMATION SUCH AS TEAM NAME, HEAD COACH, CITY, LOGO, ETC. REQUEST COMES FROM TeamLogos.js FILE ON FRONT-END
+//? INDEX ROUTE - (READ) ROUTE SENDING BACK TO CLIENT ALL DISTINCT SEASONS ENTERED INTO DATABASE
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
-APIRouter.get('/teams', async (req, res) => {
+APIRouter.get('/seasons', async (req, res) => {
   try {
-    const teamsInfo = await Teams.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
-    res.status(200).json(teamsInfo);
+    const standingsInfo = await Scores.distinct('season'); // Pulls all distinct seasons from the season field in MongoDB Scores collection
+    res.status(200).json(standingsInfo);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
+//? INDEX ROUTE - (READ) ROUTE SENDING BACK TO CLIENT ALL DISTINCT SEASONS ENTERED INTO DATABASE
+// '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
+APIRouter.get('/standings', async (req, res) => {
+  try {
+    // const standingsInfo = await Scores.distinct('season'); // Pulls all distinct seasons from the season field in MongoDB Scores collection
+    // res.status(200).json(standingsInfo);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -64,12 +85,10 @@ APIRouter.get('/teams', async (req, res) => {
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL TEAMS INFORMATION SUCH AS TEAM NAME, HEAD COACH, CITY, LOGO, ETC. REQUEST COMES FROM TeamLogos.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
-APIRouter.get('/standings/:season', async (req, res) => {
+APIRouter.get('/teams', async (req, res) => {
   try {
-    const { season } = req.params;
-    console.log(season);
-    const standingsInfo = await Standings.find({ season });
-    res.status(200).json(standingsInfo);
+    const teamsInfo = await Teams.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
+    res.status(200).json(teamsInfo);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -96,16 +115,6 @@ APIRouter.delete('/:id', async (req, res) => {
     console.log(deletedPlayer); //! Modify deletedPlayer for whatever variable name you decide to use in line of code above that makes sense for your application
   } catch (error) {
     res.status(400).send(error);
-  }
-});
-
-//? POST REQUEST - (CREATE) - COMES FROM NewPlayer.js FILE ON FRONT-END
-APIRouter.post('/', async (req, res) => {
-  try {
-    console.log(req.body);
-    const newPost = await HockeyPlayers.create(req.body); //! Modify Players for your Application's collection name from your MongoDB database and variable name newPost for a variable that makes sense for your application.
-  } catch (error) {
-    res.status(400).json(error);
   }
 });
 
