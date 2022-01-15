@@ -136,12 +136,12 @@ mongoose.model('HockeyPlayer').schema.add({ imgAction: String });
 //   location: 'Great Park',
 // });
 
-HockeyPlayer.findOneAndUpdate(
-  { lastName: 'Gibson' },
-  {
-    height: 74,
-  }
-).then((data) => console.log(data));
+// HockeyPlayer.findOneAndUpdate(
+//   { lastName: 'Gibson' },
+//   {
+//     height: 74,
+//   }
+// ).then((data) => console.log(data));
 
 //? DELETION OF THE 1ST RECORD MONGOOSE FINDS IN MongoDB WITH THE SPECIFIED CRITERIA - Uncomment this out if you want to delete sample data above
 // Player.findOneAndDelete({ firstName: 'Magic' }).then(data => console.log(data)); //! Change Player for a name that fits your application

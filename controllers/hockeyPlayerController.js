@@ -25,7 +25,7 @@ APIRouter.get('/', async (req, res) => {
 //? POST REQUEST - (CREATE) - COMES FROM NewPlayer.js FILE ON FRONT-END
 APIRouter.post('/', async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const newPost = await HockeyPlayers.create(req.body); //! Modify Players for your Application's collection name from your MongoDB database and variable name newPost for a variable that makes sense for your application.
   } catch (error) {
     res.status(400).json(error);
@@ -72,12 +72,21 @@ APIRouter.get('/seasons', async (req, res) => {
   }
 });
 
-//? INDEX ROUTE - (READ) ROUTE SENDING BACK TO CLIENT ALL DISTINCT SEASONS ENTERED INTO DATABASE
+//? INDEX ROUTE - (READ) ROUTE SENDING BACK TO CLIENT ALL GAMES INFORMATION SO STANDINGS INFORMATION CAN BE DISPLAYED
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/standings', async (req, res) => {
   try {
-    // const standingsInfo = await Scores.distinct('season'); // Pulls all distinct seasons from the season field in MongoDB Scores collection
-    // res.status(200).json(standingsInfo);
+    console.log(req.query);
+    const { division, season } = req.query; // Destructure division and season variables to be used in MongoDB find query
+    const data = await Scores.find({
+      division: division,
+      season: season,
+    });
+    const lastGame = data.pop().gameDate;
+    const lastGameDataRecords = await Scores.find({
+      gameDate: lastGame,
+    });
+    res.status(200).json(lastGameDataRecords);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -100,7 +109,7 @@ APIRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
     const showPagePlayer = await HockeyPlayers.findById(id); //! Modify Players for your Application's collection name from your MongoDB database and variable name showPagePlayer for a variable that makes sense for your application. Instead of destructuring id above could just have done this ---> const showPagePlayer = await Players.findById(req.params.id)
     res.status(200).json(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
-    console.log(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
+    // console.log(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
   } catch (error) {
     res.status(400).send(error);
   }
@@ -112,7 +121,7 @@ APIRouter.delete('/:id', async (req, res) => {
     const { id } = req.params;
     const deletedPlayer = await HockeyPlayers.findByIdAndDelete(id); //! Modify Players for your Application's collection name from your MongoDB database and variable name deletedPlayer for a variable that makes sense for your application. Instead of destructuring id above could just have done this ---> const showPagePlayer = await Players.findById(req.params.id)
     res.status(200).json(deletedPlayer); //! Modify deletedPlayer for whatever variable name you decide to use in line of code above that makes sense for your application
-    console.log(deletedPlayer); //! Modify deletedPlayer for whatever variable name you decide to use in line of code above that makes sense for your application
+    // console.log(deletedPlayer); //! Modify deletedPlayer for whatever variable name you decide to use in line of code above that makes sense for your application
   } catch (error) {
     res.status(400).send(error);
   }

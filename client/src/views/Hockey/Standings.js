@@ -4,7 +4,6 @@ import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
 
 function Standings() {
   const [division, setDivision] = useState('');
-  const [season, setSeason] = useState('');
 
   //? DIVISION FILTER
   const divisionFilter = (division) => {
@@ -13,9 +12,18 @@ function Standings() {
   };
 
   //? SEASON FILTER
-  const seasonFilter = (season) => {
-    console.log(season);
-    setSeason(season);
+  const seasonFilter = async (season) => {
+    try {
+      console.log(season);
+      const response = await fetch(
+        `api/hockeyPlayers/standings?division=${division}&season=${season}`
+      );
+      const data = await response.json();
+      console.log(data);
+      const lastGameDate = data.pop().gameDate;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
