@@ -4,6 +4,7 @@ import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
 
 function Standings() {
   const [division, setDivision] = useState('');
+  const [standingsObject, setFinalStandingsObject] = useState({});
 
   //? DIVISION FILTER
   const divisionFilter = (division) => {
@@ -20,7 +21,6 @@ function Standings() {
       );
       const data = await response.json();
       console.log(data);
-      const lastGameDate = data.pop().gameDate;
     } catch (error) {
       console.error(error);
     }

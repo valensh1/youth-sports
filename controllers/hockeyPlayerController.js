@@ -3,6 +3,7 @@
 // The purpose of this file is to keep our routes organized. This playerController.js file deals with all player routes. Another controller file could be used for all routes related to teams, etc.
 const express = require('express');
 const APIRouter = express.Router();
+var logger = require('tracer').console(); // Logger so you can see code line numbers in Node.js. Need to use logger.log instead of console.log though
 const multer = require('multer'); //ADDED --> multer will be used to handle the form data.
 const Aws = require('aws-sdk'); // ADDED --> aws-sdk library will used to upload image to s3 bucket.
 const HockeyPlayers = require('../models/hockeyPlayerModel.js'); //! Modify players.js file for your applications file name. Require players model file so we can use it in this file
@@ -10,6 +11,7 @@ const HockeyGameScores = require('../models/gameScoresModel.js'); //! Modify pla
 const Teams = require('../models/teamsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 const Standings = require('../models/standingsModel.js');
 const Scores = require('../models/scoresModel.js');
+const { distinct } = require('../models/hockeyPlayerModel.js');
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL PLAYERS FROM A SPECIFIC TEAM. REQUEST COMES FROM Roster.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
@@ -78,6 +80,21 @@ APIRouter.get('/standings', async (req, res) => {
   try {
     console.log(req.query);
     const { division, season } = req.query; // Destructure division and season variables to be used in MongoDB find query
+    const teams = await Teams.find(
+      { division: division, season: season },
+      { teamNameLong: 1 }
+    );
+    // console.log(teams);
+    const allDates = await Scores.distinct('gameDate');
+    const convertedDates = allDates.map((date) => {
+      return new Date(date);
+    });
+    // console.log(convertedDates);
+    const sortedDates = convertedDates.sort((a, b) => a - b);
+    const normalDateFormatSorted = sortedDates.map((date) => {
+      return date.toLocaleDateString();
+    });
+    logger.log(normalDateFormatSorted);
     const data = await Scores.find({
       division: division,
       season: season,
@@ -86,7 +103,8 @@ APIRouter.get('/standings', async (req, res) => {
     const lastGameDataRecords = await Scores.find({
       gameDate: lastGame,
     });
-    res.status(200).json(lastGameDataRecords);
+
+    res.status(200).json([lastGameDataRecords, data]);
   } catch (error) {
     res.status(400).json(error);
   }
