@@ -21,6 +21,27 @@ function Standings() {
       );
       const data = await response.json();
       console.log(data);
+      const standingsObject = {};
+      const teamsArray = data[0].forEach((team) => {
+        standingsObject[team.teamNameLong] = {
+          team: team.teamNameLong,
+        };
+      });
+      console.log(standingsObject);
+      data[1].forEach((team) => {
+        standingsObject[team.homeTeamLong].points = team.homeTeamCurrentPoints;
+        standingsObject[team.homeTeamLong].wins = team.homeTeamCurrentWins;
+        standingsObject[team.homeTeamLong].losses = team.homeTeamCurrentLosses;
+        standingsObject[team.homeTeamLong].ties = team.homeTeamCurrentTies;
+        standingsObject[team.visitorTeamLong].points =
+          team.visitorTeamCurrentPoints;
+        standingsObject[team.visitorTeamLong].wins =
+          team.visitorTeamCurrentWins;
+        standingsObject[team.visitorTeamLong].losses =
+          team.visitorTeamCurrentLosses;
+        standingsObject[team.visitorTeamLong].ties =
+          team.visitorTeamCurrentTies;
+      });
     } catch (error) {
       console.error(error);
     }

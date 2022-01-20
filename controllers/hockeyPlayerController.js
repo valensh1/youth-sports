@@ -89,22 +89,24 @@ APIRouter.get('/standings', async (req, res) => {
     const convertedDates = allDates.map((date) => {
       return new Date(date);
     });
-    // console.log(convertedDates);
+    console.log(convertedDates);
     const sortedDates = convertedDates.sort((a, b) => a - b);
-    const normalDateFormatSorted = sortedDates.map((date) => {
-      return date.toLocaleDateString();
-    });
-    logger.log(normalDateFormatSorted);
-    const data = await Scores.find({
-      division: division,
-      season: season,
-    });
-    const lastGame = data.pop().gameDate;
-    const lastGameDataRecords = await Scores.find({
-      gameDate: lastGame,
-    });
+    logger.log(sortedDates);
 
-    res.status(200).json([lastGameDataRecords, data]);
+    // Map through sortedDates array and convert each date into proper date format
+    const formattedDate = sortedDates.map((date) => {
+      const year = `${date.getFullYear()}`.padStart(2, '0'); // get sorted year and convert to string first before adding padStart
+      const month = `${date.getMonth() + 1}`.padStart(2, '0'); // get sorted month and convert to string first before adding padStart
+      const dateOfMonth = `${date.getDate()}`.padStart(2, '0'); // get sorted dateOfMonth and convert to string first before adding padStart
+      return `${month}-${dateOfMonth}-${year}`;
+    });
+    logger.log(formattedDate);
+    const lastGameDate = formattedDate.pop(); // Get last date of games played by popping the date off the end of the formattedDate variable array
+    const lastGameDataRecords = await Scores.find({
+      gameDate: lastGameDate,
+      division: division,
+    });
+    res.status(200).json([teams, lastGameDataRecords]);
   } catch (error) {
     res.status(400).json(error);
   }
