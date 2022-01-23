@@ -106,7 +106,42 @@ APIRouter.get('/standings', async (req, res) => {
       gameDate: lastGameDate,
       division: division,
     });
-    res.status(200).json([teams, lastGameDataRecords]);
+
+    const allGames = await Scores.find({ division: division, season: season });
+    // logger.log(allGames);
+    const standingsObject = {};
+    allGames.forEach((game) => {
+      standingsObject[game.homeTeamLong] = {
+        team: game.homeTeamLong,
+        wins: game.homeTeamCurrentWins,
+        losses: game.homeTeamCurrentLosses,
+        ties: game.homeTeamCurrentTies,
+        points: game.homeTeamCurrentPoints,
+        goalsFor: 0,
+        goalsAgainst: 0,
+      };
+
+      standingsObject[game.visitorTeamLong] = {
+        team: game.visitorTeamLong,
+        wins: game.visitorTeamCurrentWins,
+        losses: game.visitorTeamCurrentLosses,
+        ties: game.visitorTeamCurrentTies,
+        points: game.visitorTeamCurrentPoints,
+        goalsFor: 0,
+        goalsAgainst: 0,
+      };
+    });
+
+    allGames.forEach((game) => {
+      standingsObject[game.homeTeamLong].goalsFor += game.homeTeamScore;
+      standingsObject[game.visitorTeamLong].goalsFor += game.visitorTeamScore;
+      standingsObject[game.homeTeamLong].goalsAgainst += game.visitorTeamScore;
+      standingsObject[game.visitorTeamLong].goalsAgainst += game.homeTeamScore;
+    });
+
+    // logger.log(standingsObject);
+
+    res.status(200).json([teams, lastGameDataRecords, standingsObject]);
   } catch (error) {
     res.status(400).json(error);
   }

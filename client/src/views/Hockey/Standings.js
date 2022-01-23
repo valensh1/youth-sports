@@ -27,7 +27,7 @@ function Standings() {
           team: team.teamNameLong,
         };
       });
-      console.log(standingsObject);
+      // console.log(standingsObject);
       data[1].forEach((team) => {
         standingsObject[team.homeTeamLong].points = team.homeTeamCurrentPoints;
         standingsObject[team.homeTeamLong].wins = team.homeTeamCurrentWins;
