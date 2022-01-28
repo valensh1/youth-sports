@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import SeasonFilter from '../../components/SeasonFilter.js';
 import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
+import { StepFunctions } from 'aws-sdk';
 
 function Standings() {
+  const [teamsData, setTeamsData] = useState([]);
   const [division, setDivision] = useState('');
   const [standingsObject, setFinalStandingsObject] = useState({});
 
@@ -21,31 +23,25 @@ function Standings() {
       );
       const data = await response.json();
       console.log(data);
-      const standingsObject = {};
-      const teamsArray = data[0].forEach((team) => {
-        standingsObject[team.teamNameLong] = {
-          team: team.teamNameLong,
-        };
-      });
-      // console.log(standingsObject);
-      data[1].forEach((team) => {
-        standingsObject[team.homeTeamLong].points = team.homeTeamCurrentPoints;
-        standingsObject[team.homeTeamLong].wins = team.homeTeamCurrentWins;
-        standingsObject[team.homeTeamLong].losses = team.homeTeamCurrentLosses;
-        standingsObject[team.homeTeamLong].ties = team.homeTeamCurrentTies;
-        standingsObject[team.visitorTeamLong].points =
-          team.visitorTeamCurrentPoints;
-        standingsObject[team.visitorTeamLong].wins =
-          team.visitorTeamCurrentWins;
-        standingsObject[team.visitorTeamLong].losses =
-          team.visitorTeamCurrentLosses;
-        standingsObject[team.visitorTeamLong].ties =
-          team.visitorTeamCurrentTies;
-      });
+      await setFinalStandingsObject(data[1]);
+
+      // FETCHING OF TEAMS DATA TO DISPLAY LOGO NEXT TO TEAM NAME
+      const response2 = await fetch(`/api/hockeyPlayers/teams`);
+      const teamsDataPull = await response2.json();
+      console.log(teamsDataPull);
+      await setTeamsData(teamsDataPull);
     } catch (error) {
       console.error(error);
     }
   };
+
+  //? SORTING OF STANDINGS OBJECT
+  const standingsObjectArrayConversion = Object.values(standingsObject);
+  console.log(standingsObjectArrayConversion);
+  const standingsByRank = standingsObjectArrayConversion.sort((a, b) => {
+    return b.points - a.points;
+  });
+  console.log(standingsByRank);
 
   return (
     <div className="standings-container">
@@ -83,22 +79,6 @@ function Standings() {
             <td>1</td>
             <td>15</td>
             <td>.758</td>
-            <td>55</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <th>
-              <span className="ranking">2</span>
-
-              <img src="https://i.imgur.com/x4pIvDM.png" alt="" />
-              <span>Jr. Ducks (2)</span>
-            </th>
-            <td>9</td>
-            <td>7</td>
-            <td>1</td>
-            <td>1</td>
-            <td>15</td>
-            <td>.675</td>
             <td>55</td>
             <td>17</td>
           </tr>
