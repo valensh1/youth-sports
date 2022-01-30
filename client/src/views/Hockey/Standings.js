@@ -57,7 +57,8 @@ function Standings() {
     });
     const teamInfoToDisplay = logo
       ? teamsData[index]?.logo
-      : teamsData[index]?.teamNameShort === 'Ducks'
+      : teamsData[index]?.teamNameShort === 'Ducks' ||
+        teamsData[index]?.teamNameShort === 'Kings'
       ? teamsData[index]?.teamNameLong
       : teamsData[index]?.teamNameShort;
     return teamInfoToDisplay;
