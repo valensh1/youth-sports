@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import SeasonFilter from '../../components/SeasonFilter.js';
 import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
-import { StepFunctions } from 'aws-sdk';
 
 function Standings() {
   const [teamsData, setTeamsData] = useState([]);
   const [division, setDivision] = useState('');
-  const [standingsObject, setFinalStandingsObject] = useState({});
+  const [standingsDataPull, setStandingsDataPull] = useState({});
+  const [standings, setStandings] = useState([]);
 
   //? DIVISION FILTER
   const divisionFilter = (division) => {
@@ -23,7 +23,7 @@ function Standings() {
       );
       const data = await response.json();
       console.log(data);
-      await setFinalStandingsObject(data[1]);
+      await setStandingsDataPull(data[1]);
 
       // FETCHING OF TEAMS DATA TO DISPLAY LOGO NEXT TO TEAM NAME
       const response2 = await fetch(`/api/hockeyPlayers/teams`);
@@ -35,13 +35,31 @@ function Standings() {
     }
   };
 
-  //? SORTING OF STANDINGS OBJECT
-  const standingsObjectArrayConversion = Object.values(standingsObject);
-  console.log(standingsObjectArrayConversion);
-  const standingsByRank = standingsObjectArrayConversion.sort((a, b) => {
-    return b.points - a.points;
-  });
-  console.log(standingsByRank);
+  //? Manipulating Standings Object to get Ready to Display Standings Rankings
+  // Add games played and winning percentage to standingsObject
+  useEffect(() => {
+    const standingsObjectArrayConversion = Object.values(standingsDataPull); // Converts standingsObject into an array
+    standingsObjectArrayConversion.forEach((team) => {
+      team.gamesPlayed = team.wins + team.losses + team.ties;
+      team.pointsPercentage = team.points / (team.gamesPlayed * 2);
+    });
+    console.log(standingsObjectArrayConversion);
+
+    standingsObjectArrayConversion.sort((a, b) => {
+      return b.points - a.points || b.pointsPercentage - a.pointsPercentage; // Sorts teams by points and then if teams have the same amount of points it equals 0 which is a falsy value so then it jumps to the next part of code. || (or operator) returns first truthy value.
+    });
+    setStandings(standingsObjectArrayConversion);
+  }, [standingsDataPull]);
+
+  const getTeamInfo = (teamName, logo = null) => {
+    const index = teamsData.findIndex((team) => {
+      return team.teamNameLong === teamName;
+    });
+    const teamInfoToDisplay = logo
+      ? teamsData[index]?.logo
+      : teamsData[index]?.teamNameShort;
+    return teamInfoToDisplay;
+  };
 
   return (
     <div className="standings-container">
@@ -67,21 +85,25 @@ function Standings() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>
-              <span className="ranking">1</span>
-              <img src="https://i.imgur.com/x4pIvDM.png" alt="" />
-              <span>Jr. Ducks (2)</span>
-            </th>
-            <td>9</td>
-            <td>7</td>
-            <td>1</td>
-            <td>1</td>
-            <td>15</td>
-            <td>.758</td>
-            <td>55</td>
-            <td>17</td>
-          </tr>
+          {standings.map((team, index) => {
+            return (
+              <tr key={team.team}>
+                <th>
+                  <span className="ranking">{index + 1}</span>
+                  <img src={getTeamInfo(team.team, 'get logo here')} alt="" />
+                  <span className="team-name">{getTeamInfo(team.team)}</span>
+                </th>
+                <td>{team.gamesPlayed}</td>
+                <td>{team.wins}</td>
+                <td>{team.losses}</td>
+                <td>{team.ties}</td>
+                <td>{team.points}</td>
+                <td>{team.pointsPercentage.toFixed(3).slice(1)}</td>
+                <td>{team.goalsFor}</td>
+                <td>{team.goalsAgainst}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

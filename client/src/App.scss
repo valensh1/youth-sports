@@ -787,13 +787,13 @@ $color-primary: orangered;
   .filters-single {
     margin-top: 2vh;
     margin-left: 42.5%;
-    font-size: 1.2vw;
+    font-size: 0.8vw;
   }
 
   h1 {
     margin: 3vh 0 0 0;
     text-align: center;
-    font-size: 1vw;
+    font-size: 1.5vw;
   }
 
   table {
@@ -801,7 +801,7 @@ $color-primary: orangered;
     table-layout: auto;
     width: 50%;
     text-align: center;
-    font-size: 1.2vw;
+    font-size: 0.8vw;
 
     img {
       width: 2vw;
@@ -832,12 +832,19 @@ $color-primary: orangered;
     }
 
     .ranking {
+      display: inline-block;
+      width: 0.4vw;
       margin: 0 1vw 0 0.5vw;
     }
 
     th:not(:first-child) {
       background-color: black;
       color: white;
+    }
+
+    th > span {
+      margin-left: 0.5vw;
+      font-size: 0.8vw;
     }
 
     table,
