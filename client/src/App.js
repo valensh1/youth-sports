@@ -11,9 +11,11 @@ import EditPlayer from './views/Hockey/EditPlayer.js';
 import News from './views/News.js';
 import Video from './views/Video.js';
 import Stats from './views/Stats.js';
-import Scores from './views/Scores.js';
+import Scores from './views/Hockey/Scores.js';
 import Standings from './views/Hockey/Standings.js';
+import Team from './views/Hockey/Team.js';
 import Shop from './views/Shop.js';
+import TeamLogos from './components/TeamLogos';
 //! Update where it says players for whatever fits your application
 function App() {
   return (
@@ -64,6 +66,11 @@ function App() {
           {/* //? STANDINGS PAGE */}
           <Route exact path="/standings">
             <Standings />
+          </Route>
+
+          {/* //? TEAMS PAGE */}
+          <Route exact path="/teams">
+            <Team />
           </Route>
 
           {/* //? SHOP PAGE */}

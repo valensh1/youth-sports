@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SeasonFilter from '../../components/SeasonFilter.js';
 import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
 
@@ -93,8 +94,10 @@ function Standings() {
               <tr key={team.team}>
                 <th>
                   <span className="ranking">{index + 1}</span>
-                  <img src={getTeamInfo(team.team, 'get logo here')} alt="" />
-                  <span className="team-name">{getTeamInfo(team.team)}</span>
+                  <Link to={'/teams'} className="team-link">
+                    <img src={getTeamInfo(team.team, 'get logo here')} alt="" />
+                    <span className="team-name">{getTeamInfo(team.team)}</span>
+                  </Link>
                 </th>
                 <td>{team.gamesPlayed}</td>
                 <td>{team.wins}</td>

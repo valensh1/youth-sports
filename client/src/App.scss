@@ -793,6 +793,14 @@ $color-primary: orangered;
     font-size: 0.8vw;
   }
 
+  .team-link {
+    text-decoration: none;
+    color: black;
+  }
+  .team-link:hover {
+    color: orangered;
+  }
+
   h1 {
     margin: 3vh 0 0 0;
     text-align: center;
@@ -857,3 +865,5 @@ $color-primary: orangered;
     }
   }
 }
+
+//? Team.js PAGE

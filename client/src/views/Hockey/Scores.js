@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
-import SeasonFilter from '../components/SeasonFilter.js';
-import DatePicker from '../components/DatePicker.js';
-import DivisionPicker from '../components/Hockey/DivisionPicker.js';
-import TeamLogos from '../components/TeamLogos.js';
-import { DAYS_OF_WEEK } from '../Global_Variables/globalVariables.js';
-import { MONTHS } from '../Global_Variables/globalVariables.js';
-import { SEASONS } from '../Global_Variables/globalVariables.js';
+import SeasonFilter from '../../components/SeasonFilter.js';
+import DatePicker from '../../components/DatePicker.js';
+import DivisionPicker from '../../components/Hockey/DivisionPicker.js';
+import TeamLogos from '../../components/TeamLogos.js';
+import { DAYS_OF_WEEK } from '../../Global_Variables/globalVariables.js';
+import { MONTHS } from '../../Global_Variables/globalVariables.js';
+import { SEASONS } from '../../Global_Variables/globalVariables.js';
 
 function Scores() {
   const [teamsData, setTeamsData] = useState([]);
