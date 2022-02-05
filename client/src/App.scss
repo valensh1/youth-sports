@@ -411,9 +411,12 @@ $color-primary: orangered;
 
   &__backgroundPic {
     &-img {
+      margin-left: 10%;
       display: block;
-      height: 33.5vh;
+      height: 60vh;
       width: 100vw;
+      object-fit: none;
+      object-position: 0% 25%;
 
       // Mobile Phones
       @media (min-width: 320px) and (max-width: 488px) {
