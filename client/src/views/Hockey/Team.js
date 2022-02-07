@@ -21,7 +21,14 @@ function Teams() {
         </thead>
         <tbody>
           <tr>
-            <td>Hunter Valentine</td>
+            <th>
+              <td>Hunter Valentine</td>
+              <img
+                src="https://imgur.com/7yK4jS3.jpg"
+                alt=""
+                style={{ height: '20rem', width: '20rem', borderRadius: '50%' }}
+              />
+            </th>
             <td>36</td>
             <td>Goalie</td>
             <td>5 ' 2</td>
@@ -32,7 +39,7 @@ function Teams() {
             <td>A</td>
             <td>Great Park</td>
           </tr>
-          <tr>
+          {/* <tr>
             <td>Case Nadal</td>
             <td>47</td>
             <td>Defenseman</td>
@@ -43,7 +50,7 @@ function Teams() {
             <td>Peewee</td>
             <td>A</td>
             <td>Great Park</td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>
