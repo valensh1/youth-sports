@@ -8,6 +8,7 @@ function Standings() {
   const [division, setDivision] = useState('');
   const [standingsDataPull, setStandingsDataPull] = useState({});
   const [standings, setStandings] = useState([]);
+  const [season, setSeason] = useState('');
 
   //? DIVISION FILTER
   const divisionFilter = (division) => {
@@ -19,6 +20,7 @@ function Standings() {
   const seasonFilter = async (season) => {
     try {
       console.log(season);
+      setSeason(season);
       const response = await fetch(
         `api/hockeyPlayers/standings?division=${division}&season=${season}`
       );
@@ -65,6 +67,11 @@ function Standings() {
     return teamInfoToDisplay;
   };
 
+  // Function to eliminate spaces in team name to pass in url path so back end can pick it up in req.query; If you put spaces in url it gives % sign characters and don't want that.
+  const eliminateSpaces = (team) => {
+    return team.replace(/\s/g, ''); // \s is regular expression (reg ex) to eliminate whitespace
+  };
+
   return (
     <div className="standings-container">
       <HockeyDivisions divisionFilter={divisionFilter} />
@@ -94,7 +101,12 @@ function Standings() {
               <tr key={team.team}>
                 <th>
                   <span className="ranking">{index + 1}</span>
-                  <Link to={'/teams'} className="team-link">
+                  <Link
+                    to={`/teams?season=${season}&division=${division}&team=${eliminateSpaces(
+                      team.team
+                    )}`}
+                    className="team-link"
+                  >
                     <img src={getTeamInfo(team.team, 'get logo here')} alt="" />
                     <span className="team-name">{getTeamInfo(team.team)}</span>
                   </Link>

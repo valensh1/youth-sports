@@ -51,18 +51,6 @@ APIRouter.get('/scores', async (req, res) => {
   }
 });
 
-//? ROUTE TO GET SPECIFIC SEASON SCORES INFORMATION WHEN USER SELECTS SEASON FROM SeasonFilter.js file
-APIRouter.get('/scores/:season', async (req, res) => {
-  try {
-    const { season } = req.params;
-    console.log(season);
-    const scores = await HockeyGameScores.find({ season }); //! Modify Players for your Application's collection name from your MongoDB database.
-    res.status(200).json(scores);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-});
-
 //? INDEX ROUTE - (READ) ROUTE SENDING BACK TO CLIENT ALL DISTINCT SEASONS ENTERED INTO DATABASE
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/seasons', async (req, res) => {
@@ -137,6 +125,8 @@ APIRouter.get('/standings', async (req, res) => {
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
 APIRouter.get('/teams', async (req, res) => {
   try {
+    console.log(req.query);
+    logger.log(req.query);
     const teamsInfo = await Teams.find({}); //! Modify Players for your Application's collection name from your MongoDB database.
     res.status(200).json(teamsInfo);
   } catch (error) {

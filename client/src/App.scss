@@ -867,3 +867,12 @@ $color-primary: orangered;
 }
 
 //? Team.js PAGE
+.team {
+  display: flex;
+  flex-direction: column;
+
+  tr > th:first-child {
+    display: flex;
+    align-items: center;
+  }
+}

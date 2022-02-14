@@ -1,11 +1,22 @@
-import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 
 function Teams() {
+  const search = useLocation().search;
+  const team = new URLSearchParams(search).get('team');
+  const division = new URLSearchParams(search).get('division');
+  const season = new URLSearchParams(search).get('season');
+  console.log(team);
+  console.log(division);
+  console.log(season);
+  console.log(useLocation());
+  const params = useParams();
+  console.log(params);
+
   return (
-    <div>
+    <div className="team">
       <h3>Jr. Ducks (2)</h3>
-      <table>
-        <thead>
+      <table className="team-table">
+        <thead className="team-headers">
           <tr>
             <th>Player</th>
             <th>#</th>
@@ -22,12 +33,12 @@ function Teams() {
         <tbody>
           <tr>
             <th>
-              <td>Hunter Valentine</td>
               <img
-                src="https://imgur.com/7yK4jS3.jpg"
+                src="https://i.imgur.com/gbCmMCr.jpg"
                 alt=""
-                style={{ height: '20rem', width: '20rem', borderRadius: '50%' }}
+                style={{ height: '7rem', width: '7rem', borderRadius: '50%' }}
               />
+              <td>Hunter Valentine</td>
             </th>
             <td>36</td>
             <td>Goalie</td>
