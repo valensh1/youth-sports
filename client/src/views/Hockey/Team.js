@@ -1,16 +1,30 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Teams() {
   const search = useLocation().search;
   const team = new URLSearchParams(search).get('team');
+  const teamID = new URLSearchParams(search).get('teamID');
   const division = new URLSearchParams(search).get('division');
   const season = new URLSearchParams(search).get('season');
   console.log(team);
+  console.log(teamID);
   console.log(division);
   console.log(season);
-  console.log(useLocation());
-  const params = useParams();
-  console.log(params);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(
+          `/api/hockeyPlayers/team/rosters?teamID=${teamID}`
+        );
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <div className="team">

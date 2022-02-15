@@ -61,6 +61,10 @@ const playerSchema = new mongoose.Schema({
       'Mariners',
       'Lady Ducks',
     ],
+    teamID: {
+      type: Number,
+      required: true,
+    },
     division: {
       type: String,
       required: true,

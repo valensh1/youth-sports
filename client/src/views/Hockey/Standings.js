@@ -72,6 +72,14 @@ function Standings() {
     return team.replace(/\s/g, ''); // \s is regular expression (reg ex) to eliminate whitespace
   };
 
+  const getTeamID = (teamName) => {
+    console.log(teamName);
+    const returnedTeam = teamsData.find((team) => {
+      return team.teamNameLong === teamName;
+    });
+    return returnedTeam?.teamId;
+  };
+
   return (
     <div className="standings-container">
       <HockeyDivisions divisionFilter={divisionFilter} />
@@ -104,7 +112,7 @@ function Standings() {
                   <Link
                     to={`/teams?season=${season}&division=${division}&team=${eliminateSpaces(
                       team.team
-                    )}`}
+                    )}&teamID=${getTeamID(team.team)}`}
                     className="team-link"
                   >
                     <img src={getTeamInfo(team.team, 'get logo here')} alt="" />
