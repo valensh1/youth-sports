@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function Teams() {
@@ -12,6 +12,8 @@ function Teams() {
   console.log(division);
   console.log(season);
 
+  const [roster, setRoster] = useState([]); // Establish state for roster to loop over and show images and information on each player
+
   useEffect(() => {
     (async () => {
       try {
@@ -20,6 +22,7 @@ function Teams() {
         );
         const data = await response.json();
         console.log(data);
+        await setRoster(data);
       } catch (error) {
         console.log(error);
       }
@@ -45,37 +48,29 @@ function Teams() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>
-              <img
-                src="https://i.imgur.com/gbCmMCr.jpg"
-                alt=""
-                style={{ height: '7rem', width: '7rem', borderRadius: '50%' }}
-              />
-              <td>Hunter Valentine</td>
-            </th>
-            <td>36</td>
-            <td>Goalie</td>
-            <td>5 ' 2</td>
-            <td>72 lbs.</td>
-            <td>09/06/2010</td>
-            <td>Jr. Ducks (2)</td>
-            <td>Peewee</td>
-            <td>A</td>
-            <td>Great Park</td>
-          </tr>
-          {/* <tr>
-            <td>Case Nadal</td>
-            <td>47</td>
-            <td>Defenseman</td>
-            <td>5 ' 0</td>
-            <td>80 lbs.</td>
-            <td>10/20/2010</td>
-            <td>Jr. Ducks (2)</td>
-            <td>Peewee</td>
-            <td>A</td>
-            <td>Great Park</td>
-          </tr> */}
+          {roster.map((player) => {
+            return (
+              <tr>
+                <th>
+                  <img
+                    src={player.img}
+                    alt=""
+                    style={{
+                      height: '7rem',
+                      width: '7rem',
+                      borderRadius: '50%',
+                    }}
+                  />
+                  <td>{`${player.firstName} ${player.lastName}`}</td>
+                </th>
+                <td>{player.number}</td>
+                <td>{player.position}</td>
+                <td>{player.height}</td>
+                <td>{player.weight}</td>
+                <td>{player.born}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

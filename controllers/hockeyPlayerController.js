@@ -7,11 +7,8 @@ var logger = require('tracer').console(); // Logger so you can see code line num
 const multer = require('multer'); //ADDED --> multer will be used to handle the form data.
 const Aws = require('aws-sdk'); // ADDED --> aws-sdk library will used to upload image to s3 bucket.
 const HockeyPlayers = require('../models/hockeyPlayerModel.js'); //! Modify players.js file for your applications file name. Require players model file so we can use it in this file
-const HockeyGameScores = require('../models/gameScoresModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
 const Teams = require('../models/teamsModel.js'); //! Modify players in route for your own application Creation of variable to pass our Player Model (or whatever you called your model) to this file so we can use our Model in this file when accessing Mongoose/MongoDB
-const Standings = require('../models/standingsModel.js');
 const Scores = require('../models/scoresModel.js');
-const { distinct } = require('../models/hockeyPlayerModel.js');
 
 //? INDEX ROUTE - (READ) ROUTE SHOWING ALL PLAYERS FROM A SPECIFIC TEAM. REQUEST COMES FROM Roster.js FILE ON FRONT-END
 // '/' is the same as api/hockeyPlayers since we specify api/players in the sever.js file and so a / by itself represents that
@@ -163,6 +160,7 @@ APIRouter.get('/team/rosters', async (req, res) => {
   try {
     const { teamID } = req.query;
     const returnTeam = await HockeyPlayers.find({ teamID: teamID }); //! Modify Players for your Application's collection name from your MongoDB database and variable name showPagePlayer for a variable that makes sense for your application. Instead of destructuring id above could just have done this ---> const showPagePlayer = await Players.findById(req.params.id)
+    logger.log(returnTeam);
     res.status(200).json(returnTeam); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
     // console.log(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
   } catch (error) {
