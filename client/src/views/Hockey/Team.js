@@ -30,40 +30,28 @@ function Teams() {
   }, []);
 
   return (
-    <div className="team">
-      <h3>Jr. Ducks (2)</h3>
-      <table className="team-table">
-        <thead className="team-headers">
-          <tr>
+    <div className="team-container">
+      <h3 className="team-name">{team}</h3>
+      <table>
+        <thead>
+          <tr id="team-headers">
             <th>Player</th>
             <th>#</th>
             <th>Position</th>
             <th>Height</th>
             <th>Weight</th>
             <th>Born</th>
-            <th>Team</th>
-            <th>Division</th>
-            <th>Level</th>
-            <th>Location</th>
           </tr>
         </thead>
         <tbody>
           {roster.map((player) => {
             return (
-              <tr>
-                <th>
-                  <img
-                    src={player.img}
-                    alt=""
-                    style={{
-                      height: '7rem',
-                      width: '7rem',
-                      borderRadius: '50%',
-                    }}
-                  />
-                  <td>{`${player.firstName} ${player.lastName}`}</td>
+              <tr className="team-players">
+                <th className="team-profile">
+                  <img className="team-profile--pic" src={player.img} alt="" />
+                  <p>{`${player.firstName} ${player.lastName}`}</p>
                 </th>
-                <td>{player.number}</td>
+                <td className="team-number">{player.number}</td>
                 <td>{player.position}</td>
                 <td>{player.height}</td>
                 <td>{player.weight}</td>

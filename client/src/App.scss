@@ -867,12 +867,60 @@ $color-primary: orangered;
 }
 
 //? Team.js PAGE
-.team {
-  display: flex;
-  flex-direction: column;
+.team-container {
+  &-name {
+    text-align: center;
+    margin-top: 5vh;
+    font-size: 1.5vw;
+  }
 
-  tr > th:first-child {
-    display: flex;
-    align-items: center;
+  .team-name {
+    text-align: center;
+    font-size: 1.3vw;
+    margin-top: 3vh;
+  }
+
+  table {
+    margin: 1.5vh auto;
+    table-layout: fixed;
+    width: 50%;
+    text-align: center;
+    font-size: 0.5vw;
+
+    img {
+      width: 4vw;
+      height: 8vh;
+      border-radius: 50%;
+      border: 3.5px solid gray;
+      margin-left: 0.5vw;
+    }
+
+    .team-players {
+      line-height: 9vh;
+      border-bottom: 1px solid lightgray;
+    }
+
+    th {
+      background-color: black;
+      color: white;
+    }
+
+    #team-headers {
+      font-size: 0.6vw;
+      line-height: 3vh;
+    }
+
+    .team-profile {
+      text-align: left;
+      width: 130%;
+      background-color: #dedede;
+      color: black;
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-left: 0.5vw;
+      }
+    }
   }
 }
