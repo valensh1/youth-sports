@@ -886,6 +886,7 @@ $color-primary: orangered;
     width: 50%;
     text-align: center;
     font-size: 0.5vw;
+    border: 3px solid gray;
 
     img {
       width: 4vw;
@@ -920,6 +921,14 @@ $color-primary: orangered;
 
       p {
         margin-left: 0.5vw;
+      }
+
+      &:hover {
+        color: orangered;
+      }
+
+      &--pic:hover {
+        transform: scale(1.1);
       }
     }
   }
