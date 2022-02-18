@@ -867,68 +867,109 @@ $color-primary: orangered;
 }
 
 //? Team.js PAGE
-.team-container {
-  &-name {
-    text-align: center;
-    margin-top: 5vh;
-    font-size: 1.5vw;
+.team-info {
+  position: relative;
+  top: -10vh;
+  height: fit-content;
+
+  .navbar {
+    background-color: orangered;
+    height: fit-content;
+    width: 100%;
+    position: absolute;
+    top: 0vh;
   }
 
-  .team-name {
-    text-align: center;
-    font-size: 1.3vw;
-    margin-top: 3vh;
-  }
+  .team-container {
+    background-color: black;
+    margin-top: 5%;
+    // position: absolute;
+    // top: 5vh;
+    height: fit-content;
 
-  table {
-    margin: 1.5vh auto;
-    table-layout: fixed;
-    width: 50%;
-    text-align: center;
-    font-size: 0.5vw;
-    border: 3px solid gray;
-
-    img {
-      width: 4vw;
-      height: 8vh;
-      border-radius: 50%;
-      border: 3.5px solid gray;
-      margin-left: 0.5vw;
-    }
-
-    .team-players {
-      line-height: 9vh;
-      border-bottom: 1px solid lightgray;
-    }
-
-    th {
-      background-color: black;
+    .team-name {
+      text-align: center;
+      font-size: 1.3vw;
+      margin-top: 3vh;
       color: white;
     }
 
-    #team-headers {
-      font-size: 0.6vw;
-      line-height: 3vh;
-    }
+    table {
+      margin: 1.5vh auto;
+      table-layout: fixed;
+      width: 50%;
+      text-align: center;
+      font-size: 0.5vw;
+      border: 3px solid gray;
+      background-color: white;
 
-    .team-profile {
-      text-align: left;
-      width: 130%;
-      background-color: #dedede;
-      color: black;
-      display: flex;
-      align-items: center;
-
-      p {
+      img {
+        width: 4vw;
+        height: 8vh;
+        border-radius: 50%;
+        border: 3.5px solid gray;
         margin-left: 0.5vw;
       }
 
-      &:hover {
-        color: orangered;
+      .team-players {
+        line-height: 9vh;
+        border-bottom: 1px solid lightgray;
       }
 
-      &--pic:hover {
-        transform: scale(1.1);
+      th {
+        background-color: black;
+        color: white;
+        position: sticky; // This keeps the table headers sticky at top so when user scrolls the headers constantly appear
+        top: 0vh; // This goes with position: sticky above and sets the position to 0 so it stays at its top position
+      }
+
+      #team-headers {
+        font-size: 0.6vw;
+        line-height: 3vh;
+      }
+
+      .team-profile {
+        text-align: left;
+        width: 130%; // Increase this to adjust width of player column
+        background-color: #dedede;
+        color: black;
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-left: 0.5vw;
+        }
+
+        &:hover {
+          color: orangered;
+        }
+
+        &--pic:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .team-photo {
+      position: fixed;
+      top: 0vh;
+      left: 2%;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+
+      .team-logo {
+        width: 10vw;
+        position: absolute;
+        top: 20vh;
+        left: 5vw;
+      }
+
+      &--img {
+        width: 20vw;
+        position: absolute;
+        top: 55vh;
+        left: 0.5vw;
       }
     }
   }

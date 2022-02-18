@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
           {/* //? INDEX ROUTE - SHOW ALL PLAYERS */}
           <Route exact path="/hockeyPlayers">

@@ -103,6 +103,10 @@ const teamSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  teamId: {
+    type: String,
+    required: true,
+  },
   division: {
     type: String,
     required: true,
@@ -110,6 +114,10 @@ const teamSchema = new mongoose.Schema({
   season: {
     type: String,
     required: true,
+  },
+  teamPhoto: {
+    type: String,
+    required: false,
   },
 });
 
@@ -119,8 +127,10 @@ const Teams = mongoose.model('Teams', teamSchema); //! Update Player and playerS
 // ? If miss adding fields to your schema for your original mongoose model you must add like this below
 mongoose.model('Teams').schema.add({ teamNameAlias: String });
 mongoose.model('Teams').schema.add({ headCoach: String });
+mongoose.model('Teams').schema.add({ teamId: String });
 mongoose.model('Teams').schema.add({ division: String });
 mongoose.model('Teams').schema.add({ season: String });
+mongoose.model('Teams').schema.add({ teamPhoto: String });
 
 //? CREATION OF FIRST SET OF DATA FOR MongoDB DATABASE - Uncomment this out if you want this to populate your database with sample data
 // const teams1 = Teams.create(

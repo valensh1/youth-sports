@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SeasonFilter from '../../components/SeasonFilter.js';
 import HockeyDivisions from '../../components/Hockey/DivisionPicker.js';
+import Navbar from '../../components/Navbar.js';
 
 function Standings() {
   const [teamsData, setTeamsData] = useState([]);
@@ -82,6 +83,8 @@ function Standings() {
 
   return (
     <div className="standings-container">
+      <Navbar />
+
       <HockeyDivisions divisionFilter={divisionFilter} />
       {division || division === 'Select Division' ? (
         <SeasonFilter seasonFilter={seasonFilter} />
