@@ -42,6 +42,69 @@ function Teams() {
             alt=""
           />
         </aside>
+        <aside className="team-leaderboard">
+          <h3>Leaderboard</h3>
+          <div className="team-leaderboard--card">
+            <div className="team-leaderboard--player">
+              <img src="https://i.imgur.com/gbCmMCr.jpg" alt="" />
+              <div className="team-leaderboard--player-stats">
+                <p className="team-leaderboard--player-name">
+                  Hunter Valentine
+                </p>
+                <p>
+                  #36 <span className="period"></span> Ducks{' '}
+                  <span className="period"></span> Goalie
+                </p>
+                <p>
+                  {' '}
+                  <span className="team-leaderboard-statLine">
+                    200
+                  </span> SAVES{' '}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="team-leaderboard--card">
+            <div className="team-leaderboard--player">
+              <img src="https://i.imgur.com/gbCmMCr.jpg" alt="" />
+              <div className="team-leaderboard--player-stats">
+                <p className="team-leaderboard--player-name">
+                  Hunter Valentine
+                </p>
+                <p className="team-leaderboard-player-teamNumPos">
+                  #36 <span className="period"></span> Ducks{' '}
+                  <span className="period"></span> Goalie
+                </p>
+                <p>
+                  {' '}
+                  <span className="team-leaderboard-statLine">
+                    200
+                  </span> SAVES{' '}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="team-leaderboard--card">
+            <div className="team-leaderboard--player">
+              <img src="https://i.imgur.com/gbCmMCr.jpg" alt="" />
+              <div className="team-leaderboard--player-stats">
+                <p className="team-leaderboard--player-name">
+                  Hunter Valentine
+                </p>
+                <p className="team-leaderboard-player-teamNumPos">
+                  #36 <span className="period"></span> Ducks{' '}
+                  <span className="period"></span> Goalie
+                </p>
+                <p>
+                  {' '}
+                  <span className="team-leaderboard-statLine">
+                    200
+                  </span> SAVES{' '}
+                </p>
+              </div>
+            </div>
+          </div>
+        </aside>
         <h3 className="team-name">{team}</h3>
         <table>
           <thead>

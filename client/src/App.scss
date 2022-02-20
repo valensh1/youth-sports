@@ -1,6 +1,7 @@
 //! ALL RED COMMENTED SECTIONS ARE PLACES WHERE POTENTIAL CHANGES ARE NEEDED BASED UPON YOUR APPLICATION
 //! Make sure to update your CSS styling for wherever you changed players from the className to something that fit your application
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 //? Default global settings
 *,
@@ -883,8 +884,6 @@ $color-primary: orangered;
   .team-container {
     background-color: black;
     margin-top: 5%;
-    // position: absolute;
-    // top: 5vh;
     height: fit-content;
 
     .team-name {
@@ -895,11 +894,10 @@ $color-primary: orangered;
     }
 
     table {
-      margin: 1.5vh auto;
+      margin: 8vh auto;
       table-layout: fixed;
       width: 50%;
       text-align: center;
-      font-size: 0.5vw;
       border: 3px solid gray;
       background-color: white;
 
@@ -917,6 +915,7 @@ $color-primary: orangered;
       }
 
       th {
+        font-size: 0.8vw;
         background-color: black;
         color: white;
         position: sticky; // This keeps the table headers sticky at top so when user scrolls the headers constantly appear
@@ -930,14 +929,16 @@ $color-primary: orangered;
 
       .team-profile {
         text-align: left;
-        width: 130%; // Increase this to adjust width of player column
+        width: 180%; // Increase this to adjust width of player column
         background-color: #dedede;
         color: black;
         display: flex;
         align-items: center;
 
         p {
+          margin-top: 1.2vh;
           margin-left: 0.5vw;
+          font-size: 0.8vw;
         }
 
         &:hover {
@@ -957,6 +958,7 @@ $color-primary: orangered;
       display: flex;
       flex-direction: column;
       height: 100vh;
+      width: 22.5vw;
 
       .team-logo {
         width: 10vw;
@@ -968,8 +970,54 @@ $color-primary: orangered;
       &--img {
         width: 20vw;
         position: absolute;
-        top: 55vh;
+        top: 51.5vh;
         left: 0.5vw;
+      }
+    }
+
+    .team-leaderboard {
+      position: fixed;
+      top: 20vh;
+      right: 5%;
+      width: 18vw;
+      height: fit-content;
+      border: 2px solid orangered;
+      background-color: white;
+      line-height: 1vh;
+
+      h3 {
+        font-family: 'Orbitron', sans-serif;
+      }
+
+      img {
+        width: 7vw;
+        border-radius: 50%;
+        border: 1px solid orangered;
+      }
+
+      &--player {
+        margin: 3vh 0.5vw;
+        display: flex;
+        align-items: center;
+      }
+
+      &--player-stats {
+        border-bottom: 1px solid lightgray;
+        margin-left: 0.5vw;
+      }
+
+      &--player-name {
+        font-weight: 700;
+        font-size: 1vw;
+      }
+
+      &-statLine {
+        font-weight: 900;
+        font-size: 1.5vw;
+      }
+
+      .period:before {
+        content: '\2022';
       }
     }
   }
