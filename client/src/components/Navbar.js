@@ -1,8 +1,5 @@
-//! ALL RED COMMENTED SECTIONS ARE PLACES WHERE POTENTIAL CHANGES ARE NEEDED BASED UPON YOUR APPLICATION
-
 import { Link } from 'react-router-dom';
 
-//! Change navbar link names and actual links below to fit your application. For example, change "/news" to "/teams" and change the News navbar heading to Teams
 function Navbar() {
   return (
     <div className="navbar">

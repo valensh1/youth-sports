@@ -4,6 +4,7 @@ import SeasonFilter from '../../components/SeasonFilter.js';
 import DatePicker from '../../components/DatePicker.js';
 import DivisionPicker from '../../components/Hockey/DivisionPicker.js';
 import TeamLogos from '../../components/TeamLogos.js';
+import Navbar from '../../components/Navbar';
 import { DAYS_OF_WEEK } from '../../Global_Variables/globalVariables.js';
 import { MONTHS } from '../../Global_Variables/globalVariables.js';
 import { SEASONS } from '../../Global_Variables/globalVariables.js';
@@ -73,44 +74,47 @@ function Scores() {
   };
 
   return (
-    <div className="scores-wrapper">
-      <div className="filters">
-        <DivisionPicker divisionFilter={divisionFilter} />
-        <SeasonFilter
-          className="filters-season filter-single"
-          seasonFilter={seasonFilter}
-        />
-        <DatePicker dateFilter={dateFilter} />
-        <button onClick={fetchData}>See Scores</button>
-      </div>
-      <h1 className="scores-date"></h1>
-      <div className="scores-section-container">
-        <h1 id="no-games-message">
-          {!scoresForDateChosen.length && start
-            ? `No games were played on this date`
-            : ''}
-        </h1>
-        {scoresForDateChosen.map((score) => {
-          return (
-            <div key={score._id} className="scores-section">
-              <div className="scores-visitor scores">
-                <TeamLogos team={score?.visitorTeamShort} logo={teamsData} />
-                <h3 className="scores-name">{score?.visitorTeamLong}</h3>
-                <h2 className="scores-record">{`(${score?.visitorTeamPreviousWins}-${score?.visitorTeamPreviousLosses}-${score?.visitorTeamPreviousTies}) ${score?.visitorTeamPreviousPoints}pts`}</h2>
-                <h1 className="scores-score">{score?.visitorTeamScore}</h1>
-              </div>
+    <>
+      <Navbar />
+      <div className="scores-wrapper">
+        <div className="filters">
+          <DivisionPicker divisionFilter={divisionFilter} />
+          <SeasonFilter
+            className="filters-season filter-single"
+            seasonFilter={seasonFilter}
+          />
+          <DatePicker dateFilter={dateFilter} />
+          <button onClick={fetchData}>See Scores</button>
+        </div>
+        <h1 className="scores-date"></h1>
+        <div className="scores-section-container">
+          <h1 id="no-games-message">
+            {!scoresForDateChosen.length && start
+              ? `No games were played on this date`
+              : ''}
+          </h1>
+          {scoresForDateChosen.map((score) => {
+            return (
+              <div key={score._id} className="scores-section">
+                <div className="scores-visitor scores">
+                  <TeamLogos team={score?.visitorTeamShort} logo={teamsData} />
+                  <h3 className="scores-name">{score?.visitorTeamLong}</h3>
+                  <h2 className="scores-record">{`(${score?.visitorTeamPreviousWins}-${score?.visitorTeamPreviousLosses}-${score?.visitorTeamPreviousTies}) ${score?.visitorTeamPreviousPoints}pts`}</h2>
+                  <h1 className="scores-score">{score?.visitorTeamScore}</h1>
+                </div>
 
-              <div className="scores-home scores">
-                <TeamLogos team={score?.homeTeamShort} logo={teamsData} />
-                <h3 className="scores-name">{score?.homeTeamLong}</h3>
-                <h2 className="scores-record">{`(${score?.homeTeamPreviousWins}-${score?.homeTeamPreviousLosses}-${score?.homeTeamPreviousTies}) ${score?.homeTeamPreviousPoints}pts`}</h2>
-                <h1 className="scores-score">{score?.homeTeamScore}</h1>
+                <div className="scores-home scores">
+                  <TeamLogos team={score?.homeTeamShort} logo={teamsData} />
+                  <h3 className="scores-name">{score?.homeTeamLong}</h3>
+                  <h2 className="scores-record">{`(${score?.homeTeamPreviousWins}-${score?.homeTeamPreviousLosses}-${score?.homeTeamPreviousTies}) ${score?.homeTeamPreviousPoints}pts`}</h2>
+                  <h1 className="scores-score">{score?.homeTeamScore}</h1>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

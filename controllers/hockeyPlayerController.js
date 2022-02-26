@@ -143,18 +143,6 @@ APIRouter.get('/:id', async (req, res) => {
   }
 });
 
-// //? SHOW ROUTE - (READ) SHOW PAGE DISPLAYING ALL PLAYERS FROM A TEAM - MIGHT BE ABLE TO DELETE!!!!!
-// APIRouter.get('/teams', async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const showPagePlayer = await HockeyPlayers.findById(id); //! Modify Players for your Application's collection name from your MongoDB database and variable name showPagePlayer for a variable that makes sense for your application. Instead of destructuring id above could just have done this ---> const showPagePlayer = await Players.findById(req.params.id)
-//     res.status(200).json(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
-//     // console.log(showPagePlayer); //! Modify showPagePlayer for whatever variable name you decide to use in line of code above that makes sense for your application
-//   } catch (error) {
-//     res.status(400).send(error);
-//   }
-// });
-
 // //? SHOW ROUTE - (READ) SHOW PAGE DISPLAYING ALL PLAYERS FROM A TEAM - Comes from Team.js file which will display team roster after clicking on a team in the standings
 APIRouter.get('/team/rosters', async (req, res) => {
   try {

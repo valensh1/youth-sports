@@ -2,6 +2,7 @@
 //! Make sure to update your CSS styling for wherever you changed players from the className to something that fit your application
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import "TeamColors";
 
 //? Default global settings
 *,
@@ -19,6 +20,19 @@ html {
 
 //? Global CSS Variables
 $color-primary: orangered;
+
+// //? TEAM COLORS
+// $ducks-primary: orangered;
+// $ducks-secondary: black;
+// $ducks-alternate: white;
+
+// //? TEAM COLORS
+// @mixin ducks-team-colors {
+//   background-color: $ducks-primary;
+//   color: white;
+// }
+
+
 
 //? GLOBAL STYLING
 .btn {
@@ -874,7 +888,7 @@ $color-primary: orangered;
   height: fit-content;
 
   .navbar {
-    background-color: orangered;
+    @include ducks-team-colors;
     height: fit-content;
     width: 100%;
     position: absolute;
@@ -925,11 +939,16 @@ $color-primary: orangered;
       #team-headers {
         font-size: 0.6vw;
         line-height: 3vh;
+
+        &--player {
+          width: 13vw;
+        }
+
       }
 
       .team-profile {
         text-align: left;
-        width: 180%; // Increase this to adjust width of player column
+        width: 120%; // Increase this to adjust width of player column
         background-color: #dedede;
         color: black;
         display: flex;

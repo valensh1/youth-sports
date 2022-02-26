@@ -109,8 +109,8 @@ function Teams() {
         <table>
           <thead>
             <tr id="team-headers">
-              <th>Player</th>
-              <th>#</th>
+              <th id="team-headers--player">Player</th>
+              <th id="team-headers--number">#</th>
               <th>Position</th>
               <th>Height</th>
               <th>Weight</th>

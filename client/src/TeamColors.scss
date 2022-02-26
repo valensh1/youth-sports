@@ -1,0 +1,13 @@
+//? TEAM COLORS
+$ducks-primary: orangered;
+$ducks-secondary: black;
+$ducks-alternate: white;
+
+//? TEAM COLORS
+@mixin ducks-team-colors {
+  background-color: $ducks-primary;
+  color: $ducks-alternate;
+}
+
+
+
