@@ -1,12 +1,78 @@
 //? TEAM COLORS
 $ducks-primary: orangered;
 $ducks-secondary: black;
-$ducks-alternate: white;
+
+$iceDogs-primary: #003568;
+$iceDogs-secondary: gray;
+
+$goldRush-primary: #00264C;
+$goldRush-secondary: #ffe657;
+
+$kings-primary: silver;
+$kings-secondary: black;
+
+$condors-primary:#003e7e;
+$condors-secondary: #eb6e1f;
+
+$blaze-primary: #e9241d;
+$blaze-secondary: #ffff66;
+
 
 //? TEAM COLORS
 @mixin ducks-team-colors {
   background-color: $ducks-primary;
-  color: $ducks-alternate;
+  color: $ducks-secondary;
+}
+
+@mixin iceDogs-team-colors {
+  background-color: $iceDogs-primary;
+  color: $iceDogs-secondary;
+}
+
+@mixin goldRush-team-colors {
+  background-color: $goldRush-primary;
+  color: $goldRush-secondary;
+}
+
+@mixin kings-team-colors {
+  background-color: $goldRush-primary;
+  color: $goldRush-secondary;
+}
+
+@mixin condors-team-colors {
+  background-color: $goldRush-primary;
+  color: $goldRush-secondary;
+}
+
+@mixin blaze-team-colors {
+  background-color: $goldRush-primary;
+  color: $goldRush-secondary;
+}
+
+
+//? TEAM CLASSES
+#ducks {
+  @include ducks-team-colors;
+}
+
+#icedogs {
+  @include iceDogs-team-colors;
+}
+
+#goldrush {
+  @include goldRush-team-colors;
+}
+
+#kings {
+  @include kings-team-colors;
+}
+
+#condors {
+   @include condors-team-colors;
+}
+
+#blaze {
+   @include blaze-team-colors;
 }
 
 

@@ -13,6 +13,15 @@ function Teams() {
   console.log(division);
   console.log(season);
 
+  const teamIDConversion = (teamID) => {
+    if(teamID) {
+      const regex = /[A-Z]/gi;
+      return teamID?.match(regex).slice(2).join('');
+    }
+  }
+
+  
+
   const [roster, setRoster] = useState([]); // Establish state for roster to loop over and show images and information on each player
 
   useEffect(() => {
@@ -32,7 +41,7 @@ function Teams() {
 
   return (
     <div className="team-info">
-      <Navbar />
+      <Navbar teamID={teamIDConversion(teamID)}/>
       <div className="team-container">
         <aside className="team-photo">
           <img className="team-logo" src={roster?.[1]?.[0].logo} alt="" />
